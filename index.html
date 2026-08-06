@@ -20,12 +20,10 @@ body.reader-open{overflow:hidden}.home{width:min(1220px,94vw);margin:0 auto;padd
 <section class="grid" id="grid"></section>
 <div class="note"><b>Catatan:</b> Repository ini kini mengandungi Page 2 hingga Page 20. Page 4 dan Page 5 menggunakan versi terkini yang mempunyai jawapan lengkap dan animasi penuh. Semua fail HTML asal kekal tanpa perubahan.</div>
 </main>
-
 <section class="reader" id="reader" aria-hidden="true">
 <header class="readerbar"><div class="reader-title" id="readerTitle">Bab 8</div><div class="reader-actions"><button class="rbtn" onclick="previousPage()">← Sebelum</button><button class="rbtn" onclick="nextPage()">Seterusnya →</button><button class="rbtn homebtn" onclick="goHome()">回到主页 · Halaman Utama</button></div></header>
 <div class="framewrap"><iframe class="frame" id="frame" title="Bab 8 learning page"></iframe><button class="floating-home" onclick="goHome()">⌂ 回到主页</button></div>
 </section>
-
 <script>
 const pages=[
 {n:2,file:'T2_Sains_Bab8_Page2_Apakah_Daya_Aktiviti8_1.html',title:'Apakah Daya & Aktiviti 8.1',desc:'Maksud daya, tarikan, tolakan dan aktiviti pengenalan.'},
@@ -48,14 +46,12 @@ const pages=[
 {n:19,file:'T2_Sains_Bab8_Page19_Istilah_dan_Sebutan.html',title:'Istilah & Sebutan',desc:'Kamus mini, carian dan bacaan istilah Bahasa Melayu.'},
 {n:20,file:'T2_Sains_Bab8_Page20_Peta_Minda_Final_Revision.html',title:'Peta Minda & Final Revision',desc:'Peta minda interaktif dan laluan ulang kaji akhir.'}
 ];
-let currentIndex=-1;
-const grid=document.getElementById('grid');
+let currentIndex=-1;const grid=document.getElementById('grid');
 function render(list=pages){grid.innerHTML=list.map(p=>`<article class="card" data-search="${(p.title+' '+p.desc+' page '+p.n).toLowerCase()}"><div class="page-no">${p.n}</div><h3>Page ${p.n} · ${p.title}</h3><p>${p.desc}</p><button class="open-btn" onclick="openPage(${p.n})">Buka Halaman（打开页面）</button></article>`).join('');document.getElementById('progress').textContent=`${list.length} halaman tersedia`;}
 function filterCards(){const q=document.getElementById('search').value.toLowerCase().trim();render(q?pages.filter(p=>(p.title+' '+p.desc+' '+p.n).toLowerCase().includes(q)):pages)}
 function openPage(n){currentIndex=pages.findIndex(p=>p.n===n);const p=pages[currentIndex];document.getElementById('readerTitle').textContent=`Page ${p.n} · ${p.title}`;document.getElementById('frame').src=p.file;document.getElementById('reader').classList.add('show');document.getElementById('reader').setAttribute('aria-hidden','false');document.body.classList.add('reader-open');history.replaceState(null,'',`#page-${p.n}`);}
 function goHome(){document.getElementById('reader').classList.remove('show');document.getElementById('reader').setAttribute('aria-hidden','true');document.getElementById('frame').src='about:blank';document.body.classList.remove('reader-open');currentIndex=-1;history.replaceState(null,'',location.pathname);window.scrollTo({top:0,behavior:'smooth'});}
-function previousPage(){if(currentIndex>0)openPage(pages[currentIndex-1].n)}
-function nextPage(){if(currentIndex>=0&&currentIndex<pages.length-1)openPage(pages[currentIndex+1].n)}
+function previousPage(){if(currentIndex>0)openPage(pages[currentIndex-1].n)}function nextPage(){if(currentIndex>=0&&currentIndex<pages.length-1)openPage(pages[currentIndex+1].n)}
 window.addEventListener('keydown',e=>{if(!document.getElementById('reader').classList.contains('show'))return;if(e.key==='Escape')goHome();if(e.key==='ArrowLeft')previousPage();if(e.key==='ArrowRight')nextPage()});
 window.addEventListener('load',()=>{render();const m=location.hash.match(/^#page-(\d+)$/);if(m&&pages.some(p=>p.n===Number(m[1])))openPage(Number(m[1]));});
 </script>
