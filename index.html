@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Sains Tingkatan 2 Bab 8 — Daya dan Gerakan</title>
+<style>
+:root{--navy:#0f2f49;--blue:#1769aa;--sky:#edf7fd;--white:#fff;--ink:#243c4e;--line:#c9dce9;--green:#2f8a62;--gold:#f3bf3b;--shadow:0 16px 40px rgba(15,47,73,.15)}
+*{box-sizing:border-box}html,body{margin:0;min-height:100%;font-family:Arial,"Microsoft YaHei",sans-serif;background:linear-gradient(180deg,#f8fbfe,#eaf4fa);color:var(--ink)}
+body.reader-open{overflow:hidden}.home{width:min(1220px,94vw);margin:0 auto;padding:24px 0 60px}.hero{padding:42px;border-radius:30px;color:#fff;background:linear-gradient(135deg,#102f49,#1769aa 72%,#3494d3);box-shadow:var(--shadow);position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:420px;height:420px;border-radius:50%;right:-150px;top:-190px;background:rgba(255,255,255,.09)}.badge{display:inline-block;padding:7px 14px;border:1px solid rgba(255,255,255,.38);border-radius:999px;background:rgba(255,255,255,.12);font-weight:900}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.06;margin:17px 0 10px}.hero p{font-size:19px;max-width:900px;margin:0;color:#e8f5ff}.toolbar{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:22px 0}.search{flex:1;min-width:250px;border:1px solid var(--line);border-radius:16px;padding:14px 17px;font:inherit;background:#fff}.progress{padding:12px 16px;border-radius:16px;background:#fff;border:1px solid var(--line);font-weight:900;color:var(--navy)}.section-title{font-size:30px;color:var(--navy);margin:28px 0 14px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.card{border:1px solid var(--line);border-radius:22px;background:#fff;padding:20px;box-shadow:0 10px 28px rgba(15,47,73,.09);display:flex;flex-direction:column;min-height:220px;transition:.2s}.card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}.page-no{width:50px;height:50px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-size:21px;font-weight:900}.card h3{margin:14px 0 8px;color:var(--navy);font-size:21px}.card p{margin:0 0 17px;color:#61798b;flex:1}.open-btn{border:0;border-radius:14px;padding:12px 15px;background:var(--blue);color:#fff;font:inherit;font-weight:900;cursor:pointer}.note{margin-top:24px;padding:18px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c}.reader{position:fixed;inset:0;background:#edf5fa;z-index:1000;display:none;flex-direction:column}.reader.show{display:flex}.readerbar{height:68px;flex:0 0 68px;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 14px;background:#102f49;color:#fff;box-shadow:0 4px 15px rgba(0,0,0,.2)}.reader-title{font-weight:900;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.reader-actions{display:flex;gap:8px;flex-wrap:wrap}.rbtn{border:1px solid rgba(255,255,255,.35);border-radius:999px;padding:9px 13px;background:rgba(255,255,255,.12);color:#fff;font:inherit;font-weight:900;cursor:pointer}.rbtn.homebtn{background:#fff;color:#102f49}.framewrap{position:relative;flex:1;min-height:0}.frame{width:100%;height:100%;border:0;background:#fff}.floating-home{position:absolute;right:18px;bottom:18px;border:0;border-radius:999px;padding:13px 18px;background:#102f49;color:#fff;font:inherit;font-weight:900;cursor:pointer;box-shadow:0 8px 24px rgba(15,47,73,.3)}
+@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.hero{padding:30px 23px}.readerbar{height:auto;flex-basis:auto;align-items:flex-start}.reader-actions{justify-content:flex-end}.floating-home{right:12px;bottom:12px}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.card{min-height:190px}.reader-title{max-width:38vw}.rbtn{padding:8px 10px;font-size:13px}}
+</style>
+</head>
+<body>
+<main class="home" id="home">
+<section class="hero"><span class="badge">SAINS TINGKATAN 2 · BAB 8</span><h1>Daya dan Gerakan</h1><p>Modul pengajaran lengkap Bahasa Melayu + 华语，dengan animasi, eksperimen, jawapan, formula, istilah dan peta minda.</p></section>
+<div class="toolbar"><input class="search" id="search" placeholder="Cari halaman atau topik...（搜索页面或主题）" oninput="filterCards()"><div class="progress" id="progress">19 halaman tersedia</div></div>
+<h2 class="section-title">Pilih Halaman（选择页面）</h2>
+<section class="grid" id="grid"></section>
+<div class="note"><b>Catatan:</b> Repository ini kini mengandungi Page 2 hingga Page 20. Page 4 dan Page 5 menggunakan versi terkini yang mempunyai jawapan lengkap dan animasi penuh. Semua fail HTML asal kekal tanpa perubahan.</div>
+</main>
+
+<section class="reader" id="reader" aria-hidden="true">
+<header class="readerbar"><div class="reader-title" id="readerTitle">Bab 8</div><div class="reader-actions"><button class="rbtn" onclick="previousPage()">← Sebelum</button><button class="rbtn" onclick="nextPage()">Seterusnya →</button><button class="rbtn homebtn" onclick="goHome()">回到主页 · Halaman Utama</button></div></header>
+<div class="framewrap"><iframe class="frame" id="frame" title="Bab 8 learning page"></iframe><button class="floating-home" onclick="goHome()">⌂ 回到主页</button></div>
+</section>
+
+<script>
+const pages=[
+{n:2,file:'T2_Sains_Bab8_Page2_Apakah_Daya_Aktiviti8_1.html',title:'Apakah Daya & Aktiviti 8.1',desc:'Maksud daya, tarikan, tolakan dan aktiviti pengenalan.'},
+{n:3,file:'T2_Sains_Bab8_Page3_Jenis_dan_Ciri_Daya.html',title:'Jenis dan Ciri Daya',desc:'Jenis daya, magnitud, arah dan titik aplikasi.'},
+{n:4,file:'T2_Sains_Bab8_Page4_Aktiviti8_2_Daya_Tindakan_Tindak_Balas_v2.html',title:'Mengukur Daya & Pasangan Daya',desc:'Aktiviti 8.2, jawapan lengkap, tindakan dan tindak balas.'},
+{n:5,file:'T2_Sains_Bab8_Page5_All_Visuals_Animated_v2.html',title:'Latihan 8.1 & Kesan Daya',desc:'Jawapan latihan, Aktiviti 8.3 dan semua visual bergerak.'},
+{n:6,file:'T2_Sains_Bab8_Page6_Daya_Apungan_Aktiviti8_4.html',title:'Daya Apungan',desc:'Terapung, tenggelam, berat sebenar dan berat ketara.'},
+{n:7,file:'T2_Sains_Bab8_Page7_Ketumpatan_Eksperimen8_1.html',title:'Ketumpatan & Eksperimen 8.1',desc:'Ketumpatan bahan, kesan apungan dan garisan Plimsoll.'},
+{n:8,file:'T2_Sains_Bab8_Page8_Tuas_dan_Pengelasan.html',title:'Tuas dan Pengelasan',desc:'Daya, beban, fulkrum dan tiga kelas tuas.'},
+{n:9,file:'T2_Sains_Bab8_Page9_Momen_Daya_dan_Keseimbangan.html',title:'Momen Daya & Keseimbangan',desc:'Formula momen, prinsip momen dan pengiraan.'},
+{n:10,file:'T2_Sains_Bab8_Page10_Tekanan_Pepejal_Eksperimen8_2.html',title:'Tekanan pada Pepejal',desc:'Formula tekanan, Eksperimen 8.2 dan aplikasi.'},
+{n:11,file:'T2_Sains_Bab8_Page11_Tekanan_Gas_Aktiviti8_8_8_9.html',title:'Tekanan Gas',desc:'Teori kinetik gas, isi padu, suhu dan aktiviti.'},
+{n:12,file:'T2_Sains_Bab8_Page12_Tekanan_Atmosfera_Aktiviti8_10.html',title:'Tekanan Atmosfera',desc:'Vakum dan aplikasi tekanan atmosfera dalam alat harian.'},
+{n:13,file:'T2_Sains_Bab8_Page13_Tekanan_Cecair_Aktiviti8_11.html',title:'Tekanan Cecair',desc:'Kedalaman, gelembung, empangan dan kapal selam.'},
+{n:14,file:'T2_Sains_Bab8_Page14_Altitud_Latihan_Formatif8_2.html',title:'Altitud & Latihan Formatif 8.2',desc:'Hubungan altitud dengan tekanan serta jawapan latihan.'},
+{n:15,file:'T2_Sains_Bab8_Page15_Rumusan_Bab8.html',title:'Rumusan Bab 8',desc:'Rumusan interaktif semua konsep utama.'},
+{n:16,file:'T2_Sains_Bab8_Page16_Eksperimen_SPS_Master.html',title:'Eksperimen & SPS Master',desc:'Tujuan, pemboleh ubah, pemerhatian, inferens dan kesimpulan.'},
+{n:17,file:'T2_Sains_Bab8_Page17_Formula_Unit_Pengiraan.html',title:'Formula, Unit & Pengiraan',desc:'Formula utama, unit, penukaran dan kesalahan biasa.'},
+{n:18,file:'T2_Sains_Bab8_Page18_Fokus_Penguasaan.html',title:'Fokus Penguasaan',desc:'Kata kunci, cara menjawab dan kesalahan biasa.'},
+{n:19,file:'T2_Sains_Bab8_Page19_Istilah_dan_Sebutan.html',title:'Istilah & Sebutan',desc:'Kamus mini, carian dan bacaan istilah Bahasa Melayu.'},
+{n:20,file:'T2_Sains_Bab8_Page20_Peta_Minda_Final_Revision.html',title:'Peta Minda & Final Revision',desc:'Peta minda interaktif dan laluan ulang kaji akhir.'}
+];
+let currentIndex=-1;
+const grid=document.getElementById('grid');
+function render(list=pages){grid.innerHTML=list.map(p=>`<article class="card" data-search="${(p.title+' '+p.desc+' page '+p.n).toLowerCase()}"><div class="page-no">${p.n}</div><h3>Page ${p.n} · ${p.title}</h3><p>${p.desc}</p><button class="open-btn" onclick="openPage(${p.n})">Buka Halaman（打开页面）</button></article>`).join('');document.getElementById('progress').textContent=`${list.length} halaman tersedia`;}
+function filterCards(){const q=document.getElementById('search').value.toLowerCase().trim();render(q?pages.filter(p=>(p.title+' '+p.desc+' '+p.n).toLowerCase().includes(q)):pages)}
+function openPage(n){currentIndex=pages.findIndex(p=>p.n===n);const p=pages[currentIndex];document.getElementById('readerTitle').textContent=`Page ${p.n} · ${p.title}`;document.getElementById('frame').src=p.file;document.getElementById('reader').classList.add('show');document.getElementById('reader').setAttribute('aria-hidden','false');document.body.classList.add('reader-open');history.replaceState(null,'',`#page-${p.n}`);}
+function goHome(){document.getElementById('reader').classList.remove('show');document.getElementById('reader').setAttribute('aria-hidden','true');document.getElementById('frame').src='about:blank';document.body.classList.remove('reader-open');currentIndex=-1;history.replaceState(null,'',location.pathname);window.scrollTo({top:0,behavior:'smooth'});}
+function previousPage(){if(currentIndex>0)openPage(pages[currentIndex-1].n)}
+function nextPage(){if(currentIndex>=0&&currentIndex<pages.length-1)openPage(pages[currentIndex+1].n)}
+window.addEventListener('keydown',e=>{if(!document.getElementById('reader').classList.contains('show'))return;if(e.key==='Escape')goHome();if(e.key==='ArrowLeft')previousPage();if(e.key==='ArrowRight')nextPage()});
+window.addEventListener('load',()=>{render();const m=location.hash.match(/^#page-(\d+)$/);if(m&&pages.some(p=>p.n===Number(m[1])))openPage(Number(m[1]));});
+</script>
+</body>
+</html>
