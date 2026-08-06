@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 12</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--orange:#ef8a31;--purple:#7654b7;
+ --shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{position:sticky;top:10px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);backdrop-filter:blur(10px)}
+.brand{font-weight:900;color:var(--navy)}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}.light{background:#e7f2fa;color:var(--navy)}.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}.hero p{font-size:19px;max-width:920px}.tag{display:inline-block;padding:7px 14px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff59;font-weight:900}
+.cn{color:var(--muted);font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px}.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.grid2,.tool-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fbfdff}.box h3{margin-top:0;color:var(--navy)}
+.scene{height:310px;position:relative;border:1px solid var(--line);border-radius:20px;background:linear-gradient(#eef8ff,#dcecf7);overflow:hidden}
+.carton{position:absolute;left:50%;top:55px;transform:translateX(-50%);width:145px;height:190px;background:#f0c75e;border:5px solid #a77a12;clip-path:polygon(8% 0,92% 0,100% 100%,0 100%);animation:crush 3s ease-in-out infinite}
+.straw{position:absolute;left:52%;top:25px;width:14px;height:125px;background:#d84c4c;transform:rotate(8deg);animation:strawMove 3s infinite}
+.out-arrow{position:absolute;left:32%;top:130px;width:100px;height:8px;background:var(--blue);animation:arrowFlow 1.2s infinite}.out-arrow:after{content:"";position:absolute;left:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-right:24px solid var(--blue)}
+.in-arrows{position:absolute;inset:0}.ia{position:absolute;width:8px;height:72px;background:var(--green);animation:pressIn 1.4s infinite}.ia:after{content:"";position:absolute;left:-12px;bottom:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-top:23px solid var(--green)}.i1{left:25%;top:80px;transform:rotate(-90deg)}.i2{right:25%;top:80px;transform:rotate(90deg)}.i3{left:49%;bottom:18px}
+@keyframes crush{0%,35%{transform:translateX(-50%) scaleX(1)}70%,100%{transform:translateX(-50%) scaleX(.65)}}@keyframes strawMove{50%{transform:rotate(8deg) translateY(-10px)}}@keyframes arrowFlow{50%{opacity:.35;transform:translateX(-12px)}}@keyframes pressIn{50%{opacity:.4}}
+.memory{margin-top:18px;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}.memory b{font-size:clamp(22px,3vw,34px);color:var(--navy)}
+.tool-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbfdff}.tool-card h3{margin:0;padding:14px 18px;color:#fff;background:var(--navy)}.tool-scene{height:260px;position:relative;background:#eef8ff;overflow:hidden}.tool-body{padding:18px}
+.suction{position:absolute;left:50%;top:55px;transform:translateX(-50%);width:130px;height:75px;border-radius:65px 65px 18px 18px;background:#6d87a0;animation:suctionPress 2.5s infinite}.tile{position:absolute;left:25px;right:25px;bottom:35px;height:24px;background:#b7c4cc}.handle{position:absolute;left:50%;top:25px;transform:translateX(-50%);width:24px;height:65px;background:#52697b;animation:handlePull 2.5s infinite}.p-arrow{position:absolute;left:50%;bottom:55px;width:8px;height:90px;background:var(--green);animation:upPulse 1.3s infinite}.p-arrow:after{content:"";position:absolute;left:-13px;top:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:25px solid var(--green)}
+@keyframes suctionPress{0%,30%{transform:translateX(-50%) scaleY(1)}65%,100%{transform:translateX(-50%) scaleY(.72)}}@keyframes handlePull{50%{transform:translate(-50%,-14px)}}@keyframes upPulse{50%{opacity:.4;transform:translateY(-12px)}}
+.hemi{position:absolute;top:80px;width:100px;height:100px;border-radius:50%;background:#718493;border:7px solid #52697b}.hleft{left:55px;clip-path:inset(0 50% 0 0);animation:hemiLeft 3s infinite}.hright{right:55px;clip-path:inset(0 0 0 50%);animation:hemiRight 3s infinite}.pull-l,.pull-r{position:absolute;top:125px;width:85px;height:8px;background:var(--red);animation:pullPulse 1.2s infinite}.pull-l{left:10px}.pull-l:after{content:"";position:absolute;left:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-right:24px solid var(--red)}.pull-r{right:10px}.pull-r:after{content:"";position:absolute;right:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:24px solid var(--red)}
+@keyframes hemiLeft{50%{transform:translateX(-8px)}}@keyframes hemiRight{50%{transform:translateX(8px)}}@keyframes pullPulse{50%{opacity:.4}}
+.glass{position:absolute;left:50%;bottom:25px;transform:translateX(-50%);width:140px;height:145px;border:7px solid #61798c;border-top:0;border-radius:0 0 18px 18px;overflow:hidden}.water{position:absolute;inset:auto 0 0 0;height:110px;background:rgba(64,163,220,.65);animation:waterGlow 2s infinite}.straw2{position:absolute;left:50%;top:35px;width:22px;height:170px;background:#dce8ef;border:4px solid #61798c;transform:translateX(-50%);overflow:hidden}.water-column{position:absolute;inset:auto 0 0 0;height:20px;background:#4aa7d8;animation:waterRise 3s infinite}.finger{position:absolute;left:50%;top:20px;transform:translateX(-50%);width:48px;height:28px;border-radius:20px;background:#efc5a4;animation:fingerCover 3s infinite}
+@keyframes waterRise{0%,25%{height:25px}65%,100%{height:125px}}@keyframes fingerCover{50%{transform:translate(-50%,8px)}}@keyframes waterGlow{50%{filter:brightness(1.12)}}
+.siphon-basin{position:absolute;left:25px;bottom:35px;width:155px;height:115px;border:7px solid #61798c;border-top:0;border-radius:0 0 18px 18px;overflow:hidden}.siphon-water{position:absolute;inset:auto 0 0 0;height:85px;background:rgba(64,163,220,.65)}.tube{position:absolute;left:100px;top:50px;width:190px;height:130px;border:12px solid #7b8e9c;border-left-color:transparent;border-bottom-color:transparent;border-radius:0 70px 0 0;animation:tubePulse 2s infinite}.flow{position:absolute;right:65px;bottom:25px;width:14px;height:130px;background:#4aa7d8;animation:flowDown 2.2s infinite}
+@keyframes tubePulse{50%{filter:brightness(1.2)}}@keyframes flowDown{0%,20%{height:20px}70%,100%{height:130px}}
+.syringe{position:absolute;left:50%;top:70px;transform:translateX(-50%);width:220px;height:75px;border:7px solid #61798c;border-radius:16px}.plunger{position:absolute;left:65px;top:52px;width:35px;height:110px;background:#8a9ba7;animation:plungerPull 3s infinite}.water-cup{position:absolute;left:50%;bottom:20px;transform:translateX(-50%);width:130px;height:90px;border:6px solid #61798c;border-top:0;overflow:hidden}.cup-water{position:absolute;inset:auto 0 0 0;height:65px;background:rgba(64,163,220,.65)}.syr-water{position:absolute;left:130px;top:84px;width:70px;height:45px;background:#4aa7d8;animation:syrRise 3s infinite}
+@keyframes plungerPull{50%{transform:translateX(-55px)}}@keyframes syrRise{0%,25%{width:10px}70%,100%{width:70px}}
+.vacuum{position:absolute;left:45px;bottom:35px;width:145px;height:95px;background:#5d91bb;border-radius:20px;animation:vacMove 2.8s infinite}.vacuum:before{content:"";position:absolute;left:20px;bottom:-18px;width:35px;height:35px;border-radius:50%;background:#354b5d}.hose{position:absolute;left:175px;top:70px;width:110px;height:18px;background:#657786;border-radius:12px;transform:rotate(-12deg)}.paper{position:absolute;width:22px;height:14px;background:#f3bf3b;animation:paperFly 2.4s infinite}.pa1{right:35px;bottom:55px}.pa2{right:80px;bottom:30px;animation-delay:.2s}.pa3{right:115px;bottom:80px;animation-delay:.4s}
+@keyframes vacMove{50%{transform:translateX(18px)}}@keyframes paperFly{50%{transform:translate(-120px,-35px) rotate(180deg);opacity:.4}}
+.question{margin-top:14px}.ansbtn{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.answer{display:none;margin-top:12px;padding:16px;border-radius:14px;background:#eefbf3;border:1px solid #9fd2b0}.answer.show{display:block}.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.grid2,.tool-grid{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar"><div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 12</div><div class="actions"><button class="btn light" onclick="document.getElementById('aktiviti810').scrollIntoView()">Aktiviti 8.10</button><button class="btn primary" onclick="replay()">Ulang Animasi</button></div></header>
+
+<section class="hero"><span class="tag">8.2.7 TEKANAN ATMOSFERA（大气压）</span><h1>Tekanan Atmosfera dan Aplikasinya</h1><p>Tekanan atmosfera ialah tekanan yang dikenakan oleh atmosfera ke atas permukaan Bumi dan semua jasad di Bumi.<br><span class="cn">大气压是大气对地球表面及地球上所有物体施加的压力。</span></p></section>
+
+<section class="section">
+<div class="title"><div class="num">1</div><h2>Apakah Tekanan Atmosfera?</h2></div>
+<div class="grid2"><div class="box"><p>Apabila air di dalam kotak minuman disedut keluar, ruang di dalam kotak menjadi separa vakum dan tekanan udara di dalamnya berkurang.</p><p class="cn">饮料被吸出后，盒内形成部分真空，内部气压降低。</p><p>Tekanan udara di luar yang lebih tinggi menekan permukaan kotak lalu menyebabkan kotak menjadi kemik.</p><p class="cn">外部较高的大气压压向盒子，使盒子变瘪。</p></div><div class="scene"><div class="carton"></div><div class="straw"></div><div class="out-arrow"></div><div class="in-arrows"><div class="ia i1"></div><div class="ia i2"></div><div class="ia i3"></div></div></div></div>
+<div class="memory"><b>口诀：Tekanan luar lebih tinggi → objek ditekan ke dalam</b><br><span class="cn">外部气压较高时，物体会被向内压。</span></div>
+</section>
+
+<section class="section" id="aktiviti810">
+<div class="title"><div class="num">2</div><h2>Aktiviti 8.10（活动 8.10）</h2></div>
+<p><b>Tujuan:</b> Menunjukkan kewujudan tekanan atmosfera dalam alat harian.<br><span class="cn">目的：证明日常工具中存在大气压的作用。</span></p>
+
+<div class="tool-grid">
+<article class="tool-card"><h3>1. Pam Sedut（吸盘）</h3><div class="tool-scene"><div class="tile"></div><div class="suction"></div><div class="handle"></div><div class="p-arrow"></div></div><div class="tool-body"><p>Udara di dalam pam sedut dikeluarkan. Tekanan atmosfera di luar yang lebih tinggi menekan pam pada jubin.</p><p class="cn">吸盘内空气被排出，外部较高的大气压把吸盘压在瓷砖上。</p><div class="question"><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer">Pam sukar ditanggalkan kerana tekanan atmosfera di luar lebih tinggi daripada tekanan udara di bawah pam sedut.</div></div></div></article>
+
+<article class="tool-card"><h3>2. Hemisfera Magdeburg</h3><div class="tool-scene"><div class="hemi hleft"></div><div class="hemi hright"></div><div class="pull-l"></div><div class="pull-r"></div></div><div class="tool-body"><p>Udara di dalam hemisfera dikeluarkan. Tekanan atmosfera dari luar menekan kedua-dua hemisfera dengan kuat.</p><p class="cn">半球内空气被抽出，外部大气压把两个半球紧紧压在一起。</p><div class="question"><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer">Hemisfera sukar dipisahkan kerana tekanan atmosfera di luar lebih tinggi daripada tekanan di dalam.</div></div></div></article>
+
+<article class="tool-card"><h3>3. Penyedut Minuman（吸管）</h3><div class="tool-scene"><div class="glass"><div class="water"></div></div><div class="straw2"><div class="water-column"></div></div><div class="finger"></div></div><div class="tool-body"><p>Apabila hujung atas penyedut ditutup, udara tidak dapat masuk. Tekanan atmosfera dari bawah mengekalkan air di dalam penyedut.</p><p class="cn">上端封住后，空气无法进入；下方大气压使水留在吸管内。</p><div class="question"><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer">Air tidak jatuh kerana tekanan atmosfera dari bawah menyokong lajur air apabila hujung atas ditutup.</div></div></div></article>
+
+<article class="tool-card"><h3>4. Sifon（虹吸管）</h3><div class="tool-scene"><div class="siphon-basin"><div class="siphon-water"></div></div><div class="tube"></div><div class="flow"></div></div><div class="tool-body"><p>Air mengalir melalui tiub apabila satu hujung berada pada aras lebih rendah daripada permukaan air dalam besen.</p><p class="cn">当出水端低于盆中水面时，水会经软管流出。</p><div class="question"><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer">Jika kedua-dua hujung tiub berada pada aras yang sama, air tidak mengalir kerana tiada perbezaan aras.</div></div></div></article>
+
+<article class="tool-card"><h3>5. Picagari（注射器）</h3><div class="tool-scene"><div class="syringe"></div><div class="plunger"></div><div class="syr-water"></div><div class="water-cup"><div class="cup-water"></div></div></div><div class="tool-body"><p>Apabila omboh ditarik, tekanan udara di dalam picagari berkurang. Tekanan atmosfera menolak air masuk.</p><p class="cn">拉动活塞后，注射器内气压降低，外部大气压把水推入注射器。</p><div class="question"><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer">Air masuk kerana tekanan atmosfera di luar lebih tinggi daripada tekanan di dalam picagari.</div></div></div></article>
+
+<article class="tool-card"><h3>6. Pembersih Vakum（吸尘器）</h3><div class="tool-scene"><div class="vacuum"></div><div class="hose"></div><div class="paper pa1"></div><div class="paper pa2"></div><div class="paper pa3"></div></div><div class="tool-body"><p>Pembersih vakum mengurangkan tekanan udara di dalam hos. Tekanan atmosfera di luar menolak udara dan cebisan kertas masuk.</p><p class="cn">吸尘器降低软管内气压，外部大气压把空气和纸屑推入软管。</p><div class="question"><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer">Cebisan kertas disedut kerana udara bergerak dari kawasan bertekanan tinggi ke kawasan bertekanan rendah.</div></div></div></article>
+</div>
+
+<div class="memory"><b>考试总句型：Tekanan atmosfera yang lebih tinggi menolak udara / air / objek ke kawasan bertekanan lebih rendah.</b><br><span class="cn">较高的大气压会把空气、水或物体推向较低气压区域。</span></div>
+</section>
+
+<footer class="footer">Page 12 · Tekanan Atmosfera dan Aktiviti 8.10 · Berdasarkan halaman 192–193 buku teks Sains Tingkatan 2</footer>
+</main>
+<script>
+function toggleAnswer(btn){const a=btn.nextElementSibling;a.classList.toggle('show');btn.textContent=a.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）'}
+function replay(){document.querySelectorAll('.carton,.straw,.out-arrow,.ia,.suction,.handle,.p-arrow,.hemi,.pull-l,.pull-r,.water-column,.finger,.tube,.flow,.plunger,.syr-water,.vacuum,.paper').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''});window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 20</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--purple:#7654b7;--orange:#ef8a31;
+ --shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+ margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);
+ line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)
+}
+button{font:inherit}
+.page{width:min(1200px,94vw);margin:22px auto 70px}
+.topbar{
+ position:sticky;top:10px;z-index:30;display:flex;justify-content:space-between;
+ align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;
+ border:1px solid var(--line);border-radius:18px;
+ box-shadow:0 8px 24px rgba(16,47,73,.09)
+}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.light{background:#e7f2fa;color:var(--navy)}
+.primary{background:var(--blue);color:#fff}
+
+.hero{
+ margin-top:20px;padding:42px;border-radius:28px;color:#fff;
+ background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);
+ box-shadow:var(--shadow)
+}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}
+.hero p{font-size:19px;max-width:930px}
+.tag{
+ display:inline-block;padding:7px 14px;border-radius:999px;
+ background:#ffffff20;border:1px solid #ffffff59;font-weight:900
+}
+.cn{color:var(--muted);font-weight:600}
+.hero .cn{color:#d8efff}
+
+.section{
+ margin-top:26px;background:#fff;border:1px solid var(--line);
+ border-radius:25px;padding:32px;box-shadow:var(--shadow)
+}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.num{
+ width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+ background:var(--navy);color:#fff;font-weight:900;font-size:21px
+}
+.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+
+.map-wrap{
+ position:relative;min-height:930px;border:1px solid var(--line);
+ border-radius:24px;background:
+ radial-gradient(circle at center,#ffffff 0 16%,#edf7fd 16% 40%,#e6f1f8 40% 100%);
+ overflow:hidden;padding:35px
+}
+.center{
+ position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+ width:220px;height:220px;border-radius:50%;
+ background:linear-gradient(135deg,#123b5d,#1769aa);
+ color:#fff;display:grid;place-items:center;text-align:center;
+ padding:25px;font-weight:900;font-size:28px;
+ box-shadow:0 14px 34px #102f4933;
+ animation:centerPulse 3s ease-in-out infinite;z-index:5
+}
+@keyframes centerPulse{50%{transform:translate(-50%,-50%) scale(1.05)}}
+
+.branch{
+ position:absolute;width:235px;border:1px solid var(--line);
+ border-radius:20px;background:#fff;box-shadow:0 10px 24px #102f4918;
+ overflow:hidden;z-index:4
+}
+.branch-head{
+ padding:13px 16px;color:#fff;font-weight:900;cursor:pointer;
+ display:flex;justify-content:space-between;align-items:center
+}
+.branch-body{display:none;padding:15px}
+.branch.open .branch-body{display:block}
+.branch.open{z-index:8}
+.branch .chev{transition:.2s}
+.branch.open .chev{transform:rotate(180deg)}
+
+.b1{left:4%;top:6%}.b1 .branch-head{background:var(--blue)}
+.b2{left:39%;top:3%}.b2 .branch-head{background:var(--green)}
+.b3{right:4%;top:7%}.b3 .branch-head{background:var(--purple)}
+.b4{left:2%;top:39%}.b4 .branch-head{background:var(--orange)}
+.b5{right:2%;top:39%}.b5 .branch-head{background:var(--red)}
+.b6{left:4%;bottom:6%}.b6 .branch-head{background:#52788f}
+.b7{left:39%;bottom:3%}.b7 .branch-head{background:#7a6a30}
+.b8{right:4%;bottom:7%}.b8 .branch-head{background:#2b7b64}
+
+.line{
+ position:absolute;height:5px;background:#7fa7c2;
+ transform-origin:left center;z-index:1;border-radius:999px;
+ animation:linePulse 2.5s ease-in-out infinite
+}
+.l1{left:25%;top:28%;width:26%;transform:rotate(24deg)}
+.l2{left:48%;top:22%;width:18%;transform:rotate(88deg)}
+.l3{left:52%;top:28%;width:27%;transform:rotate(-24deg)}
+.l4{left:23%;top:50%;width:29%;transform:rotate(0)}
+.l5{left:50%;top:50%;width:29%;transform:rotate(0)}
+.l6{left:25%;top:69%;width:27%;transform:rotate(-24deg)}
+.l7{left:48%;top:56%;width:18%;transform:rotate(88deg)}
+.l8{left:52%;top:69%;width:27%;transform:rotate(24deg)}
+@keyframes linePulse{50%{filter:brightness(1.5);opacity:.55}}
+
+.visual{
+ height:130px;position:relative;background:#eef8ff;
+ border-radius:14px;overflow:hidden;margin-bottom:10px
+}
+.ball{
+ position:absolute;left:22%;top:40px;width:48px;height:48px;border-radius:50%;
+ background:var(--gold);border:3px solid #9b7410;animation:ballMove 3s infinite
+}
+.arrow{
+ position:absolute;left:40%;top:60px;width:110px;height:7px;background:var(--red);
+ animation:arrowFlow 1.3s infinite
+}
+.arrow:after{
+ content:"";position:absolute;right:-2px;top:-10px;
+ border-top:14px solid transparent;border-bottom:14px solid transparent;
+ border-left:22px solid var(--red)
+}
+@keyframes ballMove{50%{transform:translateX(105px) rotate(180deg)}}
+@keyframes arrowFlow{50%{opacity:.4;transform:translateX(10px)}}
+
+.tank{
+ position:absolute;left:20px;right:20px;bottom:10px;height:100px;
+ border:5px solid #61798c;border-top:0;border-radius:0 0 14px 14px;overflow:hidden
+}
+.water{position:absolute;inset:auto 0 0 0;height:72px;background:#4aa7d899}
+.float{
+ position:absolute;left:50%;bottom:65px;transform:translateX(-50%);
+ width:65px;height:28px;background:#c78a42;border:3px solid #7c5228;
+ animation:floatBob 2.5s infinite
+}
+@keyframes floatBob{50%{transform:translate(-50%,-7px)}}
+
+.lever{
+ position:absolute;left:20px;right:20px;top:58px;height:12px;
+ background:#9c6c3c;border-radius:8px;animation:leverRock 3s infinite
+}
+.ful{
+ position:absolute;left:50%;top:70px;transform:translateX(-50%);
+ width:0;height:0;border-left:22px solid transparent;border-right:22px solid transparent;
+ border-bottom:42px solid var(--gold)
+}
+@keyframes leverRock{50%{transform:rotate(-4deg)}}
+
+.press{
+ position:absolute;left:50%;top:18px;transform:translateX(-50%);
+ width:55px;height:62px;background:#687887;animation:pressMove 2.5s infinite
+}
+.clay{
+ position:absolute;left:22px;right:22px;bottom:12px;height:30px;
+ background:#d16a9a;border-radius:16px
+}
+@keyframes pressMove{50%{transform:translate(-50%,35px)}}
+
+.gasbox{
+ position:absolute;left:50%;top:12px;transform:translateX(-50%);
+ width:180px;height:102px;border:5px solid #61798c;border-radius:14px
+}
+.particle{position:absolute;width:10px;height:10px;border-radius:50%;background:var(--red)}
+.p1{left:15px;top:15px;animation:p1 1.8s infinite}
+.p2{left:130px;top:15px;animation:p2 1.6s infinite}
+.p3{left:65px;top:65px;animation:p3 1.7s infinite}
+@keyframes p1{50%{transform:translate(120px,52px)}}
+@keyframes p2{50%{transform:translate(-105px,55px)}}
+@keyframes p3{50%{transform:translate(58px,-48px)}}
+
+.mountain{
+ position:absolute;left:0;right:0;bottom:0;height:105px;background:#718593;
+ clip-path:polygon(0 100%,30% 45%,48% 72%,68% 20%,100% 100%)
+}
+.mol{
+ position:absolute;width:10px;height:10px;border-radius:50%;
+ background:var(--red);animation:molMove 2s infinite
+}
+.m1{left:18%;bottom:32px}.m2{left:36%;bottom:48px}.m3{right:24%;top:28px}
+@keyframes molMove{50%{transform:translate(8px,-7px)}}
+
+.liquid{
+ position:absolute;left:20px;right:20px;bottom:8px;height:110px;
+ background:linear-gradient(#81c9eb,#258bc1)
+}
+.bubble{
+ position:absolute;left:50%;bottom:15px;width:16px;height:16px;
+ border:3px solid #fff;border-radius:50%;animation:bubbleRise 3s infinite
+}
+@keyframes bubbleRise{
+ 0%{transform:translate(-50%,0) scale(.6)}
+ 100%{transform:translate(-50%,-82px) scale(1.5)}
+}
+
+.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.quick{
+ border:1px solid var(--line);border-radius:18px;padding:17px;background:#eef7fd;
+ text-align:center;animation:quickBob 3s infinite
+}
+.quick:nth-child(2){animation-delay:.2s}
+.quick:nth-child(3){animation-delay:.4s}
+.quick:nth-child(4){animation-delay:.6s}
+.quick b{display:block;color:var(--navy);font-size:20px}
+@keyframes quickBob{50%{transform:translateY(-6px)}}
+
+.final-box{
+ margin-top:20px;padding:22px;border-radius:20px;background:#fff7d8;
+ border:1px solid #ecd36c;text-align:center
+}
+.final-box b{font-size:clamp(23px,3vw,36px);color:var(--navy)}
+
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:1000px){
+ .map-wrap{min-height:auto;padding:18px;display:grid;gap:16px}
+ .center,.branch,.line{position:static;transform:none!important;width:auto}
+ .center{height:auto;border-radius:22px}
+ .branch{width:100%}
+ .line{display:none}
+ .quick-grid{grid-template-columns:1fr}
+ .hero,.section{padding:25px 20px}
+ .topbar{position:static}
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="topbar">
+  <div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 20</div>
+  <div class="actions">
+    <button class="btn light" onclick="openAll()">Buka Semua</button>
+    <button class="btn light" onclick="speakSummary()">Baca Ringkasan</button>
+    <button class="btn primary" onclick="replay()">Ulang Animasi</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="tag">MIND MAP + FINAL REVISION</span>
+  <h1>Peta Minda Interaktif Bab 8</h1>
+  <p>
+    Semua pengetahuan Bab 8 disambungkan dalam satu peta supaya murid dapat melihat hubungan antara daya, gerakan, tuas, momen dan tekanan.<br>
+    <span class="cn">把第8章全部知识连接成一张互动思维导图，帮助学生看懂各主题之间的关系。</span>
+  </p>
+</section>
+
+<section class="section">
+  <div class="title"><div class="num">1</div><h2>Peta Minda Bab 8（第8章思维导图）</h2></div>
+
+  <div class="map-wrap">
+
+    <div class="line l1"></div><div class="line l2"></div><div class="line l3"></div><div class="line l4"></div>
+    <div class="line l5"></div><div class="line l6"></div><div class="line l7"></div><div class="line l8"></div>
+
+    <div class="center">
+      BAB 8<br>DAYA DAN GERAKAN
+    </div>
+
+    <article class="branch b1 open">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Jenis Daya</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual"><div class="ball"></div><div class="arrow"></div></div>
+        Daya graviti, berat, daya normal, daya elastik, daya apungan dan daya geseran.
+      </div>
+    </article>
+
+    <article class="branch b2">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Kesan Daya</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual"><div class="ball"></div><div class="arrow"></div></div>
+        Menggerakkan, menghentikan, mengubah kelajuan, arah, bentuk dan saiz objek.
+      </div>
+    </article>
+
+    <article class="branch b3">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Ketumpatan & Apungan</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual"><div class="tank"><div class="water"></div></div><div class="float"></div></div>
+        Kurang tumpat terapung; lebih tumpat tenggelam. Daya apungan bertindak ke atas.
+      </div>
+    </article>
+
+    <article class="branch b4">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Tuas</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual"><div class="lever"></div><div class="ful"></div></div>
+        Tuas terdiri daripada daya, beban dan fulkrum serta dibahagikan kepada tiga kelas.
+      </div>
+    </article>
+
+    <article class="branch b5">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Momen Daya</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual"><div class="lever"></div><div class="ful"></div></div>
+        Momen daya ialah kesan putaran daya pada pangsi. Momen bergantung pada daya dan jarak tegak.
+      </div>
+    </article>
+
+    <article class="branch b6">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Tekanan Pepejal</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual"><div class="clay"></div><div class="press"></div></div>
+        Luas permukaan kecil menghasilkan tekanan besar; luas besar menghasilkan tekanan kecil.
+      </div>
+    </article>
+
+    <article class="branch b7">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Gas & Atmosfera</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual">
+          <div class="gasbox">
+            <div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div>
+          </div>
+        </div>
+        Tekanan gas terhasil daripada perlanggaran zarah. Tekanan atmosfera menurun apabila altitud meningkat.
+      </div>
+    </article>
+
+    <article class="branch b8">
+      <div class="branch-head" onclick="toggleBranch(this)">
+        <span>Tekanan Cecair</span><span class="chev">⌄</span>
+      </div>
+      <div class="branch-body">
+        <div class="visual"><div class="liquid"></div><div class="bubble"></div></div>
+        Semakin dalam, semakin tinggi tekanan cecair.
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="title"><div class="num">2</div><h2>Laluan Ulang Kaji 5 Minit（5分钟复习路线）</h2></div>
+
+  <div class="quick-grid">
+    <div class="quick"><b>1. Daya</b>Kenal pasti jenis dan arah daya.</div>
+    <div class="quick"><b>2. Tuas & Momen</b>Cari daya, beban, fulkrum dan jarak.</div>
+    <div class="quick"><b>3. Tekanan</b>Bandingkan daya, luas, suhu, isi padu dan altitud.</div>
+    <div class="quick"><b>4. Cecair & Apungan</b>Bandingkan ketumpatan, F, W dan kedalaman.</div>
+  </div>
+
+  <div class="final-box">
+    <b>Daya → Gerakan → Tuas → Momen → Tekanan</b><br>
+    <span class="cn">第8章主线：力 → 运动 → 杠杆 → 力矩 → 压力</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="title"><div class="num">3</div><h2>Ayat Akhir Wajib Ingat（最终必背句）</h2></div>
+
+  <div class="final-box">
+    <b>
+      Sama magnitud, arah bertentangan.<br>
+      Kurang tumpat terapung, lebih tumpat tenggelam.<br>
+      Luas kecil, tekanan besar.<br>
+      Altitud tinggi, tekanan atmosfera rendah.<br>
+      Semakin dalam, semakin tinggi tekanan cecair.
+    </b>
+  </div>
+</section>
+
+<footer class="footer">
+  Page 20 · Peta Minda dan Ulang Kaji Akhir Bab 8 · Berdasarkan kandungan Bab 8 buku teks Sains Tingkatan 2
+</footer>
+
+</main>
+
+<script>
+function toggleBranch(head){
+  head.parentElement.classList.toggle('open');
+}
+function openAll(){
+  const branches=[...document.querySelectorAll('.branch')];
+  const allOpen=branches.every(b=>b.classList.contains('open'));
+  branches.forEach(b=>b.classList.toggle('open',!allOpen));
+}
+function speakSummary(){
+  if(!('speechSynthesis' in window)){
+    alert('Pelayar ini tidak menyokong fungsi sebutan.');
+    return;
+  }
+  speechSynthesis.cancel();
+  const text='Bab lapan, daya dan gerakan. Jenis daya, kesan daya, ketumpatan dan apungan, tuas, momen daya, tekanan pepejal, tekanan gas, tekanan atmosfera dan tekanan cecair.';
+  const utter=new SpeechSynthesisUtterance(text);
+  utter.lang='ms-MY';
+  utter.rate=.88;
+  utter.volume=1;
+  speechSynthesis.speak(utter);
+}
+function replay(){
+  document.querySelectorAll('.center,.line,.ball,.arrow,.float,.lever,.press,.particle,.mol,.bubble,.quick').forEach(e=>{
+    e.style.animation='none';
+    void e.offsetWidth;
+    e.style.animation='';
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 14</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--purple:#7654b7;--shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{position:sticky;top:10px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09)}
+.brand{font-weight:900;color:var(--navy)}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}.light{background:#e7f2fa;color:var(--navy)}.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}.hero p{font-size:19px;max-width:920px}.tag{display:inline-block;padding:7px 14px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff59;font-weight:900}
+.cn{color:var(--muted);font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px}.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}.box{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fbfdff}.box h3{margin-top:0;color:var(--navy)}
+.altitude-scene{height:360px;position:relative;border:1px solid var(--line);border-radius:20px;background:linear-gradient(#bfe5ff,#eef8ff);overflow:hidden}
+.mountain{position:absolute;left:0;right:0;bottom:0;height:280px;background:#718593;clip-path:polygon(0 100%,28% 40%,43% 70%,62% 18%,100% 100%)}
+.low-person,.high-person{position:absolute;width:42px;height:100px}.low-person{left:18%;bottom:28px;animation:personBob 2.5s infinite}.high-person{right:25%;top:72px;animation:personBob 2.5s infinite .4s}
+.low-person:before,.high-person:before{content:"";position:absolute;left:8px;top:0;width:26px;height:26px;border-radius:50%;background:#efc5a4}
+.low-person:after,.high-person:after{content:"";position:absolute;left:5px;top:30px;width:32px;height:58px;border-radius:9px;background:#1769aa}
+.molecule{position:absolute;width:14px;height:14px;border-radius:50%;background:var(--red);animation:moleculeMove 2.2s linear infinite}
+.m1{left:12%;bottom:120px}.m2{left:22%;bottom:155px;animation-delay:.2s}.m3{left:32%;bottom:110px;animation-delay:.4s}.m4{left:42%;bottom:145px;animation-delay:.6s}.m5{left:72%;top:75px;animation-delay:.8s}.m6{left:82%;top:120px;animation-delay:1s}
+.alt-arrow{position:absolute;left:50%;top:55px;width:8px;height:220px;background:var(--green);animation:upPulse 1.4s infinite}.alt-arrow:after{content:"";position:absolute;left:-13px;top:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:25px solid var(--green)}
+@keyframes personBob{50%{transform:translateY(-8px)}}@keyframes moleculeMove{50%{transform:translate(18px,-12px)}}@keyframes upPulse{50%{opacity:.4;transform:translateY(-12px)}}
+.memory{margin-top:18px;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}.memory b{font-size:clamp(22px,3vw,34px);color:var(--navy)}
+.question{margin-top:22px;border:1px solid var(--line);border-radius:20px;overflow:hidden}.qh{padding:14px 18px;background:var(--navy);color:#fff;font-weight:900}.qb{padding:18px}
+.qscene{height:260px;position:relative;background:#eef8ff;border-radius:16px;overflow:hidden;margin:12px 0}
+.beam{position:absolute;left:70px;right:70px;top:120px;height:16px;background:#9c6c3c;border-radius:8px;animation:beamRock 3s infinite}.fulcrum{position:absolute;left:50%;top:136px;transform:translateX(-50%);width:0;height:0;border-left:34px solid transparent;border-right:34px solid transparent;border-bottom:65px solid var(--gold)}
+.loadx,.load10{position:absolute;top:55px;width:65px;height:58px;border-radius:8px;display:grid;place-items:center;color:#fff;font-weight:900}.loadx{left:100px;background:var(--red);animation:leftLoad 3s infinite}.load10{right:115px;background:var(--green);animation:rightLoad 3s infinite}
+@keyframes beamRock{0%,100%{transform:rotate(0)}35%{transform:rotate(4deg)}70%{transform:rotate(-4deg)}}@keyframes leftLoad{50%{transform:translateY(6px)}}@keyframes rightLoad{50%{transform:translateY(-6px)}}
+.cuboid{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:180px;height:110px;background:#6f8494;animation:cubeTurn 4s ease-in-out infinite}.face-label{position:absolute;padding:5px 9px;border-radius:8px;background:#fff;color:var(--navy);font-weight:900}.fa{left:25px;top:30px}.fb{right:25px;top:30px}.fc{left:50%;bottom:20px;transform:translateX(-50%)}@keyframes cubeTurn{0%,100%{transform:translate(-50%,-50%) rotate(0)}50%{transform:translate(-50%,-50%) rotateY(180deg)}}
+.balloon-scene{height:280px;position:relative;background:linear-gradient(#bfe5ff,#eef8ff);border-radius:16px;overflow:hidden}
+.helium{position:absolute;left:50%;top:120px;transform:translateX(-50%);width:110px;height:135px;border-radius:50%;background:#ef8a31;animation:heliumRise 4s ease-in-out infinite}
+.helium:after{content:"";position:absolute;left:48px;bottom:-40px;width:14px;height:40px;background:#76543b}
+.upforce,.downforce{position:absolute;left:50%;width:8px;transform:translateX(-50%)}.upforce{bottom:110px;height:100px;background:var(--green);animation:upPulse 1.3s infinite}.upforce:after{content:"";position:absolute;left:-13px;top:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:25px solid var(--green)}.downforce{top:70px;height:75px;background:var(--red);animation:downPulse 1.3s infinite}.downforce:after{content:"";position:absolute;left:-13px;bottom:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-top:25px solid var(--red)}
+@keyframes heliumRise{0%,25%{transform:translate(-50%,0) scale(1)}75%,100%{transform:translate(-50%,-105px) scale(1.2)}}@keyframes downPulse{50%{opacity:.4;transform:translate(-50%,12px)}}
+.ansbtn{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.answer{display:none;margin-top:14px;padding:18px;border-radius:16px;background:#eefbf3;border:1px solid #9fd2b0}.answer.show{display:block}.solution{margin-top:10px;padding:12px;border-radius:12px;background:#f6fbfe;border:1px solid var(--line)}.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.grid2{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar"><div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 14</div><div class="actions"><button class="btn light" onclick="document.getElementById('latihan').scrollIntoView()">Latihan Formatif 8.2</button><button class="btn primary" onclick="replay()">Ulang Animasi</button></div></header>
+
+<section class="hero"><span class="tag">ALTITUD + LATIHAN FORMATIF 8.2</span><h1>Tekanan Atmosfera dan Pengukuhan Bab</h1><p>Tekanan atmosfera menurun apabila altitud meningkat. Gunakan konsep daya, tekanan, momen dan apungan untuk menjawab latihan.<br><span class="cn">海拔越高，大气压越低。运用力、压力、力矩和浮力概念完成练习。</span></p></section>
+
+<section class="section">
+<div class="title"><div class="num">1</div><h2>Perkaitan Altitud dengan Tekanan Atmosfera</h2></div>
+<div class="grid2"><div class="box"><p>Tekanan atmosfera menurun apabila altitud semakin meningkat.</p><p class="cn">海拔越高，大气压越低。</p><p>Berhampiran permukaan Bumi, lebih banyak molekul udara ditarik oleh graviti dan menghasilkan tekanan yang lebih tinggi.</p><p class="cn">靠近地面时，更多空气分子受到重力吸引，因此气压较高。</p><p>Pada altitud tinggi, bilangan molekul udara lebih sedikit dan tekanan atmosfera lebih rendah.</p><p class="cn">高海拔地区空气分子较少，因此气压较低。</p></div><div class="altitude-scene"><div class="mountain"></div><div class="low-person"></div><div class="high-person"></div><div class="molecule m1"></div><div class="molecule m2"></div><div class="molecule m3"></div><div class="molecule m4"></div><div class="molecule m5"></div><div class="molecule m6"></div><div class="alt-arrow"></div></div></div>
+<div class="memory"><b>口诀：Altitud ↑ → Molekul udara ↓ → Tekanan atmosfera ↓</b></div>
+</section>
+
+<section class="section" id="latihan">
+<div class="title"><div class="num">2</div><h2>Latihan Formatif 8.2（形成性练习）</h2></div>
+
+<div class="question"><div class="qh">Soalan 1 · Sistem Tuas Seimbang</div><div class="qb"><div class="qscene"><div class="beam"></div><div class="fulcrum"></div><div class="loadx">X</div><div class="load10">10 N</div></div><p>Berat X berada 2 m dari fulkrum. Beban 10 N berada 1 m dari fulkrum. Hitungkan berat X.</p><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer"><p>Gunakan prinsip momen:</p><div class="solution"><b>X × 2 m = 10 N × 1 m<br>X = 5 N</b></div><p class="cn">平衡时，两边力矩相等，所以 X 为5牛顿。</p><div class="exam"><b>抓法：</b> Beban × jarak kiri = Beban × jarak kanan.</div></div></div></div>
+
+<div class="question"><div class="qh">Soalan 2 · Tekanan Kuboid</div><div class="qb"><div class="qscene"><div class="cuboid"></div><div class="face-label fa">A</div><div class="face-label fb">B</div><div class="face-label fc">C</div></div><p>Kuboid mempunyai berat 5 N. Dimensi: 30 cm × 10 cm × 5 cm.</p><p>(a) Permukaan manakah menghasilkan tekanan paling tinggi?</p><p>(b) Kirakan tekanan bagi setiap permukaan.</p><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer"><p><b>(a)</b> Permukaan dengan luas paling kecil menghasilkan tekanan paling tinggi.</p><p>Luas permukaan:</p><div class="solution">
+A = 30 cm × 10 cm = 300 cm² = 0.03 m²<br>
+B = 30 cm × 5 cm = 150 cm² = 0.015 m²<br>
+C = 10 cm × 5 cm = 50 cm² = 0.005 m²
+</div><div class="solution">
+Tekanan A = 5 ÷ 0.03 = 166.7 Pa<br>
+Tekanan B = 5 ÷ 0.015 = 333.3 Pa<br>
+Tekanan C = 5 ÷ 0.005 = 1000 Pa
+</div><p><b>Permukaan C menghasilkan tekanan paling tinggi.</b></p><div class="exam"><b>考试重点：</b> Luas paling kecil → tekanan paling besar.</div></div></div></div>
+
+<div class="question"><div class="qh">Soalan 3 · Belon Helium</div><div class="qb"><div class="balloon-scene"><div class="helium"></div><div class="upforce"></div><div class="downforce"></div></div><p>(a) Mengapakah belon bergerak ke atas?</p><p>(b) Apakah perubahan saiz belon apabila semakin tinggi?</p><p>(c) Nyatakan daya-daya semasa belon terapung.</p><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan</button><div class="answer"><p><b>(a)</b> Belon bergerak ke atas kerana daya apungan lebih besar daripada berat belon.</p><p class="cn">浮力大于气球重量，因此气球上升。</p><p><b>(b)</b> Saiz belon bertambah apabila altitud meningkat kerana tekanan atmosfera berkurang.</p><p class="cn">海拔升高时外部大气压降低，因此气球体积增大。</p><p><b>(c)</b> Semasa terapung, daya apungan ke atas sama dengan berat ke bawah.</p><p class="cn">气球悬浮时，向上浮力等于向下重量。</p><div class="exam"><b>考试关键词：</b> Naik → F &gt; W；Terapung → F = W；Altitud ↑ → tekanan atmosfera ↓.</div></div></div></div>
+</section>
+
+<footer class="footer">Page 14 · Altitud dan Latihan Formatif 8.2 · Berdasarkan halaman 196 dan 199 buku teks Sains Tingkatan 2</footer>
+</main>
+<script>
+function toggleAnswer(btn){const a=btn.nextElementSibling;a.classList.toggle('show');btn.textContent=a.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）'}
+function replay(){document.querySelectorAll('.low-person,.high-person,.molecule,.alt-arrow,.beam,.loadx,.load10,.cuboid,.helium,.upforce,.downforce').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''});window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>

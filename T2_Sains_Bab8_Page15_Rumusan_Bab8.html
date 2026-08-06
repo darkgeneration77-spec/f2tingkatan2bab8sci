@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 15</title>
+<style>
+:root{
+  --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+  --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--purple:#7654b7;--orange:#ef8a31;
+  --sky:#eef8ff;--shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);
+  line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)
+}
+button{font:inherit}
+.page{width:min(1200px,94vw);margin:22px auto 70px}
+.topbar{
+  position:sticky;top:10px;z-index:20;display:flex;justify-content:space-between;
+  align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;
+  border:1px solid var(--line);border-radius:18px;
+  box-shadow:0 8px 24px rgba(16,47,73,.09)
+}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.light{background:#e7f2fa;color:var(--navy)}
+.primary{background:var(--blue);color:#fff}
+
+.hero{
+  margin-top:20px;padding:42px;border-radius:28px;color:#fff;
+  background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);
+  box-shadow:var(--shadow);position:relative;overflow:hidden
+}
+.hero:after{
+  content:"";position:absolute;width:360px;height:360px;border-radius:50%;
+  right:-130px;top:-160px;background:#ffffff12
+}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}
+.hero p{font-size:19px;max-width:920px}
+.tag{
+  display:inline-block;padding:7px 14px;border-radius:999px;
+  background:#ffffff20;border:1px solid #ffffff59;font-weight:900
+}
+.cn{color:var(--muted);font-weight:600}.hero .cn{color:#d8efff}
+
+.section{
+  margin-top:26px;background:#fff;border:1px solid var(--line);
+  border-radius:25px;padding:32px;box-shadow:var(--shadow)
+}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.num{
+  width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+  background:var(--navy);color:#fff;font-weight:900;font-size:21px
+}
+.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+
+.map{
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px
+}
+.topic{
+  border:1px solid var(--line);border-radius:21px;overflow:hidden;
+  background:#fbfdff;transition:.2s
+}
+.topic:hover{transform:translateY(-3px);box-shadow:0 10px 24px #102f4918}
+.topic-head{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:15px 18px;color:#fff;font-weight:900;font-size:20px;cursor:pointer
+}
+.topic:nth-child(1) .topic-head{background:var(--blue)}
+.topic:nth-child(2) .topic-head{background:var(--green)}
+.topic:nth-child(3) .topic-head{background:var(--purple)}
+.topic:nth-child(4) .topic-head{background:var(--orange)}
+.topic:nth-child(5) .topic-head{background:var(--red)}
+.topic:nth-child(6) .topic-head{background:#52788f}
+.topic:nth-child(7) .topic-head{background:#7a6a30}
+.topic:nth-child(8) .topic-head{background:#356b76}
+.topic:nth-child(9) .topic-head{background:#5c4f8a}
+.topic:nth-child(10) .topic-head{background:#2b7b64}
+.chev{font-size:24px;transition:.2s}
+.topic.open .chev{transform:rotate(180deg)}
+.topic-body{display:none;padding:18px}
+.topic.open .topic-body{display:block}
+.topic-body ul{margin:0;padding-left:22px}
+.topic-body li{margin:8px 0}
+
+.visual{
+  height:165px;position:relative;background:var(--sky);
+  border-radius:16px;overflow:hidden;margin-bottom:14px
+}
+.force-ball{
+  position:absolute;left:28%;top:55px;width:58px;height:58px;border-radius:50%;
+  background:#f3bf3b;border:3px solid #9b7410;animation:ballMove 3s infinite
+}
+.force-arrow{
+  position:absolute;left:45%;top:82px;width:130px;height:8px;background:var(--red);
+  animation:arrowFlow 1.3s infinite
+}
+.force-arrow:after{
+  content:"";position:absolute;right:-2px;top:-11px;
+  border-top:15px solid transparent;border-bottom:15px solid transparent;
+  border-left:24px solid var(--red)
+}
+@keyframes ballMove{50%{transform:translateX(130px) rotate(180deg)}}
+@keyframes arrowFlow{50%{opacity:.4;transform:translateX(12px)}}
+
+.table-surface{
+  position:absolute;left:20px;right:20px;bottom:35px;height:24px;background:#9a6a3b
+}
+.book{
+  position:absolute;left:50%;bottom:59px;transform:translateX(-50%);
+  width:95px;height:50px;background:#d84c4c;border-radius:5px;animation:bookBob 2.5s infinite
+}
+.up,.down{
+  position:absolute;left:50%;width:8px;transform:translateX(-50%)
+}
+.up{bottom:108px;height:60px;background:var(--green);animation:upPulse 1.3s infinite}
+.up:after{
+  content:"";position:absolute;left:-13px;top:-1px;
+  border-left:17px solid transparent;border-right:17px solid transparent;
+  border-bottom:25px solid var(--green)
+}
+.down{top:92px;height:60px;background:var(--red);animation:downPulse 1.3s infinite}
+.down:after{
+  content:"";position:absolute;left:-13px;bottom:-1px;
+  border-left:17px solid transparent;border-right:17px solid transparent;
+  border-top:25px solid var(--red)
+}
+@keyframes bookBob{50%{transform:translate(-50%,-7px)}}
+@keyframes upPulse{50%{opacity:.4;transform:translate(-50%,-10px)}}
+@keyframes downPulse{50%{opacity:.4;transform:translate(-50%,10px)}}
+
+.tank{
+  position:absolute;left:35px;right:35px;bottom:18px;height:125px;
+  border:7px solid #61798c;border-top:0;border-radius:0 0 18px 18px;overflow:hidden
+}
+.water{position:absolute;inset:auto 0 0 0;height:95px;background:#4aa7d899}
+.float{
+  position:absolute;left:50%;bottom:98px;transform:translateX(-50%);
+  width:90px;height:38px;background:#c78a42;border:3px solid #7c5228;
+  animation:floatBob 2.4s infinite
+}
+@keyframes floatBob{50%{transform:translate(-50%,-9px)}}
+
+.lever{
+  position:absolute;left:35px;right:35px;top:75px;height:16px;
+  background:#9c6c3c;border-radius:8px;animation:leverRock 3s infinite
+}
+.fulcrum{
+  position:absolute;left:50%;top:91px;transform:translateX(-50%);
+  width:0;height:0;border-left:30px solid transparent;border-right:30px solid transparent;
+  border-bottom:60px solid var(--gold)
+}
+.node{
+  position:absolute;top:44px;width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;color:#fff;font-weight:900;animation:nodePulse 1.8s infinite
+}
+.nb{left:45px;background:var(--red)}.nf{left:50%;transform:translateX(-50%);background:var(--gold);color:var(--navy)}.nd{right:45px;background:var(--green)}
+@keyframes leverRock{0%,100%{transform:rotate(2deg)}50%{transform:rotate(-2deg)}}
+@keyframes nodePulse{50%{filter:brightness(1.25)}}
+
+.moment-bar{
+  position:absolute;left:40px;right:40px;top:85px;height:16px;
+  background:#9c6c3c;transform-origin:65px center;animation:momentRock 3s infinite
+}
+.moment-pivot{
+  position:absolute;left:70px;top:101px;width:0;height:0;
+  border-left:28px solid transparent;border-right:28px solid transparent;
+  border-bottom:55px solid var(--gold)
+}
+.moment-force{
+  position:absolute;right:55px;top:30px;width:8px;height:65px;background:var(--red);
+  animation:downPulse2 1.3s infinite
+}
+.moment-force:after{
+  content:"";position:absolute;left:-13px;bottom:-1px;
+  border-left:17px solid transparent;border-right:17px solid transparent;
+  border-top:25px solid var(--red)
+}
+@keyframes momentRock{50%{transform:rotate(-7deg)}}
+@keyframes downPulse2{50%{opacity:.4;transform:translateY(10px)}}
+
+.pressure-small,.pressure-large{
+  position:absolute;top:35px;background:#687887;animation:pressMove 2.5s infinite
+}
+.pressure-small{left:25%;width:55px;height:85px}
+.pressure-large{right:18%;width:120px;height:55px}
+.clay{
+  position:absolute;left:20px;right:20px;bottom:20px;height:42px;
+  background:#d16a9a;border-radius:20px
+}
+@keyframes pressMove{50%{transform:translateY(35px)}}
+
+.gas-box{
+  position:absolute;left:50%;top:25px;transform:translateX(-50%);
+  width:220px;height:120px;border:6px solid #61798c;border-radius:16px;overflow:hidden
+}
+.particle{
+  position:absolute;width:13px;height:13px;border-radius:50%;background:var(--red)
+}
+.p1{left:20px;top:20px;animation:p1 1.8s linear infinite}.p2{left:155px;top:20px;animation:p2 1.6s linear infinite}.p3{left:75px;top:75px;animation:p3 1.7s linear infinite}.p4{left:140px;top:70px;animation:p4 1.9s linear infinite}
+@keyframes p1{50%{transform:translate(150px,60px)}}@keyframes p2{50%{transform:translate(-130px,65px)}}@keyframes p3{50%{transform:translate(80px,-55px)}}@keyframes p4{50%{transform:translate(-110px,-45px)}}
+
+.mountain{
+  position:absolute;left:0;right:0;bottom:0;height:145px;background:#718593;
+  clip-path:polygon(0 100%,30% 45%,48% 72%,68% 20%,100% 100%)
+}
+.alt-mol{
+  position:absolute;width:12px;height:12px;border-radius:50%;background:var(--red);
+  animation:molMove 2s infinite
+}
+.am1{left:20%;bottom:45px}.am2{left:35%;bottom:65px}.am3{right:24%;top:35px}
+@keyframes molMove{50%{transform:translate(12px,-10px)}}
+
+.liquid{
+  position:absolute;left:30px;right:30px;bottom:15px;height:130px;
+  background:linear-gradient(#81c9eb,#258bc1);border-radius:0 0 16px 16px
+}
+.bubble{
+  position:absolute;left:50%;bottom:25px;width:20px;height:20px;border:3px solid #fff;
+  border-radius:50%;animation:bubbleRise 3s infinite
+}
+@keyframes bubbleRise{0%{transform:translate(-50%,0) scale(.6)}100%{transform:translate(-50%,-105px) scale(1.6)}}
+
+.summary-strip{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-top:20px
+}
+.sum{
+  border:1px solid var(--line);border-radius:16px;padding:14px;text-align:center;
+  background:#eef7fd;font-weight:800;animation:sumBob 3s infinite
+}
+.sum:nth-child(2){animation-delay:.2s}.sum:nth-child(3){animation-delay:.4s}.sum:nth-child(4){animation-delay:.6s}.sum:nth-child(5){animation-delay:.8s}
+@keyframes sumBob{50%{transform:translateY(-6px)}}
+
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){
+  .map,.summary-strip{grid-template-columns:1fr}
+  .hero,.section{padding:25px 20px}
+  .topbar{position:static}
+}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="topbar">
+  <div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 15</div>
+  <div class="actions">
+    <button class="btn light" onclick="expandAll()">Buka Semua（全部展开）</button>
+    <button class="btn primary" onclick="replay()">Ulang Animasi</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="tag">RUMUSAN BAB 8（第8章总结）</span>
+  <h1>Daya dan Gerakan</h1>
+  <p>
+    Rumusan ini menyusun semula semua isi utama Bab 8 berdasarkan peta rumusan buku teks.
+    Tiada konsep baharu ditambahkan.<br>
+    <span class="cn">本页根据课本总结图整理第8章全部重点，不加入新知识。</span>
+  </p>
+</section>
+
+<section class="section">
+  <div class="title"><div class="num">1</div><h2>Peta Rumusan Interaktif（互动总结图）</h2></div>
+
+  <div class="map">
+
+    <article class="topic open">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Jenis Daya（力的种类）</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual"><div class="force-ball"></div><div class="force-arrow"></div></div>
+        <ul>
+          <li>Daya graviti（重力）</li>
+          <li>Berat（重量）</li>
+          <li>Daya normal（法向力）</li>
+          <li>Daya elastik（弹力）</li>
+          <li>Daya apungan（浮力）</li>
+          <li>Daya geseran（摩擦力）</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic open">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Ciri-ciri Daya（力的特征）</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="force-arrow" style="left:20%;top:78px;width:170px"></div>
+        </div>
+        <ul>
+          <li>Daya mempunyai magnitud（力有大小）</li>
+          <li>Daya mempunyai arah（力有方向）</li>
+          <li>Daya mempunyai titik aplikasi（力有作用点）</li>
+          <li>Daya diukur dalam unit S.I. menggunakan neraca spring.</li>
+          <li>Pengukuran melibatkan berat jasad dan daya geseran.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Daya Tindakan dan Tindak Balas</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="table-surface"></div><div class="book"></div>
+          <div class="up"></div><div class="down"></div>
+        </div>
+        <ul>
+          <li>Setiap daya tindakan mempunyai daya tindak balas.</li>
+          <li>Kedua-duanya sama magnitud tetapi bertentangan arah.</li>
+          <li>Contoh: jasad di atas meja.</li>
+          <li>Contoh: jasad terapung di dalam air.</li>
+          <li>Contoh: dua troli dilepaskan menggunakan mekanisme spring.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Kesan Tindakan Daya（力的效果）</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual"><div class="force-ball"></div><div class="force-arrow"></div></div>
+        <ul>
+          <li>Menggerakkan objek yang pegun.</li>
+          <li>Mengubah kelajuan objek.</li>
+          <li>Memberhentikan objek yang bergerak.</li>
+          <li>Mengubah arah gerakan objek.</li>
+          <li>Mengubah bentuk dan saiz objek.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Ketumpatan dan Keapungan</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="tank"><div class="water"></div></div><div class="float"></div>
+        </div>
+        <ul>
+          <li>Perbezaan ketumpatan menentukan sama ada objek terapung atau tenggelam.</li>
+          <li>Daya apungan bertindak ke atas.</li>
+          <li>Berat bertindak ke bawah.</li>
+          <li>Konsep ini digunakan dalam kehidupan harian.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Sistem Tuas（杠杆系统）</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="lever"></div><div class="fulcrum"></div>
+          <div class="node nb">B</div><div class="node nf">F</div><div class="node nd">D</div>
+        </div>
+        <ul>
+          <li>Daya（施力）</li>
+          <li>Fulkrum（支点）</li>
+          <li>Beban（负载）</li>
+          <li>Tuas memudahkan kerja dan membolehkan daya kecil digunakan.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Momen Daya（力矩）</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="moment-bar"></div><div class="moment-pivot"></div><div class="moment-force"></div>
+        </div>
+        <ul>
+          <li>Momen daya ialah kesan putaran daya pada pangsi atau fulkrum.</li>
+          <li>Momen daya bergantung pada daya dan jarak tegak dari pangsi.</li>
+          <li>Momen daya digunakan dalam sistem tuas.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Tekanan dan Aplikasinya</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="clay"></div><div class="pressure-small"></div><div class="pressure-large"></div>
+        </div>
+        <ul>
+          <li>Tekanan bergantung pada daya dan luas permukaan.</li>
+          <li>Luas permukaan kecil menghasilkan tekanan lebih besar.</li>
+          <li>Luas permukaan besar menghasilkan tekanan lebih kecil.</li>
+          <li>Konsep tekanan digunakan dalam kehidupan harian.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Tekanan Gas dan Atmosfera</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="gas-box">
+            <div class="particle p1"></div><div class="particle p2"></div>
+            <div class="particle p3"></div><div class="particle p4"></div>
+          </div>
+        </div>
+        <ul>
+          <li>Tekanan gas diterangkan melalui teori kinetik gas.</li>
+          <li>Zarah gas bergerak dan berlanggar dengan dinding bekas.</li>
+          <li>Tekanan atmosfera bertindak pada permukaan Bumi dan semua jasad.</li>
+          <li>Tekanan atmosfera menurun apabila altitud meningkat.</li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="topic">
+      <div class="topic-head" onclick="toggleTopic(this)">
+        <span>Tekanan Cecair（液体压力）</span><span class="chev">⌄</span>
+      </div>
+      <div class="topic-body">
+        <div class="visual">
+          <div class="liquid"></div><div class="bubble"></div>
+        </div>
+        <ul>
+          <li>Tekanan cecair meningkat apabila kedalaman meningkat.</li>
+          <li>Tekanan cecair berkurang apabila kedalaman berkurang.</li>
+          <li>Konsep ini digunakan pada empangan, penyelam dan kapal selam.</li>
+        </ul>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="section">
+  <div class="title"><div class="num">2</div><h2>Ringkasan Akhir（最终复习）</h2></div>
+
+  <div class="summary-strip">
+    <div class="sum">Daya<br><span class="cn">力</span></div>
+    <div class="sum">Kesan Daya<br><span class="cn">力的效果</span></div>
+    <div class="sum">Tuas & Momen<br><span class="cn">杠杆与力矩</span></div>
+    <div class="sum">Tekanan<br><span class="cn">压力</span></div>
+    <div class="sum">Gas, Atmosfera & Cecair<br><span class="cn">气体、大气与液体压力</span></div>
+  </div>
+
+  <div class="memory" style="margin-top:22px">
+    <b>Bab 8 = Daya → Gerakan → Tuas → Momen → Tekanan</b><br>
+    <span class="cn">第8章主线：力 → 运动 → 杠杆 → 力矩 → 压力</span>
+  </div>
+</section>
+
+<footer class="footer">
+  Page 15 · Rumusan Bab 8 · Berdasarkan halaman 200 buku teks Sains Tingkatan 2
+</footer>
+
+</main>
+
+<script>
+function toggleTopic(head){
+  head.parentElement.classList.toggle('open');
+}
+function expandAll(){
+  const topics=[...document.querySelectorAll('.topic')];
+  const allOpen=topics.every(t=>t.classList.contains('open'));
+  topics.forEach(t=>t.classList.toggle('open',!allOpen));
+}
+function replay(){
+  document.querySelectorAll(
+    '.force-ball,.force-arrow,.book,.up,.down,.float,.lever,.node,.moment-bar,.moment-force,'+
+    '.pressure-small,.pressure-large,.particle,.alt-mol,.bubble,.sum'
+  ).forEach(e=>{
+    e.style.animation='none';
+    void e.offsetWidth;
+    e.style.animation='';
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 13</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--orange:#ef8a31;--shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{position:sticky;top:10px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09)}
+.brand{font-weight:900;color:var(--navy)}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}.light{background:#e7f2fa;color:var(--navy)}.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}.hero p{font-size:19px;max-width:920px}.tag{display:inline-block;padding:7px 14px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff59;font-weight:900}
+.cn{color:var(--muted);font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px}.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.grid2,.app-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fbfdff}.box h3{margin-top:0;color:var(--navy)}
+.scene{height:340px;position:relative;border:1px solid var(--line);border-radius:20px;background:linear-gradient(#dff3ff,#66b5df);overflow:hidden}
+.diver{position:absolute;left:50%;top:45px;transform:translateX(-50%);width:55px;height:110px;animation:diverDown 4s ease-in-out infinite}.diver:before{content:"";position:absolute;left:12px;top:0;width:30px;height:30px;border-radius:50%;background:#efc5a4}.diver:after{content:"";position:absolute;left:8px;top:34px;width:40px;height:58px;border-radius:10px;background:#2c5b84}
+.bubbles{position:absolute;left:58%;top:70px}.bubble{position:absolute;border:3px solid #fff;border-radius:50%;animation:bubbleRise 3s infinite}.b1{width:18px;height:18px;left:0}.b2{width:28px;height:28px;left:25px;animation-delay:.4s}.b3{width:38px;height:38px;left:55px;animation-delay:.8s}
+.depth-arrow{position:absolute;left:28px;top:45px;width:8px;height:230px;background:var(--red);animation:depthPulse 1.4s infinite}.depth-arrow:after{content:"";position:absolute;left:-13px;bottom:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-top:25px solid var(--red)}
+@keyframes diverDown{0%,25%{transform:translate(-50%,0)}75%,100%{transform:translate(-50%,160px)}}@keyframes bubbleRise{0%{transform:translateY(180px) scale(.6);opacity:.4}100%{transform:translateY(-70px) scale(1.35);opacity:1}}@keyframes depthPulse{50%{opacity:.4;transform:translateY(12px)}}
+.memory{margin-top:18px;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}.memory b{font-size:clamp(22px,3vw,34px);color:var(--navy)}
+.lab{height:390px;position:relative;border:1px solid var(--line);border-radius:20px;background:#eef8ff;overflow:hidden}
+.basin{position:absolute;left:35px;right:35px;bottom:25px;height:250px;border:8px solid #61798c;border-top:0;border-radius:0 0 22px 22px;overflow:hidden}.water{position:absolute;inset:auto 0 0 0;height:205px;background:rgba(64,163,220,.65);animation:waterGlow 2s infinite}
+.cylinder{position:absolute;left:50%;top:35px;transform:translateX(-50%) rotate(180deg);width:130px;height:250px;border:7px solid #61798c;border-top:0;border-radius:0 0 20px 20px}
+.tube{position:absolute;left:80px;bottom:70px;width:210px;height:110px;border:12px solid #7b8e9c;border-left-color:transparent;border-bottom-color:transparent;border-radius:0 70px 0 0;animation:tubePulse 2s infinite}
+.lab-bubble{position:absolute;left:50%;bottom:70px;width:22px;height:22px;border-radius:50%;border:3px solid #fff;animation:bubbleGrow 3.2s ease-in-out infinite}
+@keyframes waterGlow{50%{filter:brightness(1.12)}}@keyframes tubePulse{50%{filter:brightness(1.25)}}@keyframes bubbleGrow{0%{transform:translate(-50%,0) scale(.6)}100%{transform:translate(-50%,-185px) scale(1.8)}}
+.question{margin-top:20px;border:1px solid var(--line);border-radius:20px;overflow:hidden}.qh{padding:14px 18px;background:var(--navy);color:#fff;font-weight:900}.qb{padding:18px}
+.ansbtn{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.answer{display:none;margin-top:14px;padding:18px;border-radius:16px;background:#eefbf3;border:1px solid #9fd2b0}.answer.show{display:block}.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.app{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbfdff}.app h3{margin:0;padding:14px 18px;color:#fff;background:var(--navy)}.app-scene{height:250px;position:relative;background:#eef8ff;overflow:hidden}.app-body{padding:18px}
+.dam{position:absolute;left:60px;bottom:20px;width:160px;height:210px;background:#7c8d98;clip-path:polygon(25% 0,75% 0,100% 100%,0 100%);animation:damPulse 2.4s infinite}.dam-water{position:absolute;left:0;right:50%;bottom:20px;height:180px;background:#4aa7d8;animation:waterGlow 2s infinite}.pressure-lines{position:absolute;left:35px;top:60px;width:90px}.pl{height:7px;background:var(--red);margin:22px 0;animation:lineGrow 2s infinite}.pl:nth-child(1){width:35px}.pl:nth-child(2){width:60px}.pl:nth-child(3){width:90px}
+.sub{position:absolute;left:50%;top:80px;transform:translateX(-50%);width:170px;height:75px;background:#687887;border-radius:50px;animation:subMove 3s infinite}.sub:before{content:"";position:absolute;left:55px;top:-30px;width:45px;height:35px;background:#687887}.sub:after{content:"";position:absolute;right:-35px;top:22px;border-top:16px solid transparent;border-bottom:16px solid transparent;border-left:40px solid #687887}
+.suit{position:absolute;left:50%;top:50px;transform:translateX(-50%);width:55px;height:125px;animation:suitDown 3s infinite}.suit:before{content:"";position:absolute;left:10px;width:35px;height:35px;border-radius:50%;background:#efc5a4}.suit:after{content:"";position:absolute;left:5px;top:40px;width:45px;height:65px;background:#d9a72f;border-radius:10px}
+@keyframes damPulse{50%{filter:brightness(1.12)}}@keyframes lineGrow{50%{transform:scaleX(1.15);transform-origin:left}}@keyframes subMove{50%{transform:translate(-50%,18px)}}@keyframes suitDown{50%{transform:translate(-50%,25px)}}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.grid2,.app-grid{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar"><div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 13</div><div class="actions"><button class="btn light" onclick="document.getElementById('aktiviti811').scrollIntoView()">Aktiviti 8.11</button><button class="btn primary" onclick="replay()">Ulang Animasi</button></div></header>
+
+<section class="hero"><span class="tag">8.2.8 TEKANAN CECAIR（液体压力）</span><h1>Kesan Kedalaman terhadap Tekanan Cecair</h1><p>Semakin dalam sesuatu objek berada di dalam cecair, semakin tinggi tekanan cecair yang bertindak ke atasnya.<br><span class="cn">物体在液体中越深，所受到的液体压力越大。</span></p></section>
+
+<section class="section">
+<div class="title"><div class="num">1</div><h2>Penyelam dan Tekanan Air（潜水员与水压）</h2></div>
+<div class="grid2"><div class="box"><p>Badan penyelam mengalami tekanan kerana berat air laut bertindak pada badannya.</p><p class="cn">潜水员身体受到压力，是因为海水的重量作用在身体上。</p><p>Apabila penyelam menyelam lebih dalam, tekanan air yang dialaminya meningkat.</p><p class="cn">潜水越深，承受的水压越大。</p></div><div class="scene"><div class="diver"></div><div class="bubbles"><div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div></div><div class="depth-arrow"></div></div></div>
+<div class="memory"><b>口诀：Semakin dalam, semakin tinggi tekanan</b><br><span class="cn">越深，液体压力越大。</span></div>
+</section>
+
+<section class="section" id="aktiviti811">
+<div class="title"><div class="num">2</div><h2>Aktiviti 8.11（活动 8.11）</h2></div>
+<div class="grid2"><div class="box"><p><b>Tujuan:</b> Mengkaji kesan kedalaman terhadap tekanan dalam cecair.</p><p><b>Bahan:</b> Air</p><p><b>Radas:</b> Tiub getah 50 cm, besen dan silinder penyukat 1 000 ml</p><h3>Arahan</h3><ol><li>Isi silinder penyukat dengan air maksimum dan terbalikkannya.</li><li>Masukkan satu hujung tiub getah ke dalam silinder.</li><li>Hembus udara dan perhatikan saiz gelembung dari dasar ke permukaan.</li></ol></div><div class="lab"><div class="basin"><div class="water"></div></div><div class="cylinder"></div><div class="tube"></div><div class="lab-bubble"></div></div></div>
+
+<div class="question"><div class="qh">Soalan Aktiviti 8.11</div><div class="qb"><p>1. Bandingkan saiz gelembung di dasar dan di permukaan air.</p><p>2. Nyatakan hubungan isi padu gelembung dengan kedalaman.</p><p>3. Terangkan fenomena ini berdasarkan tekanan cecair.</p><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button><div class="answer"><p><b>1.</b> Gelembung di dasar lebih kecil, manakala gelembung di permukaan lebih besar.</p><p><b>2.</b> Semakin berkurang kedalaman, semakin besar isi padu gelembung.</p><p><b>3.</b> Tekanan cecair berkurang apabila kedalaman berkurang. Oleh itu, gelembung mengembang semasa naik ke permukaan.</p><p class="cn">水越浅，液体压力越小，因此气泡上升时会变大。</p><div class="exam"><b>考试重点：</b> Dasar = tekanan tinggi = gelembung kecil；Permukaan = tekanan rendah = gelembung besar.</div></div></div></div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">3</div><h2>Kesan Kedalaman dalam Kehidupan Harian</h2></div>
+<div class="app-grid">
+<article class="app"><h3>Empangan（水坝）</h3><div class="app-scene"><div class="dam-water"></div><div class="dam"></div><div class="pressure-lines"><div class="pl"></div><div class="pl"></div><div class="pl"></div></div></div><div class="app-body"><p>Dinding empangan dibina lebih lebar dan tebal pada bahagian dasar kerana tekanan air lebih tinggi di bahagian bawah.</p><p class="cn">水坝底部墙体更宽更厚，因为底部水压更高。</p></div></article>
+
+<article class="app"><h3>Penyelam Laut（潜水员）</h3><div class="app-scene" style="background:linear-gradient(#bfe8ff,#2589c2)"><div class="suit"></div></div><div class="app-body"><p>Penyelam memakai peralatan khas untuk menahan tekanan air yang tinggi.</p><p class="cn">潜水员穿戴特殊装备，以承受高水压。</p></div></article>
+
+<article class="app" style="grid-column:1/-1"><h3>Kapal Selam（潜水艇）</h3><div class="app-scene" style="background:linear-gradient(#bfe8ff,#1e6f9f)"><div class="sub"></div></div><div class="app-body"><p>Badan kapal selam diperbuat daripada bahan yang kuat supaya tidak kemik akibat tekanan air yang tinggi.</p><p class="cn">潜水艇外壳使用坚固材料制造，以免被高水压压瘪。</p></div></article>
+</div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">4</div><h2>Kesimpulan（总结）</h2></div>
+<div class="memory"><b>Kedalaman ↑ → Tekanan cecair ↑<br>Kedalaman ↓ → Tekanan cecair ↓</b><br><span class="cn">深度增加，液体压力增加；深度减少，液体压力降低。</span></div>
+</section>
+
+<footer class="footer">Page 13 · Tekanan Cecair dan Aktiviti 8.11 · Berdasarkan halaman 197–198 buku teks Sains Tingkatan 2</footer>
+</main>
+<script>
+function toggleAnswer(btn){const a=btn.nextElementSibling;a.classList.toggle('show');btn.textContent=a.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）'}
+function replay(){document.querySelectorAll('.diver,.bubble,.depth-arrow,.water,.tube,.lab-bubble,.dam,.pl,.sub,.suit').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''});window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>

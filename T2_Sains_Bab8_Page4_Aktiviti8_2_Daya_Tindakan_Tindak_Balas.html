@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 4</title>
+<style>
+:root{
+  --navy:#102f49;--blue:#1769aa;--sky:#eaf6ff;--ink:#263f53;--muted:#60778a;
+  --white:#fff;--line:#c8dae8;--red:#d84c4c;--green:#2d8a62;--orange:#ef8a31;
+  --purple:#7654b7;--gold:#f3bf3b;--shadow:0 14px 38px rgba(16,47,73,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Arial,"Noto Sans SC","Microsoft YaHei",sans-serif;
+  color:var(--ink);line-height:1.65;background:linear-gradient(180deg,#f7fbff,#edf6fc)
+}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:10px;
+  z-index:20;padding:12px 16px;background:rgba(255,255,255,.94);border:1px solid var(--line);
+  border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);backdrop-filter:blur(10px)
+}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.btn.light{background:#e7f2fa;color:var(--navy)} .btn.primary{background:var(--blue);color:#fff}
+.hero{
+  margin-top:20px;padding:42px;border-radius:28px;color:#fff;
+  background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);
+  box-shadow:var(--shadow);position:relative;overflow:hidden
+}
+.hero:after{content:"";position:absolute;width:350px;height:350px;border-radius:50%;right:-130px;top:-160px;background:rgba(255,255,255,.08)}
+.kicker{display:inline-block;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.35);font-weight:900}
+h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}
+.hero p{font-size:19px;max-width:900px;margin:0;color:#eaf7ff}
+.cn{color:#657c8f;font-weight:600}.hero .cn{color:#d8efff}
+.section{
+  margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)
+}
+.title-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px}
+h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.info{padding:18px;border-radius:17px;background:#eef7fd;border:1px solid #c9deed}
+.info b{display:block;color:var(--navy);margin-bottom:4px}
+.activity-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.activity{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fbfdff}
+.activity-head{padding:14px 18px;color:#fff;font-weight:900;font-size:20px}
+.activity.a .activity-head{background:var(--blue)} .activity.b .activity-head{background:var(--orange)}
+.visual{height:280px;position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf6ff,#d9ebf7)}
+.steps{padding:20px}.steps ol,.questions ol{padding-left:22px;margin:0}.steps li,.questions li{margin:8px 0}
+.stand{position:absolute;left:51%;top:20px;width:14px;height:225px;background:#62798d}
+.stand:before{content:"";position:absolute;left:-88px;top:0;width:100px;height:12px;background:#62798d}
+.scale{position:absolute;left:calc(51% - 105px);top:32px;width:65px;height:165px;border-radius:17px;background:#dce8ef;border:4px solid #647e91}
+.lines{position:absolute;left:12px;right:12px;top:20px;bottom:20px;background:repeating-linear-gradient(180deg,transparent 0 12px,#667f91 12px 14px)}
+.pointer{position:absolute;left:5px;right:5px;top:45px;height:5px;background:var(--red);animation:pointerMove 3s ease-in-out infinite}
+.hook{position:absolute;left:50%;bottom:-36px;width:5px;height:36px;background:#647e91}
+.weights{position:absolute;left:calc(51% - 112px);top:218px;display:flex;gap:4px}
+.w{width:24px;height:32px;background:#586b79;border-radius:4px;color:white;font-size:10px;display:grid;place-items:center}
+.w:nth-child(n+2){animation:addWeight 3s ease-in-out infinite}
+@keyframes pointerMove{50%{transform:translateY(70px)}}@keyframes addWeight{0%,25%{opacity:0;transform:translateY(-15px)}55%,100%{opacity:1;transform:none}}
+.table{position:absolute;left:0;right:0;bottom:45px;height:28px;background:#9d6c3d}
+.sand{position:absolute;left:0;right:0;bottom:45px;height:28px;background:repeating-linear-gradient(135deg,#76563c 0 8px,#ba8b61 8px 16px);opacity:0;animation:surfaceSwap 5s infinite}
+.block{position:absolute;width:92px;height:60px;left:35px;bottom:73px;background:#d69245;border:3px solid #875528;animation:blockMove 5s ease-in-out infinite}
+.spring-scale{position:absolute;left:150px;bottom:89px;width:130px;height:26px;border-radius:10px;background:#dce8ef;border:3px solid #647e91}
+.spring-scale:before{content:"";position:absolute;left:-55px;top:8px;width:55px;height:5px;background:#647e91}
+.pull{position:absolute;left:295px;bottom:96px;width:110px;height:8px;background:var(--red)}
+.pull:after{content:"";position:absolute;right:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:24px solid var(--red)}
+@keyframes blockMove{0%,18%{transform:translateX(0)}42%{transform:translateX(105px)}58%{transform:translateX(0)}82%,100%{transform:translateX(40px)}}
+@keyframes surfaceSwap{0%,48%{opacity:0}55%,100%{opacity:1}}
+.questions{margin-top:18px;padding:20px;border-radius:18px;background:#f2f8fc;border:1px solid #c8dce9}
+.questions h3{margin:0 0 9px;color:var(--navy)}
+.unit-box{margin-top:20px;padding:22px;border-radius:20px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}
+.unit-box b{font-size:clamp(27px,4vw,42px);color:var(--navy)}
+.reaction-intro{padding:20px;border-radius:20px;background:#eef8ff;border-left:6px solid var(--blue);margin-bottom:20px}
+.situation-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.situation{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fbfdff}
+.situation h3{margin:0;padding:14px 18px;background:var(--navy);color:#fff}
+.situation .content{padding:18px}
+.scene{height:250px;position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf6ff,#dcecf7)}
+.force-label{position:absolute;padding:5px 8px;border-radius:8px;color:#fff;font-size:12px;font-weight:900}
+.book-table{position:absolute;left:28px;right:28px;bottom:38px;height:24px;background:#996b3e}
+.book{position:absolute;left:50%;bottom:62px;transform:translateX(-50%);width:100px;height:52px;background:#d95d55;border-radius:5px;border:3px solid #963f3a}
+.arrow-up,.arrow-down{position:absolute;left:50%;width:8px;height:72px;transform:translateX(-50%)}
+.arrow-up{bottom:114px;background:var(--green)}.arrow-up:after{content:"";position:absolute;left:-12px;top:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:24px solid var(--green)}
+.arrow-down{top:145px;background:var(--red)}.arrow-down:after{content:"";position:absolute;left:-12px;bottom:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-top:24px solid var(--red)}
+.water-box{position:absolute;left:28px;right:28px;bottom:25px;height:165px;border:7px solid #657f91;border-top:0;border-radius:0 0 20px 20px;overflow:hidden}
+.water{position:absolute;inset:auto 0 0 0;height:125px;background:rgba(66,164,219,.62)}
+.wood{position:absolute;left:50%;bottom:125px;transform:translateX(-50%);width:95px;height:43px;background:#c88942;border:3px solid #805326;z-index:3;animation:float 2.4s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-50%,-11px)}}
+.trolley{position:absolute;width:95px;height:55px;top:118px;background:#5e8fba;border-radius:8px}
+.trolley:before,.trolley:after{content:"";position:absolute;bottom:-18px;width:24px;height:24px;border-radius:50%;background:#354a5b}
+.trolley:before{left:10px}.trolley:after{right:10px}
+.t1{left:35px;animation:leftCart 3s ease-in-out infinite}.t2{right:35px;animation:rightCart 3s ease-in-out infinite}
+.spring-mid{position:absolute;left:50%;top:132px;transform:translateX(-50%);width:68px;height:24px;background:repeating-linear-gradient(90deg,transparent 0 7px,var(--purple) 7px 11px)}
+@keyframes leftCart{0%,30%{transform:translateX(40px)}75%,100%{transform:translateX(-25px)}}@keyframes rightCart{0%,30%{transform:translateX(-40px)}75%,100%{transform:translateX(25px)}}
+.rule{margin-top:22px;padding:22px;border-radius:20px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}
+.rule b{font-size:clamp(23px,3vw,34px);color:var(--navy)}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.activity-grid,.situation-grid{grid-template-columns:1fr}.info-grid{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar">
+  <div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 4</div>
+  <div class="actions">
+    <button class="btn light" onclick="document.getElementById('pasangan').scrollIntoView()">Daya Tindakan–Tindak Balas</button>
+    <button class="btn primary" onclick="replay()">Ulang Animasi</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="kicker">8.1 DAYA（力）</span>
+  <h1>Mengukur Daya dan Pasangan Daya</h1>
+  <p>
+    Daya boleh diukur menggunakan neraca spring. Dalam keadaan tertentu, daya tindakan disertai oleh daya tindak balas.<br>
+    <span class="cn">力可以用弹簧秤测量。在某些情况下，作用力会伴随着反作用力。</span>
+  </p>
+</section>
+
+<section class="section">
+  <div class="title-row"><div class="num">1</div><h2>Aktiviti 8.2（活动 8.2）</h2></div>
+
+  <div class="info-grid">
+    <div class="info"><b>Tujuan（目的）</b>Mengukur daya<br><span class="cn">测量力</span></div>
+    <div class="info"><b>Bahan（材料）</b>Pemberat 50 g, benang, kertas pasir dan bongkah kayu<br><span class="cn">50克砝码、细绳、砂纸和木块</span></div>
+    <div class="info"><b>Radas（仪器）</b>Kaki retort dan pengapit serta neraca spring<br><span class="cn">铁架台、夹具和弹簧秤</span></div>
+  </div>
+
+  <div class="activity-grid">
+    <article class="activity a">
+      <div class="activity-head">A · Berat Jasad（物体的重量）</div>
+      <div class="visual">
+        <div class="stand"></div>
+        <div class="scale"><div class="lines"></div><div class="pointer"></div><div class="hook"></div></div>
+        <div class="weights"><div class="w">50g</div><div class="w">50g</div><div class="w">50g</div><div class="w">50g</div><div class="w">50g</div></div>
+      </div>
+      <div class="steps">
+        <ol>
+          <li>Gantungkan satu pemberat 50 g pada hujung neraca spring.<br><span class="cn">在弹簧秤末端挂上一个50克砝码。</span></li>
+          <li>Rekodkan bacaan neraca spring.<br><span class="cn">记录弹簧秤的读数。</span></li>
+          <li>Tambahkan hingga lima pemberat dan rekodkan bacaan.<br><span class="cn">逐渐增加至五个砝码，并记录读数。</span></li>
+        </ol>
+        <div class="questions">
+          <h3>Soalan（问题）</h3>
+          <ol>
+            <li>Apakah kuantiti fizik yang diukur oleh neraca spring?<br><span class="cn">弹簧秤测量哪一种物理量？</span></li>
+            <li>Apakah unit kuantiti fizik tersebut?<br><span class="cn">该物理量的单位是什么？</span></li>
+            <li>Apakah yang berlaku kepada bacaan apabila bilangan pemberat ditambahkan?<br><span class="cn">增加砝码数量时，读数会发生什么变化？</span></li>
+          </ol>
+        </div>
+      </div>
+    </article>
+
+    <article class="activity b">
+      <div class="activity-head">B · Daya Geseran（摩擦力）</div>
+      <div class="visual">
+        <div class="table"></div><div class="sand"></div><div class="block"></div>
+        <div class="spring-scale"></div><div class="pull"></div>
+      </div>
+      <div class="steps">
+        <ol>
+          <li>Sediakan radas seperti yang ditunjukkan dalam buku teks.<br><span class="cn">按照课本图示准备仪器。</span></li>
+          <li>Tarik neraca spring sehingga bongkah kayu mula bergerak dan catatkan bacaan.<br><span class="cn">拉动弹簧秤，直到木块开始移动，并记录读数。</span></li>
+          <li>Ulang aktiviti dengan menarik bongkah kayu di atas kertas pasir.<br><span class="cn">在砂纸上再次进行相同活动。</span></li>
+        </ol>
+        <div class="questions">
+          <h3>Soalan（问题）</h3>
+          <ol>
+            <li>Daya apakah yang menghalang gerakan bongkah kayu?<br><span class="cn">哪一种力阻碍木块移动？</span></li>
+            <li>Nyatakan perbezaan bacaan pada meja dan kertas pasir serta daya yang menyebabkannya.<br><span class="cn">说明桌面与砂纸上的读数差异，以及造成差异的力。</span></li>
+          </ol>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="unit-box">
+    <b>Unit S.I. bagi daya ialah newton (N)</b><br>
+    <span class="cn">力的国际单位是牛顿，符号为 N。</span><br><br>
+    Di Bumi: 100 g mempunyai berat 1 N; 1 kg mempunyai berat 10 N.<br>
+    <span class="cn">在地球上：100克物体的重量为1牛顿；1千克物体的重量为10牛顿。</span>
+  </div>
+</section>
+
+<section class="section" id="pasangan">
+  <div class="title-row"><div class="num">2</div><h2>Pasangan Daya Tindakan–Daya Tindak Balas（作用力与反作用力）</h2></div>
+
+  <div class="reaction-intro">
+    Terdapat tiga situasi dalam buku teks untuk menerangkan pasangan daya tindakan dan daya tindak balas.<br>
+    <span class="cn">课本通过三种情况说明作用力与反作用力。</span>
+  </div>
+
+  <div class="situation-grid">
+    <article class="situation">
+      <h3>Situasi 1 · Buku di atas meja</h3>
+      <div class="scene">
+        <div class="book-table"></div><div class="book"></div><div class="arrow-up"></div><div class="arrow-down"></div>
+      </div>
+      <div class="content">
+        <p><b>Berat</b> bertindak ke bawah sebagai daya tindakan. <b>Daya normal</b> bertindak ke atas sebagai daya tindak balas.</p>
+        <p class="cn">重量向下作用，是作用力；法向力向上作用，是反作用力。</p>
+        <p>Buku kekal di atas meja kerana magnitud berat sama dengan magnitud daya normal.</p>
+        <p class="cn">书本保持在桌面上，因为重量与法向力大小相同。</p>
+      </div>
+    </article>
+
+    <article class="situation">
+      <h3>Situasi 2 · Bongkah kayu terapung</h3>
+      <div class="scene">
+        <div class="water-box"><div class="water"></div></div><div class="wood"></div><div class="arrow-up"></div><div class="arrow-down"></div>
+      </div>
+      <div class="content">
+        <p><b>Berat</b> bertindak ke bawah sebagai daya tindakan. <b>Daya apungan</b> bertindak ke atas sebagai daya tindak balas.</p>
+        <p class="cn">重量向下作用，是作用力；浮力向上作用，是反作用力。</p>
+        <p>Objek terapung kerana magnitud berat sama dengan magnitud daya apungan.</p>
+        <p class="cn">物体能够漂浮，因为重量与浮力大小相同。</p>
+      </div>
+    </article>
+
+    <article class="situation">
+      <h3>Situasi 3 · Dua troli dan spring</h3>
+      <div class="scene">
+        <div class="trolley t1"></div><div class="spring-mid"></div><div class="trolley t2"></div>
+      </div>
+      <div class="content">
+        <p>Troli pertama mengenakan daya elastik pada troli kedua. Pada masa yang sama, troli kedua mengenakan daya elastik yang sama magnitud tetapi bertentangan arah.</p>
+        <p class="cn">第一辆手推车对第二辆施加弹力；同时第二辆也施加大小相同、方向相反的弹力。</p>
+        <p>Selepas dilepaskan, kedua-dua troli bergerak ke arah bertentangan dengan jarak yang sama.</p>
+        <p class="cn">释放后，两辆手推车朝相反方向移动相同距离。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="rule">
+    <b>Sama magnitud, arah bertentangan</b><br>
+    <span class="cn">大小相同，方向相反。</span>
+  </div>
+</section>
+
+<footer class="footer">
+Page 4 · Aktiviti 8.2 dan Pasangan Daya Tindakan–Daya Tindak Balas · Berdasarkan halaman 172–174 buku teks Sains Tingkatan 2
+</footer>
+</main>
+
+<script>
+function replay(){
+  document.querySelectorAll('.pointer,.w,.block,.sand,.wood,.t1,.t2').forEach(el=>{
+    el.style.animation='none';void el.offsetWidth;el.style.animation='';
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

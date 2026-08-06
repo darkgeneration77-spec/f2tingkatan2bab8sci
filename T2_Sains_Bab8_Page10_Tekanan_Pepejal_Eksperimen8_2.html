@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 10</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--orange:#ef8a31;--purple:#7654b7;
+ --shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{position:sticky;top:10px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);backdrop-filter:blur(10px)}
+.brand{font-weight:900;color:var(--navy)}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}.light{background:#e7f2fa;color:var(--navy)}.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}.hero p{font-size:19px;max-width:920px}.tag{display:inline-block;padding:7px 14px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff59;font-weight:900}
+.cn{color:var(--muted);font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px}.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.grid2,.compare,.apps,.vars{display:grid;gap:18px}.grid2,.compare{grid-template-columns:1fr 1fr}.apps{grid-template-columns:repeat(4,1fr)}.vars{grid-template-columns:repeat(3,1fr)}
+.box{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fbfdff}.box h3{margin-top:0;color:var(--navy)}
+.scene{height:300px;position:relative;border:1px solid var(--line);border-radius:20px;background:linear-gradient(#eef8ff,#dcecf7);overflow:hidden}
+.board{position:absolute;left:25px;right:25px;bottom:35px;height:40px;background:#9a6a3b}
+.pin{position:absolute;left:30%;top:50px;width:18px;height:160px;background:#687887;border-radius:8px;animation:pinPress 2.6s ease-in-out infinite}.pin:before{content:"";position:absolute;left:-25px;top:-12px;width:68px;height:30px;border-radius:18px;background:#d84c4c}.pin:after{content:"";position:absolute;left:6px;bottom:-22px;border-left:3px solid transparent;border-right:3px solid transparent;border-top:22px solid #687887}
+.coin{position:absolute;right:24%;top:88px;width:78px;height:20px;border-radius:50%;background:#d8ae3b;border:5px solid #a67c13;animation:coinPress 2.6s ease-in-out infinite}
+.force-arrow{position:absolute;top:20px;width:8px;height:80px;background:var(--red);animation:arrowDown 1.3s infinite}.fa1{left:32%}.fa2{right:32%}.force-arrow:after{content:"";position:absolute;left:-13px;bottom:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-top:25px solid var(--red)}
+@keyframes pinPress{50%{transform:translateY(65px)}}@keyframes coinPress{50%{transform:translateY(18px)}}@keyframes arrowDown{50%{opacity:.4;transform:translateY(12px)}}
+.formula{margin:18px 0;padding:22px;border-radius:20px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}.formula b{font-size:clamp(26px,4vw,42px);color:var(--navy)}
+.press-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbfdff}.press-card h3{margin:0;padding:14px 18px;color:#fff}.small h3{background:var(--red)}.large h3{background:var(--green)}
+.press-scene{height:250px;position:relative;background:#eef8ff;overflow:hidden}.clay{position:absolute;left:35px;right:35px;bottom:28px;height:58px;background:#d16a9a;border-radius:25px}
+.block-small,.block-large{position:absolute;left:50%;top:45px;transform:translateX(-50%);background:#687887;animation:blockDrop 2.5s ease-in-out infinite}.block-small{width:70px;height:100px}.block-large{width:150px;height:70px}
+.indent{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);background:#9e3d6c;border-radius:50%;animation:indentPulse 2.5s ease-in-out infinite}.small .indent{width:65px;height:35px}.large .indent{width:130px;height:14px}
+@keyframes blockDrop{50%{transform:translate(-50%,65px)}}@keyframes indentPulse{0%,30%{opacity:0}60%,100%{opacity:1}}
+.var{padding:16px;border-radius:16px;background:#eef7fd;border:1px solid #c9deed}.var b{display:block;color:var(--navy)}
+.exp-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}.lab{height:390px;position:relative;border:1px solid var(--line);border-radius:20px;background:#eef8ff;overflow:hidden}
+.stand{position:absolute;left:30%;top:25px;width:14px;height:300px;background:#61798c}.stand:before{content:"";position:absolute;left:-90px;top:0;width:105px;height:12px;background:#61798c}
+.rope1,.rope2{position:absolute;top:37px;width:4px;height:160px;background:#61798c}.rope1{left:20%}.rope2{right:20%}
+.metal{position:absolute;top:190px;width:90px;background:#687887;animation:metalDrop 3s infinite}.p{left:calc(20% - 43px);height:90px}.q{right:calc(20% - 70px);width:140px;height:58px}
+.plast{position:absolute;left:20px;right:20px;bottom:28px;height:55px;background:#d16a9a;border-radius:24px}.dentp,.dentq{position:absolute;bottom:28px;background:#9e3d6c;border-radius:50%;animation:dentShow 3s infinite}.dentp{left:calc(20% - 38px);width:78px;height:36px}.dentq{right:calc(20% - 60px);width:120px;height:16px}
+@keyframes metalDrop{0%,30%{transform:translateY(0)}65%,100%{transform:translateY(70px)}}@keyframes dentShow{0%,35%{opacity:0}70%,100%{opacity:1}}
+.question{margin-top:20px;border:1px solid var(--line);border-radius:20px;overflow:hidden}.qh{padding:14px 18px;background:var(--navy);color:#fff;font-weight:900}.qb{padding:18px}.ansbtn{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.answer{display:none;margin-top:14px;padding:18px;border-radius:16px;background:#eefbf3;border:1px solid #9fd2b0}.answer.show{display:block}.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.app{border:1px solid var(--line);border-radius:18px;padding:16px;background:#fbfdff;text-align:center}.av{height:160px;position:relative;background:#eef8ff;border-radius:14px;overflow:hidden;margin-bottom:10px}
+.skate{position:absolute;left:50%;top:28px;width:24px;height:105px;background:#748593;transform:translateX(-50%);animation:skatePress 2.4s infinite}.skate:after{content:"";position:absolute;left:-25px;bottom:-6px;width:74px;height:7px;background:#354b5d}
+.axe{position:absolute;left:50%;top:35px;width:18px;height:100px;background:#9b6b3c;transform:translateX(-50%) rotate(-18deg);animation:axeMove 2.4s infinite}.axe:before{content:"";position:absolute;left:-40px;top:-5px;width:80px;height:35px;background:#687887;clip-path:polygon(0 0,100% 20%,65% 100%,25% 100%)}
+.tractor{position:absolute;left:28px;bottom:38px;width:140px;height:65px;background:#5a9b64;border-radius:12px;animation:tractorMove 2.8s infinite}.tractor:before,.tractor:after{content:"";position:absolute;bottom:-24px;border-radius:50%;background:#354b5d}.tractor:before{left:10px;width:52px;height:52px}.tractor:after{right:10px;width:65px;height:65px}
+.boot{position:absolute;left:50%;top:28px;width:105px;height:85px;background:#d84c4c;border-radius:18px 30px 12px 12px;transform:translateX(-50%);animation:bootStep 2.5s infinite}.stud{position:absolute;bottom:-12px;width:9px;height:20px;background:#687887}.s1{left:15px}.s2{left:38px}.s3{right:38px}.s4{right:15px}
+@keyframes skatePress{50%{transform:translate(-50%,18px)}}@keyframes axeMove{50%{transform:translateX(-50%) rotate(-35deg)}}@keyframes tractorMove{50%{transform:translateX(18px)}}@keyframes bootStep{50%{transform:translate(-50%,16px)}}
+.memory{margin-top:18px;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}.memory b{font-size:clamp(22px,3vw,34px);color:var(--navy)}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.grid2,.compare,.apps,.vars,.exp-layout{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar"><div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 10</div><div class="actions"><button class="btn light" onclick="document.getElementById('eksperimen').scrollIntoView()">Eksperimen 8.2</button><button class="btn primary" onclick="replay()">Ulang Animasi</button></div></header>
+
+<section class="hero"><span class="tag">8.2.5 TEKANAN（压力）</span><h1>Tekanan pada Pepejal</h1><p>Tekanan bergantung pada daya dan luas permukaan tempat daya dikenakan.<br><span class="cn">压力取决于施加的力，以及力作用的表面积。</span></p></section>
+
+<section class="section">
+<div class="title"><div class="num">1</div><h2>Apakah Tekanan?（什么是压力？）</h2></div>
+<div class="grid2"><div class="box"><p>Paku tekan boleh ditekan ke dalam papan tetapi duit syiling sukar ditekan walaupun daya yang sama digunakan.</p><p class="cn">即使使用相同的力，图钉能压进木板，而硬币却很难压进去。</p><p>Hal ini kerana paku tekan mempunyai luas permukaan sentuhan yang lebih kecil.</p><p class="cn">这是因为图钉的接触面积更小。</p></div><div class="scene"><div class="board"></div><div class="pin"></div><div class="coin"></div><div class="force-arrow fa1"></div><div class="force-arrow fa2"></div></div></div>
+<div class="formula"><b>Tekanan = Daya ÷ Luas permukaan</b><br><span class="cn">压力 = 力 ÷ 表面积</span><br><br>Unit S.I. = pascal (Pa)；1 Pa = 1 N m⁻²</div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">2</div><h2>Hubungan Luas Permukaan dengan Tekanan</h2></div>
+<div class="compare">
+<article class="press-card small"><h3>Luas Kecil → Tekanan Besar</h3><div class="press-scene"><div class="clay"></div><div class="block-small"></div><div class="indent"></div></div><div class="box"><p>Daya yang sama pada luas permukaan kecil menghasilkan tekanan yang lebih besar.</p><p class="cn">相同的力作用在较小面积时，压力较大。</p></div></article>
+<article class="press-card large"><h3>Luas Besar → Tekanan Kecil</h3><div class="press-scene"><div class="clay"></div><div class="block-large"></div><div class="indent"></div></div><div class="box"><p>Daya yang sama pada luas permukaan besar menghasilkan tekanan yang lebih kecil.</p><p class="cn">相同的力作用在较大面积时，压力较小。</p></div></article>
+</div>
+<div class="memory"><b>口诀：Luas kecil, tekanan besar；Luas besar, tekanan kecil</b></div>
+</section>
+
+<section class="section" id="eksperimen">
+<div class="title"><div class="num">3</div><h2>Eksperimen 8.2（实验 8.2）</h2></div>
+<div class="vars"><div class="var"><b>Dimalarkan</b>Blok logam yang berjisim sama<br><span class="cn">相同质量的金属块</span></div><div class="var"><b>Dimanipulasikan</b>Luas permukaan<br><span class="cn">表面积</span></div><div class="var"><b>Bergerak balas</b>Kedalaman lekuk<br><span class="cn">凹痕深度</span></div></div>
+<div class="exp-layout"><div class="box"><h3>Tujuan</h3><p>Mengkaji hubungan luas permukaan dengan tekanan.</p><h3>Hipotesis</h3><p>Luas permukaan meningkat, tekanan berkurang.</p><p class="cn">表面积增加，压力减小。</p><h3>Prosedur</h3><ol><li>Sediakan dua blok logam berjisim sama.</li><li>Gantungkan blok P dan Q.</li><li>Letakkan plastisin di bawah kedua-dua blok.</li><li>Lepaskan blok P dan ukur kedalaman lekuk.</li><li>Ulang dengan blok Q.</li></ol></div><div class="lab"><div class="stand"></div><div class="rope1"></div><div class="rope2"></div><div class="metal p">P</div><div class="metal q">Q</div><div class="plast"></div><div class="dentp"></div><div class="dentq"></div></div></div>
+
+<div class="question"><div class="qh">Soalan Eksperimen 8.2</div><div class="qb"><p>1. Apakah perubahan pada kedalaman lekuk apabila luas permukaan bertambah?</p><p>2. Apakah hubungan luas permukaan dengan tekanan?</p><p>3. Nyatakan inferens berdasarkan pemerhatian.</p><p>4. Definisikan secara operasi tekanan.</p><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button><div class="answer"><p><b>1.</b> Kedalaman lekuk berkurang apabila luas permukaan bertambah.<br><span class="cn">表面积增加时，凹痕变浅。</span></p><p><b>2.</b> Semakin besar luas permukaan, semakin kecil tekanan.</p><p><b>3.</b> Lekuk yang lebih dalam menunjukkan tekanan yang lebih besar.</p><p><b>4.</b> Tekanan ditakrifkan secara operasi sebagai kedalaman lekuk yang dihasilkan pada plastisin apabila blok logam dilepaskan.</p><div class="exam"><b>考试重点：</b> Pemerhatian = lekuk；Inferens = tekanan.</div></div></div></div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">4</div><h2>Aplikasi Tekanan dalam Kehidupan Harian</h2></div>
+<div class="apps">
+<div class="app"><div class="av"><div class="skate"></div></div><b>Kasut peluncur nipis</b><br><span class="cn">冰刀较薄，使压力较大。</span></div>
+<div class="app"><div class="av"><div class="axe"></div></div><b>Mata kapak nipis</b><br><span class="cn">斧刃较薄，压力较大，容易劈开物体。</span></div>
+<div class="app"><div class="av"><div class="tractor"></div></div><b>Tayar traktor besar dan lebar</b><br><span class="cn">拖拉机轮胎宽大，减小压力，避免下陷。</span></div>
+<div class="app"><div class="av"><div class="boot"><div class="stud s1"></div><div class="stud s2"></div><div class="stud s3"></div><div class="stud s4"></div></div></div><b>Paku pada kasut bola sepak</b><br><span class="cn">鞋钉减小接触面积，增加压力。</span></div>
+</div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">5</div><h2>Aktiviti 8.7（活动 8.7）</h2></div>
+<div class="box"><p><b>Tujuan:</b> Membincangkan aplikasi tekanan dalam kehidupan harian.</p><ol><li>Jalankan aktiviti secara berkumpulan.</li><li>Bincangkan aplikasi tekanan dalam kehidupan harian.</li><li>Bentangkan hasil perbincangan menggunakan persembahan multimedia.</li></ol><p class="cn">以小组形式讨论生活中的压力应用，并用多媒体呈现。</p></div>
+</section>
+
+<footer class="footer">Page 10 · Tekanan pada Pepejal dan Eksperimen 8.2 · Berdasarkan halaman 187–189 buku teks Sains Tingkatan 2</footer>
+</main>
+<script>
+function toggleAnswer(btn){const a=btn.nextElementSibling;a.classList.toggle('show');btn.textContent=a.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）'}
+function replay(){document.querySelectorAll('.pin,.coin,.force-arrow,.block-small,.block-large,.indent,.metal,.dentp,.dentq,.skate,.axe,.tractor,.boot').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''});window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>

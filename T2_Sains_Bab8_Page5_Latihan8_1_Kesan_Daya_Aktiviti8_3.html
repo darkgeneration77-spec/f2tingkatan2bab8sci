@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 5</title>
+<style>
+:root{
+  --navy:#102f49;--blue:#1769aa;--sky:#eaf6ff;--ink:#263f53;--muted:#60778a;
+  --white:#fff;--line:#c8dae8;--red:#d84c4c;--green:#2d8a62;--orange:#ef8a31;
+  --purple:#7654b7;--gold:#f3bf3b;--shadow:0 14px 38px rgba(16,47,73,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Noto Sans SC","Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(180deg,#f7fbff,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:10px;z-index:20;padding:12px 16px;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);backdrop-filter:blur(10px)}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.btn.light{background:#e7f2fa;color:var(--navy)} .btn.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:350px;height:350px;border-radius:50%;right:-130px;top:-160px;background:rgba(255,255,255,.08)}
+.kicker{display:inline-block;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.35);font-weight:900}
+h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}
+.hero p{font-size:19px;max-width:920px;margin:0;color:#eaf7ff}
+.cn{color:#657c8f;font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px;flex:0 0 auto}
+h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.question-card{border:1px solid var(--line);border-radius:21px;overflow:hidden;background:#fbfdff;margin:18px 0}
+.question-head{padding:15px 18px;background:var(--navy);color:#fff;font-weight:900;font-size:19px}
+.question-body{padding:20px}
+.answer-toggle{margin-top:12px;border:0;border-radius:12px;background:var(--blue);color:#fff;padding:10px 14px;font-weight:800;cursor:pointer}
+.answer{display:none;margin-top:14px;padding:18px;border-radius:16px;background:#eefbf3;border:1px solid #9fd2b0}
+.answer.show{display:block}
+.answer h3{margin:0 0 8px;color:#1f6d4d}
+.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.visual-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.visual-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbfdff}
+.visual{height:230px;position:relative;overflow:hidden;background:linear-gradient(180deg,#eaf6ff,#dcecf7)}
+.visual-card .text{padding:17px}.visual-card h3{margin:0 0 6px;color:var(--navy)}
+.bungee-rope{position:absolute;left:50%;top:0;width:8px;height:130px;background:var(--purple);transform:translateX(-50%);animation:stretch 2.6s ease-in-out infinite}
+.person{position:absolute;left:50%;top:120px;transform:translateX(-50%);width:36px;height:85px}
+.person:before{content:"";position:absolute;left:7px;top:0;width:23px;height:23px;border-radius:50%;background:#efc5a4}
+.person:after{content:"";position:absolute;left:3px;top:25px;width:30px;height:48px;border-radius:9px;background:#1769aa}
+.down{position:absolute;right:34px;top:75px;width:7px;height:95px;background:var(--red)}
+.down:after{content:"";position:absolute;left:-12px;bottom:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-top:23px solid var(--red)}
+.up{position:absolute;left:34px;bottom:62px;width:7px;height:95px;background:var(--green)}
+.up:after{content:"";position:absolute;left:-12px;top:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:23px solid var(--green)}
+@keyframes stretch{50%{height:170px}}
+.road{position:absolute;left:0;right:0;bottom:28px;height:40px;background:repeating-linear-gradient(135deg,#76604d 0 9px,#a68a72 9px 18px)}
+.bike{position:absolute;left:46px;bottom:65px;width:130px;height:75px}
+.wheel{position:absolute;bottom:0;width:50px;height:50px;border:6px solid #354b5d;border-radius:50%}.w1{left:0}.w2{right:0}
+.frame{position:absolute;left:25px;bottom:24px;width:80px;height:8px;background:#d84c4c;transform:rotate(-8deg)}
+.motion{position:absolute;left:25px;top:42px;width:100px;height:7px;background:var(--blue)}
+.motion:after{content:"";position:absolute;right:-2px;top:-11px;border-top:14px solid transparent;border-bottom:14px solid transparent;border-left:22px solid var(--blue)}
+.friction{position:absolute;right:25px;bottom:125px;width:90px;height:7px;background:var(--red)}
+.friction:after{content:"";position:absolute;left:-2px;top:-11px;border-top:14px solid transparent;border-bottom:14px solid transparent;border-right:22px solid var(--red)}
+.balloon{position:absolute;left:50%;top:45px;transform:translateX(-50%);width:100px;height:125px;border-radius:50% 50% 45% 45%;background:#ef8a31;animation:float 2.5s ease-in-out infinite}
+.balloon:after{content:"";position:absolute;left:43px;bottom:-42px;width:16px;height:42px;background:#805d38}
+@keyframes float{50%{transform:translate(-50%,-14px)}}
+.force-arrow{position:absolute;height:8px;background:var(--red)}
+.force-arrow:after{content:"";position:absolute;right:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:24px solid var(--red)}
+.car{position:absolute;right:30px;bottom:55px;width:175px;height:70px;background:#5c91bd;border-radius:20px 30px 8px 8px}
+.car:before,.car:after{content:"";position:absolute;bottom:-18px;width:35px;height:35px;border-radius:50%;background:#354a5b}.car:before{left:25px}.car:after{right:25px}
+.man{position:absolute;left:55px;bottom:52px;width:38px;height:110px}
+.man:before{content:"";position:absolute;left:7px;top:0;width:24px;height:24px;border-radius:50%;background:#efc5a4}
+.man:after{content:"";position:absolute;left:3px;top:27px;width:32px;height:58px;border-radius:9px;background:#1769aa}
+.pushpoint{position:absolute;left:92px;bottom:103px;width:22px;height:22px;border-radius:50%;background:var(--gold);border:4px solid #a97805;animation:pulse 1.4s infinite}
+.pusharrow{left:110px;bottom:110px;width:125px}
+@keyframes pulse{50%{transform:scale(1.25);opacity:.55}}
+.kick-scene{height:250px;position:relative;background:#eaf6ff;border-radius:18px;overflow:hidden}
+.kick-ball{position:absolute;left:47%;bottom:55px;width:58px;height:58px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff,#eab741 72%);border:3px solid #976a13;animation:kickball 2.8s ease-in-out infinite}
+.leg{position:absolute;right:23%;bottom:45px;width:24px;height:115px;border-radius:14px;background:#183b56;transform-origin:top;animation:kickleg 2.8s ease-in-out infinite}
+.leg:after{content:"";position:absolute;left:-43px;bottom:-3px;width:68px;height:23px;border-radius:15px;background:#d84c4c}
+.forward{position:absolute;left:18%;top:70px;width:120px;height:8px;background:var(--blue)}
+.forward:after{content:"";position:absolute;left:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-right:24px solid var(--blue)}
+.backward{position:absolute;right:18%;top:115px;width:115px;height:8px;background:var(--red)}
+.backward:after{content:"";position:absolute;right:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:24px solid var(--red)}
+@keyframes kickball{0%,35%{transform:translateX(0)}70%,100%{transform:translateX(-150px) translateY(-24px) rotate(-220deg)}}
+@keyframes kickleg{0%,35%{transform:rotate(25deg)}65%,100%{transform:rotate(-25deg)}}
+.intro{padding:20px;border-radius:18px;background:#eef8ff;border-left:6px solid var(--blue)}
+.activity-info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.info{padding:17px;border-radius:16px;background:#f1f8fc;border:1px solid #c9deed}.info b{display:block;color:var(--navy)}
+.effect-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.effect{border:1px solid var(--line);border-radius:20px;padding:18px;background:#fbfdff}
+.effect h3{margin:0 0 8px;color:var(--navy)}
+.effect-visual{height:180px;position:relative;border-radius:15px;background:#edf7fd;overflow:hidden;margin-bottom:12px}
+.toy{position:absolute;left:25px;bottom:48px;width:85px;height:45px;background:#5d91bb;border-radius:12px;animation:moveToy 3s ease-in-out infinite}
+.toy:before,.toy:after{content:"";position:absolute;bottom:-13px;width:22px;height:22px;border-radius:50%;background:#354a5b}.toy:before{left:10px}.toy:after{right:10px}
+.smallpush{position:absolute;left:120px;bottom:68px;width:90px;height:7px;background:var(--red)}
+.smallpush:after{content:"";position:absolute;right:-2px;top:-10px;border-top:13px solid transparent;border-bottom:13px solid transparent;border-left:21px solid var(--red)}
+@keyframes moveToy{0%,20%{transform:translateX(0)}75%,100%{transform:translateX(190px)}}
+.fast .toy{animation-duration:1.7s}
+.stop-hand{position:absolute;right:70px;bottom:40px;width:34px;height:100px;background:#efc5a4;border-radius:18px}
+.side-arrow{position:absolute;left:160px;top:25px;width:8px;height:90px;background:var(--purple)}
+.side-arrow:after{content:"";position:absolute;left:-12px;bottom:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-top:23px solid var(--purple)}
+.clay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:130px;height:85px;border-radius:48% 52% 44% 56%;background:#d56b9b;animation:squash 2.5s ease-in-out infinite}
+@keyframes squash{50%{transform:translate(-50%,-50%) scaleX(1.35) scaleY(.65)}}
+.result{margin-top:18px;padding:20px;border-radius:18px;background:#eefbf3;border:1px solid #9fd2b0}
+.result h3{margin:0 0 8px;color:#1f6d4d}
+.memory{margin-top:18px;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}
+.memory b{font-size:clamp(22px,3vw,34px);color:var(--navy)}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.visual-grid,.effect-grid,.activity-info{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="topbar">
+  <div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 5</div>
+  <div class="actions">
+    <button class="btn light" onclick="document.getElementById('kesan').scrollIntoView()">8.2 Kesan Daya</button>
+    <button class="btn primary" onclick="replay()">Ulang Animasi</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="kicker">LATIHAN FORMATIF 8.1 + 8.2 KESAN DAYA</span>
+  <h1>Soalan, Jawapan dan Kesan Daya</h1>
+  <p>
+    Jawab setiap soalan berdasarkan jenis daya, arah daya dan titik aplikasi daya. Kemudian perhatikan bagaimana daya mengubah sesuatu jasad.<br>
+    <span class="cn">根据力的种类、方向和作用点回答问题，再观察力如何改变物体。</span>
+  </p>
+</section>
+
+<section class="section">
+  <div class="title-row"><div class="num">1</div><h2>Latihan Formatif 8.1（形成性练习）</h2></div>
+
+  <div class="question-card">
+    <div class="question-head">Soalan 1 · Namakan daya dalam setiap situasi</div>
+    <div class="question-body">
+      <div class="visual-grid">
+        <article class="visual-card">
+          <div class="visual"><div class="bungee-rope"></div><div class="person"></div><div class="down"></div><div class="up"></div></div>
+          <div class="text"><h3>(a) Penerjun bungee</h3><span class="cn">蹦极跳者</span></div>
+        </article>
+        <article class="visual-card">
+          <div class="visual"><div class="road"></div><div class="bike"><div class="wheel w1"></div><div class="wheel w2"></div><div class="frame"></div></div><div class="motion"></div><div class="friction"></div></div>
+          <div class="text"><h3>(b) Basikal di permukaan kasar</h3><span class="cn">在粗糙表面行驶的自行车</span></div>
+        </article>
+        <article class="visual-card">
+          <div class="visual"><div class="balloon"></div><div class="up"></div><div class="down"></div></div>
+          <div class="text"><h3>(c) Belon panas terapung</h3><span class="cn">漂浮的热气球</span></div>
+        </article>
+      </div>
+      <button class="answer-toggle" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button>
+      <div class="answer">
+        <h3>Jawapan & Penerangan（答案与讲解）</h3>
+        <p><b>(a)</b> Daya elastik pada tali bungee dan berat yang bertindak ke bawah.<br><span class="cn">蹦极绳产生弹力，重量向下作用。</span></p>
+        <p><b>(b)</b> Daya geseran bertindak bertentangan dengan arah gerakan basikal.<br><span class="cn">摩擦力的方向与自行车运动方向相反。</span></p>
+        <p><b>(c)</b> Daya apungan bertindak ke atas dan berat bertindak ke bawah.<br><span class="cn">浮力向上，重量向下。</span></p>
+        <div class="exam"><b>考试抓法：</b> Tali diregangkan → daya elastik；permukaan kasar → daya geseran；terapung → daya apungan.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-head">Soalan 2 · Lelaki menolak kereta</div>
+    <div class="question-body">
+      <div class="visual">
+        <div class="man"></div><div class="car"></div><div class="pushpoint"></div><div class="force-arrow pusharrow"></div>
+      </div>
+      <p>Tunjukkan arah daya tolakan dan titik aplikasi daya pada kereta.<br><span class="cn">标出推力方向以及力作用在汽车上的位置。</span></p>
+      <button class="answer-toggle" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button>
+      <div class="answer">
+        <h3>Jawapan & Penerangan（答案与讲解）</h3>
+        <p><b>Arah daya tolakan:</b> Ke hadapan, mengikut arah kereta ditolak.<br><span class="cn">推力方向：向前，沿着汽车被推动的方向。</span></p>
+        <p><b>Titik aplikasi daya:</b> Pada bahagian kereta yang bersentuhan dengan tangan lelaki itu.<br><span class="cn">作用点：男子双手与汽车接触的位置。</span></p>
+        <div class="exam"><b>口诀：</b> Anak panah = arah；tempat sentuh = titik aplikasi.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="question-card">
+    <div class="question-head">Soalan 3 · Bola disepak oleh pemain</div>
+    <div class="question-body">
+      <div class="kick-scene"><div class="kick-ball"></div><div class="leg"></div><div class="forward"></div><div class="backward"></div></div>
+      <p>(a) Namakan daya-daya yang terlibat. (b) Tunjukkan arah daya-daya tersebut.<br><span class="cn">写出涉及的力，并标出这些力的方向。</span></p>
+      <button class="answer-toggle" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button>
+      <div class="answer">
+        <h3>Jawapan & Penerangan（答案与讲解）</h3>
+        <p><b>Daya tindakan:</b> Kaki mengenakan daya tolakan pada bola ke hadapan.<br><span class="cn">作用力：脚向前推球。</span></p>
+        <p><b>Daya tindak balas:</b> Bola mengenakan daya pada kaki ke arah yang bertentangan.<br><span class="cn">反作用力：球对脚施加方向相反的力。</span></p>
+        <p>Kedua-dua daya mempunyai magnitud yang sama tetapi arah yang bertentangan.<br><span class="cn">两种力大小相同，但方向相反。</span></p>
+        <div class="exam"><b>考试重点：</b> Jangan lukis kedua-dua anak panah pada objek yang sama. Satu daya bertindak pada bola, satu lagi bertindak pada kaki.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="kesan">
+  <div class="title-row"><div class="num">2</div><h2>8.2 Kesan Daya（力的作用效果）</h2></div>
+
+  <div class="intro">
+    Daya tidak dapat dilihat tetapi kesannya boleh diperhatikan. Apabila daya dikenakan pada suatu jasad, daya itu boleh mengubah bentuk, saiz dan gerakan jasad tersebut.<br>
+    <span class="cn">力看不见，但它的效果可以被观察。力可以改变物体的形状、大小和运动状态。</span>
+  </div>
+
+  <div class="activity-info">
+    <div class="info"><b>Aktiviti 8.3</b>Memerhati kesan daya<br><span class="cn">观察力的作用效果</span></div>
+    <div class="info"><b>Bahan（材料）</b>Kereta mainan dan plastisin<br><span class="cn">玩具车和黏土</span></div>
+    <div class="info"><b>Radas（仪器）</b>Meja<br><span class="cn">桌子</span></div>
+  </div>
+
+  <div class="effect-grid">
+    <article class="effect">
+      <div class="effect-visual"><div class="toy"></div><div class="smallpush"></div></div>
+      <h3>1. Menggerakkan objek pegun</h3>
+      <p>Tolak kereta mainan yang pegun menggunakan daya kecil.</p>
+      <p class="cn">用较小的力推动静止的玩具车。</p>
+      <div class="result"><h3>Pemerhatian（观察）</h3>Kereta mainan yang pegun mula bergerak.<br><span class="cn">静止的玩具车开始移动。</span></div>
+    </article>
+
+    <article class="effect fast">
+      <div class="effect-visual"><div class="toy"></div><div class="smallpush" style="width:150px"></div></div>
+      <h3>2. Mengubah kelajuan</h3>
+      <p>Tambahkan daya tolakan pada kereta mainan.</p>
+      <p class="cn">增加施加在玩具车上的推力。</p>
+      <div class="result"><h3>Pemerhatian（观察）</h3>Kereta mainan bergerak dengan lebih laju.<br><span class="cn">玩具车移动得更快。</span></div>
+    </article>
+
+    <article class="effect">
+      <div class="effect-visual"><div class="toy"></div><div class="stop-hand"></div></div>
+      <h3>3. Menghentikan objek bergerak</h3>
+      <p>Halang gerakan kereta mainan menggunakan tangan.</p>
+      <p class="cn">用手阻挡正在移动的玩具车。</p>
+      <div class="result"><h3>Pemerhatian（观察）</h3>Kereta mainan berhenti bergerak.<br><span class="cn">玩具车停止移动。</span></div>
+    </article>
+
+    <article class="effect">
+      <div class="effect-visual"><div class="toy"></div><div class="side-arrow"></div></div>
+      <h3>4. Mengubah arah gerakan</h3>
+      <p>Tolak kereta mainan dari tepi semasa kereta sedang bergerak.</p>
+      <p class="cn">玩具车移动时，从侧面推它。</p>
+      <div class="result"><h3>Pemerhatian（观察）</h3>Arah gerakan kereta mainan berubah.<br><span class="cn">玩具车的运动方向发生改变。</span></div>
+    </article>
+
+    <article class="effect" style="grid-column:1/-1">
+      <div class="effect-visual"><div class="clay"></div></div>
+      <h3>5. Mengubah bentuk dan saiz</h3>
+      <p>Tekan sekeping plastisin dan perhatikan perubahan yang berlaku.</p>
+      <p class="cn">按压一块黏土，并观察所发生的变化。</p>
+      <div class="result"><h3>Pemerhatian（观察）</h3>Bentuk dan saiz plastisin berubah.<br><span class="cn">黏土的形状和大小发生改变。</span></div>
+    </article>
+  </div>
+
+  <div class="memory">
+    <b>口诀：Gerak · Laju · Henti · Arah · Bentuk</b><br>
+    <span class="cn">力可以使物体移动、改变速度、停止、改变方向，以及改变形状和大小。</span>
+  </div>
+</section>
+
+<footer class="footer">
+Page 5 · Latihan Formatif 8.1 dan Aktiviti 8.3 · Berdasarkan halaman 174–176 buku teks Sains Tingkatan 2
+</footer>
+</main>
+
+<script>
+function toggleAnswer(btn){
+  const ans=btn.nextElementSibling;
+  ans.classList.toggle('show');
+  btn.textContent=ans.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）';
+}
+function replay(){
+  document.querySelectorAll('.bungee-rope,.balloon,.pushpoint,.kick-ball,.leg,.toy,.clay').forEach(el=>{
+    el.style.animation='none';void el.offsetWidth;el.style.animation='';
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 7</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#647b8d;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--purple:#7654b7;--bg:#eef6fb;
+ --shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Noto Sans SC","Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{position:sticky;top:10px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);backdrop-filter:blur(10px)}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.light{background:#e7f2fa;color:var(--navy)}.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:350px;height:350px;border-radius:50%;right:-130px;top:-160px;background:rgba(255,255,255,.08)}
+.kicker{display:inline-block;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.35);font-weight:900}
+h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}
+.hero p{font-size:19px;max-width:920px;margin:0;color:#eaf7ff}
+.cn{color:#657c8f;font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px;flex:0 0 auto}
+h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.exp-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.box{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fbfdff}
+.box h3{margin-top:0;color:var(--navy)}
+.vars{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.var{padding:16px;border-radius:16px;background:#eef7fd;border:1px solid #c9deed}
+.var b{display:block;color:var(--navy)}
+.formula{margin:18px 0;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}
+.formula b{font-size:clamp(26px,4vw,40px);color:var(--navy)}
+.lab{height:390px;position:relative;border-radius:20px;background:linear-gradient(#eaf6ff,#dcecf7);overflow:hidden;border:1px solid var(--line)}
+.scale{position:absolute;left:60px;bottom:40px;width:150px;height:150px;border-radius:50%;background:#eef4f7;border:8px solid #60798c;animation:scalePulse 2.5s ease-in-out infinite}
+.needle{position:absolute;left:50%;top:50%;width:55px;height:5px;background:var(--red);transform-origin:left center;animation:needleMove 2.5s ease-in-out infinite}
+.block-row{position:absolute;left:25px;right:25px;top:35px;display:flex;justify-content:space-between}
+.block{width:75px;height:75px;border-radius:8px;display:grid;place-items:center;color:#fff;font-weight:900;animation:blockBob 2.5s ease-in-out infinite}
+.cu{background:#b86e3d}.al{background:#8b9baa}.cork{background:#c79248}.wood{background:#9a6b3f}
+.block:nth-child(2){animation-delay:.2s}.block:nth-child(3){animation-delay:.4s}.block:nth-child(4){animation-delay:.6s}
+.ruler{position:absolute;right:45px;bottom:40px;width:28px;height:180px;background:repeating-linear-gradient(180deg,#f6d979 0 10px,#d3a824 10px 12px);animation:rulerGlow 2s infinite}
+@keyframes scalePulse{50%{transform:scale(1.04)}}@keyframes needleMove{0%,100%{transform:rotate(-35deg)}50%{transform:rotate(35deg)}}@keyframes blockBob{50%{transform:translateY(-10px) rotate(1deg)}}@keyframes rulerGlow{50%{filter:brightness(1.18)}}
+.steps ol{padding-left:22px}.steps li{margin:8px 0}
+.tank{height:360px;position:relative;border:1px solid var(--line);border-radius:20px;background:#eaf6ff;overflow:hidden}
+.basin{position:absolute;left:35px;right:35px;bottom:25px;height:245px;border:8px solid #617d90;border-top:0;border-radius:0 0 24px 24px;overflow:hidden}
+.water{position:absolute;inset:auto 0 0 0;height:200px;background:rgba(64,163,220,.62);animation:waterPulse 2s ease-in-out infinite}
+.test-block{position:absolute;width:58px;height:58px;border-radius:6px;z-index:3;display:grid;place-items:center;color:#fff;font-size:12px;font-weight:900}
+.b1{left:16%;top:85px;background:#b86e3d;animation:sink1 3.5s ease-in-out infinite}
+.b2{left:38%;top:85px;background:#8b9baa;animation:sink2 3.5s ease-in-out infinite .2s}
+.b3{left:60%;top:85px;background:#c79248;animation:float1 3.5s ease-in-out infinite .4s}
+.b4{left:78%;top:85px;background:#9a6b3f;animation:float2 3.5s ease-in-out infinite .6s}
+@keyframes waterPulse{50%{filter:brightness(1.1)}}
+@keyframes sink1{0%,25%{transform:translateY(0)}70%,100%{transform:translateY(190px)}}
+@keyframes sink2{0%,25%{transform:translateY(0)}70%,100%{transform:translateY(190px)}}
+@keyframes float1{0%,25%{transform:translateY(0)}65%,100%{transform:translateY(80px)}}
+@keyframes float2{0%,25%{transform:translateY(0)}65%,100%{transform:translateY(80px)}}
+.force-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.force-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbfdff}
+.force-card h3{margin:0;padding:14px 18px;color:#fff}.less h3{background:var(--green)}.more h3{background:var(--red)}
+.force-scene{height:280px;position:relative;background:#eaf6ff;overflow:hidden}
+.mini-tank{position:absolute;left:35px;right:35px;bottom:25px;height:200px;border:7px solid #617d90;border-top:0;border-radius:0 0 20px 20px;overflow:hidden}
+.mini-water{position:absolute;inset:auto 0 0 0;height:160px;background:rgba(64,163,220,.62);animation:waterPulse 2s infinite}
+.objfloat,.objsink{position:absolute;left:50%;width:90px;height:50px;border-radius:8px;transform:translateX(-50%);z-index:3}
+.objfloat{bottom:150px;background:#c79248;animation:objFloat 2.5s ease-in-out infinite}
+.objsink{top:70px;background:#687887;animation:objSink 3s ease-in-out infinite}
+.arrow-up,.arrow-down{position:absolute;left:50%;width:8px;transform:translateX(-50%);z-index:5}
+.arrow-up{bottom:115px;height:100px;background:var(--green);animation:upPulse 1.3s infinite}.arrow-up:after{content:"";position:absolute;left:-13px;top:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:25px solid var(--green)}
+.arrow-down{top:72px;height:70px;background:var(--red);animation:downPulse 1.3s infinite}.arrow-down:after{content:"";position:absolute;left:-13px;bottom:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-top:25px solid var(--red)}
+.more .arrow-down{height:110px}.more .arrow-up{height:60px}
+@keyframes objFloat{50%{transform:translate(-50%,-12px)}}@keyframes objSink{0%,25%{transform:translate(-50%,0)}75%,100%{transform:translate(-50%,145px)}}@keyframes upPulse{50%{opacity:.4;transform:translate(-50%,-12px)}}@keyframes downPulse{50%{opacity:.4;transform:translate(-50%,12px)}}
+.card-content{padding:18px}
+.question{margin-top:20px;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.qhead{padding:14px 18px;background:var(--navy);color:#fff;font-weight:900}
+.qbody{padding:18px}
+.answer-toggle{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}
+.answer{display:none;margin-top:14px;padding:18px;border-radius:16px;background:#eefbf3;border:1px solid #9fd2b0}.answer.show{display:block}
+.answer h3{margin:0 0 8px;color:#1f6d4d}.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.table-wrap{overflow:auto}
+table{width:100%;border-collapse:collapse;min-width:720px}th,td{border:1px solid #b9cedd;padding:10px;text-align:center}th{background:#dceef9;color:var(--navy)}
+.ship-wrap{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center}
+.ship-scene{height:300px;position:relative;border-radius:20px;background:linear-gradient(#bfe5ff 0 55%,#4aa7d8 55% 100%);overflow:hidden;border:1px solid var(--line)}
+.ship{position:absolute;left:50%;bottom:78px;transform:translateX(-50%);width:260px;height:85px;background:#5f7484;clip-path:polygon(0 20%,100% 20%,85% 100%,15% 100%);animation:shipBob 2.5s ease-in-out infinite}
+.ship:before{content:"";position:absolute;left:80px;top:-45px;width:100px;height:50px;background:#d9e3e9;border:4px solid #5f7484}
+.plimsoll{position:absolute;left:50%;bottom:120px;transform:translateX(-50%);width:220px;height:3px;background:var(--gold);box-shadow:0 14px 0 var(--red),0 28px 0 var(--green);animation:lineGlow 1.8s ease-in-out infinite}
+@keyframes shipBob{50%{transform:translate(-50%,-10px) rotate(.7deg)}}@keyframes lineGlow{50%{filter:brightness(1.5)}}
+.memory{margin-top:18px;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}
+.memory b{font-size:clamp(22px,3vw,34px);color:var(--navy)}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.exp-grid,.force-grid,.ship-wrap,.vars{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar">
+ <div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 7</div>
+ <div class="actions">
+  <button class="btn light" onclick="document.getElementById('jadual').scrollIntoView()">Jadual Ketumpatan</button>
+  <button class="btn primary" onclick="replay()">Ulang Animasi</button>
+ </div>
+</header>
+
+<section class="hero">
+ <span class="kicker">EKSPERIMEN 8.1</span>
+ <h1>Ketumpatan dan Kesan Apungan</h1>
+ <p>
+  Kedudukan sesuatu objek di dalam bendalir bergantung pada ketumpatan objek berbanding dengan ketumpatan bendalir.<br>
+  <span class="cn">物体在流体中的位置取决于物体密度与流体密度的比较。</span>
+ </p>
+</section>
+
+<section class="section">
+ <div class="title-row"><div class="num">1</div><h2>Reka Bentuk Eksperimen（实验设计）</h2></div>
+
+ <div class="exp-grid">
+  <div class="box">
+   <h3>Tujuan dan Hipotesis</h3>
+   <p><b>Tujuan:</b> Mengkaji kesan ketumpatan ke atas kedudukan objek dalam air.<br><span class="cn">目的：研究密度对物体在水中位置的影响。</span></p>
+   <p><b>Pernyataan masalah:</b> Adakah objek yang lebih tumpat daripada air akan terapung atau tenggelam di dalam air?<br><span class="cn">问题：密度比水大的物体会漂浮还是下沉？</span></p>
+   <p><b>Hipotesis:</b> Objek yang lebih tumpat daripada air akan tenggelam, manakala objek yang kurang tumpat daripada air akan terapung.<br><span class="cn">假设：比水密度大的物体会下沉；比水密度小的物体会漂浮。</span></p>
+  </div>
+
+  <div class="lab">
+   <div class="block-row">
+    <div class="block cu">Kuprum</div><div class="block al">Aluminium</div>
+    <div class="block cork">Gabus</div><div class="block wood">Kayu</div>
+   </div>
+   <div class="scale"><div class="needle"></div></div>
+   <div class="ruler"></div>
+  </div>
+ </div>
+
+ <div class="vars">
+  <div class="var"><b>Dimalarkan（控制变量）</b>Isi padu bongkah<br><span class="cn">木块体积</span></div>
+  <div class="var"><b>Dimanipulasikan（操纵变量）</b>Ketumpatan bongkah<br><span class="cn">木块密度</span></div>
+  <div class="var"><b>Bergerak balas（反应变量）</b>Kedudukan bongkah dalam air<br><span class="cn">木块在水中的位置</span></div>
+ </div>
+
+ <div class="formula">
+  <b>Ketumpatan = Jisim ÷ Isi padu</b><br>
+  <span class="cn">密度 = 质量 ÷ 体积</span>
+ </div>
+</section>
+
+<section class="section">
+ <div class="title-row"><div class="num">2</div><h2>Prosedur dan Pemerhatian（步骤与观察）</h2></div>
+
+ <div class="exp-grid">
+  <div class="box steps">
+   <h3>Prosedur（步骤）</h3>
+   <ol>
+    <li>Timbang jisim setiap bongkah.<br><span class="cn">称量每个木块的质量。</span></li>
+    <li>Kirakan isi padu setiap bongkah.<br><span class="cn">计算每个木块的体积。</span></li>
+    <li>Kirakan ketumpatan setiap bongkah.<br><span class="cn">计算每个木块的密度。</span></li>
+    <li>Rekodkan jisim, isi padu dan ketumpatan.<br><span class="cn">记录质量、体积和密度。</span></li>
+    <li>Masukkan keempat-empat bongkah ke dalam air dan perhatikan objek yang terapung atau tenggelam.<br><span class="cn">把四个木块放入水中，观察哪些漂浮或下沉。</span></li>
+   </ol>
+  </div>
+
+  <div class="tank">
+   <div class="basin"><div class="water"></div></div>
+   <div class="test-block b1">Kuprum</div>
+   <div class="test-block b2">Aluminium</div>
+   <div class="test-block b3">Gabus</div>
+   <div class="test-block b4">Kayu</div>
+  </div>
+ </div>
+
+ <div class="question">
+  <div class="qhead">Kesimpulan（结论）</div>
+  <div class="qbody">
+   <p>Adakah hipotesis diterima? Berikan alasan anda.<br><span class="cn">假设是否成立？说明原因。</span></p>
+   <button class="answer-toggle" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button>
+   <div class="answer">
+    <h3>Jawapan & Penerangan（答案与讲解）</h3>
+    <p>Hipotesis diterima. Objek yang lebih tumpat daripada air tenggelam, manakala objek yang kurang tumpat daripada air terapung.</p>
+    <p class="cn">假设成立。比水密度大的物体下沉，比水密度小的物体漂浮。</p>
+    <div class="exam"><b>考试句型：</b> Hipotesis diterima kerana keputusan eksperimen menyokong hipotesis.</div>
+   </div>
+  </div>
+ </div>
+
+ <div class="question">
+  <div class="qhead">Soalan Eksperimen</div>
+  <div class="qbody">
+   <p>1. Air mempunyai ketumpatan 1.0 g cm⁻³. Bongkah manakah yang lebih tumpat daripada air?</p>
+   <p>2. Adakah bongkah yang lebih tumpat daripada air terapung atau tenggelam?</p>
+   <button class="answer-toggle" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button>
+   <div class="answer">
+    <h3>Jawapan & Penerangan（答案与讲解）</h3>
+    <p><b>1.</b> Bongkah kuprum dan bongkah aluminium lebih tumpat daripada air.<br><span class="cn">铜块和铝块的密度比水大。</span></p>
+    <p><b>2.</b> Bongkah yang lebih tumpat daripada air akan tenggelam.<br><span class="cn">比水密度大的木块会下沉。</span></p>
+    <div class="exam"><b>抓关键词：</b> Ketumpatan objek &gt; 1.0 g cm⁻³ → tenggelam.</div>
+   </div>
+  </div>
+ </div>
+</section>
+
+<section class="section">
+ <div class="title-row"><div class="num">3</div><h2>Hubungan Ketumpatan, F dan W（密度、浮力与重量）</h2></div>
+
+ <div class="force-grid">
+  <article class="force-card less">
+   <h3>Objek Kurang Tumpat（密度较小）</h3>
+   <div class="force-scene">
+    <div class="mini-tank"><div class="mini-water"></div></div>
+    <div class="objfloat"></div><div class="arrow-up"></div><div class="arrow-down"></div>
+   </div>
+   <div class="card-content">
+    <p>Apabila objek kurang tumpat cuba ditenggelamkan, daya apungan, F, menjadi lebih besar daripada berat, W.</p>
+    <p class="cn">当较低密度的物体被压入水中时，浮力 F 大于重量 W。</p>
+    <p><b>F &gt; W → objek naik dan terapung</b></p>
+   </div>
+  </article>
+
+  <article class="force-card more">
+   <h3>Objek Lebih Tumpat（密度较大）</h3>
+   <div class="force-scene">
+    <div class="mini-tank"><div class="mini-water"></div></div>
+    <div class="objsink"></div><div class="arrow-up"></div><div class="arrow-down"></div>
+   </div>
+   <div class="card-content">
+    <p>Apabila objek lebih tumpat daripada cecair, daya apungan, F, kurang daripada berat, W.</p>
+    <p class="cn">当物体密度比液体大时，浮力 F 小于重量 W。</p>
+    <p><b>F &lt; W → objek tenggelam</b></p>
+   </div>
+  </article>
+ </div>
+
+ <div class="memory">
+  <b>口诀：Kurang tumpat → terapung；Lebih tumpat → tenggelam</b><br>
+  <span class="cn">密度较小会漂浮，密度较大会下沉。</span>
+ </div>
+</section>
+
+<section class="section" id="jadual">
+ <div class="title-row"><div class="num">4</div><h2>Jadual 8.1 Ketumpatan Bahan（材料密度表）</h2></div>
+
+ <div class="table-wrap">
+  <table>
+   <thead><tr><th>Bahan</th><th>g cm⁻³</th><th>kg m⁻³</th><th>Keadaan dalam air</th></tr></thead>
+   <tbody>
+    <tr><td>Gabus</td><td>0.24</td><td>240</td><td>Terapung</td></tr>
+    <tr><td>Air</td><td>1.0</td><td>1 000</td><td>Rujukan</td></tr>
+    <tr><td>Gliserin</td><td>1.26</td><td>1 260</td><td>Tenggelam</td></tr>
+    <tr><td>Besi</td><td>7.9</td><td>7 900</td><td>Tenggelam</td></tr>
+    <tr><td>Plumbum</td><td>11.3</td><td>11 300</td><td>Tenggelam</td></tr>
+    <tr><td>Merkuri</td><td>13.6</td><td>13 600</td><td>Tenggelam</td></tr>
+    <tr><td>Emas</td><td>19.3</td><td>19 300</td><td>Tenggelam</td></tr>
+   </tbody>
+  </table>
+ </div>
+</section>
+
+<section class="section">
+ <div class="title-row"><div class="num">5</div><h2>Garisan Plimsoll（载重线）</h2></div>
+ <div class="ship-wrap">
+  <div class="ship-scene"><div class="ship"></div><div class="plimsoll"></div></div>
+  <div class="box">
+   <p>Kapal kargo ditandakan dengan garisan Plimsoll untuk tujuan keselamatan.</p>
+   <p class="cn">货船标有载重线，以确保安全。</p>
+   <p>Ketumpatan air laut berbeza kerana perbezaan suhu dan kepekatan garam. Garisan Plimsoll membantu menentukan aras yang selamat bagi kapal untuk terapung.</p>
+   <p class="cn">海水密度会因温度和盐分浓度不同而改变。载重线帮助确定船只安全漂浮的水位。</p>
+   <div class="exam"><b>Tanda dalam buku teks:</b> TF, F, T, S, W dan WNA.</div>
+  </div>
+ </div>
+</section>
+
+<footer class="footer">Page 7 · Eksperimen 8.1, Ketumpatan dan Garisan Plimsoll · Berdasarkan halaman 179–180 buku teks Sains Tingkatan 2</footer>
+</main>
+
+<script>
+function toggleAnswer(btn){
+ const ans=btn.nextElementSibling;
+ ans.classList.toggle('show');
+ btn.textContent=ans.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）';
+}
+function replay(){
+ document.querySelectorAll('.scale,.needle,.block,.ruler,.water,.test-block,.mini-water,.objfloat,.objsink,.arrow-up,.arrow-down,.ship,.plimsoll').forEach(el=>{
+  el.style.animation='none';void el.offsetWidth;el.style.animation='';
+ });
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

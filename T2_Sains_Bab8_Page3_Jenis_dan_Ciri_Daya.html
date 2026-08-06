@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 3</title>
+<style>
+:root{
+  --navy:#102f49;--blue:#1769aa;--sky:#eaf6ff;--ink:#263f53;
+  --muted:#5b7184;--white:#fff;--line:#c8dae8;--red:#d84b4b;
+  --green:#2c8b62;--orange:#ef8b32;--purple:#7754b8;--gold:#f2bd36;
+  --shadow:0 14px 38px rgba(16,47,73,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:Arial,"Noto Sans SC","Microsoft YaHei",sans-serif;
+  color:var(--ink);line-height:1.65;
+  background:linear-gradient(180deg,#f7fbff 0%,#edf6fc 100%);
+}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  position:sticky;top:10px;z-index:20;padding:12px 16px;background:rgba(255,255,255,.94);
+  border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);
+  backdrop-filter:blur(10px)
+}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.btn.light{background:#e7f2fa;color:var(--navy)}
+.btn.primary{background:var(--blue);color:#fff}
+.hero{
+  margin-top:20px;padding:42px;border-radius:28px;color:#fff;
+  background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);
+  box-shadow:var(--shadow);position:relative;overflow:hidden
+}
+.hero:after{content:"";position:absolute;width:350px;height:350px;border-radius:50%;
+  right:-130px;top:-160px;background:rgba(255,255,255,.08)}
+.kicker{display:inline-block;padding:7px 14px;border-radius:999px;
+  background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.35);
+  font-weight:900;letter-spacing:.7px}
+h1{font-size:clamp(38px,5vw,66px);line-height:1.08;margin:16px 0 10px}
+.hero p{font-size:19px;max-width:900px;margin:0;color:#eaf7ff}
+.cn{color:#657c8f;font-weight:600}
+.hero .cn{color:#d8efff}
+.section{
+  margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;
+  padding:32px;box-shadow:var(--shadow)
+}
+.title-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;
+  background:var(--navy);color:#fff;font-weight:900;font-size:21px;flex:0 0 auto}
+h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.force-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.force-card{
+  border:1px solid var(--line);border-radius:21px;overflow:hidden;background:#fbfdff;
+  display:grid;grid-template-columns:190px 1fr;min-height:230px
+}
+.visual{position:relative;overflow:hidden;background:linear-gradient(180deg,#e9f6ff,#d9ebf7)}
+.text{padding:20px}
+.text h3{margin:0 0 7px;color:var(--navy);font-size:22px}
+.text p{margin:0}
+.tag{display:inline-block;margin-top:10px;padding:6px 10px;border-radius:999px;
+  background:#edf5fb;color:var(--blue);font-weight:800;font-size:14px}
+.ground{position:absolute;left:0;right:0;bottom:22px;height:28px;background:#83b96f}
+.ball{position:absolute;left:50%;top:34px;width:50px;height:50px;border-radius:50%;
+  background:radial-gradient(circle at 35% 30%,#fff,#f0b83f 70%);border:3px solid #956c14;
+  animation:fall 2.4s ease-in infinite}
+.down-arrow{position:absolute;left:calc(50% + 18px);top:92px;width:7px;height:85px;background:var(--red)}
+.down-arrow:after{content:"";position:absolute;left:-12px;bottom:-1px;border-left:16px solid transparent;
+  border-right:16px solid transparent;border-top:23px solid var(--red)}
+@keyframes fall{0%{transform:translate(-50%,0)}80%,100%{transform:translate(-50%,115px)}}
+.table{position:absolute;left:20px;right:20px;bottom:45px;height:25px;background:#9b6b3c}
+.box{position:absolute;width:80px;height:62px;left:55px;bottom:70px;background:#d59145;border:3px solid #8a5727}
+.up-arrow{position:absolute;left:92px;bottom:133px;width:7px;height:65px;background:var(--green);
+ animation:pulseUp 1.5s infinite}
+.up-arrow:after{content:"";position:absolute;left:-12px;top:-1px;border-left:16px solid transparent;
+ border-right:16px solid transparent;border-bottom:23px solid var(--green)}
+@keyframes pulseUp{50%{opacity:.35;transform:translateY(-10px)}}
+.spring{
+  position:absolute;left:80px;top:28px;width:30px;height:145px;
+  background:repeating-linear-gradient(180deg,transparent 0 8px,var(--purple) 8px 12px);
+  animation:elastic 2.5s ease-in-out infinite;transform-origin:top
+}
+.spring:before{content:"";position:absolute;left:-45px;top:-5px;width:120px;height:12px;background:#62798d}
+.weight{position:absolute;left:65px;top:170px;width:60px;height:42px;border-radius:6px;
+ background:#596b79;color:#fff;display:grid;place-items:center;font-weight:900;
+ animation:wmove 2.5s ease-in-out infinite}
+@keyframes elastic{50%{height:180px}}
+@keyframes wmove{50%{transform:translateY(35px)}}
+.beaker{position:absolute;left:28px;right:28px;bottom:23px;height:165px;border:7px solid #627f91;
+ border-top:0;border-radius:0 0 20px 20px;overflow:hidden}
+.water{position:absolute;left:0;right:0;bottom:0;height:120px;background:rgba(65,164,219,.62)}
+.float-block{position:absolute;left:50%;bottom:110px;transform:translateX(-50%);
+ width:92px;height:43px;background:#c88a42;border:3px solid #805326;z-index:3;
+ animation:float 2.4s ease-in-out infinite}
+@keyframes float{50%{transform:translate(-50%,-12px)}}
+.moving-block{position:absolute;width:74px;height:54px;left:25px;bottom:55px;background:#d59145;border:3px solid #865526;
+ animation:slide 3s ease-in-out infinite}
+.rough{position:absolute;left:0;right:0;bottom:25px;height:28px;
+ background:repeating-linear-gradient(135deg,#76573e 0 8px,#b88b62 8px 16px)}
+.motion-arrow{position:absolute;left:35px;top:40px;width:100px;height:7px;background:var(--blue)}
+.motion-arrow:after{content:"";position:absolute;right:-2px;top:-11px;border-top:14px solid transparent;
+ border-bottom:14px solid transparent;border-left:22px solid var(--blue)}
+.friction-arrow{position:absolute;right:28px;bottom:120px;width:90px;height:7px;background:var(--red)}
+.friction-arrow:after{content:"";position:absolute;left:-2px;top:-11px;border-top:14px solid transparent;
+ border-bottom:14px solid transparent;border-right:22px solid var(--red)}
+@keyframes slide{0%,20%{transform:translateX(0)}70%,100%{transform:translateX(80px)}}
+.weight-box{position:absolute;width:78px;height:60px;left:56px;top:45px;background:#d59145;border:3px solid #865526}
+.weight-arrow{position:absolute;left:92px;top:110px;width:7px;height:82px;background:var(--red)}
+.weight-arrow:after{content:"";position:absolute;left:-12px;bottom:-1px;border-left:16px solid transparent;
+ border-right:16px solid transparent;border-top:23px solid var(--red)}
+.char-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.char-card{border-radius:20px;padding:22px;border:1px solid var(--line);background:#f9fcfe}
+.char-icon{height:150px;position:relative;background:#edf7fd;border-radius:16px;margin-bottom:14px;overflow:hidden}
+.char-card h3{margin:0 0 6px;color:var(--navy)}
+.force-arrow{position:absolute;left:25px;top:70px;width:105px;height:10px;background:var(--red)}
+.force-arrow:after{content:"";position:absolute;right:-2px;top:-13px;border-top:18px solid transparent;
+ border-bottom:18px solid transparent;border-left:28px solid var(--red)}
+.force-arrow.long{width:150px}
+.force-arrow.diag{transform:rotate(-28deg);transform-origin:left center}
+.application{position:absolute;left:48px;top:61px;width:27px;height:27px;border-radius:50%;
+ background:var(--gold);border:4px solid #a97805;animation:pulse 1.4s infinite}
+@keyframes pulse{50%{transform:scale(1.28);opacity:.55}}
+.measure{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:20px;align-items:stretch
+}
+.measure-box{padding:23px;border-radius:20px;background:#eef8ff;border:1px solid #bfdceb}
+.spring-scale{position:relative;min-height:300px;border-radius:20px;background:#f8fbfd;border:1px solid var(--line)}
+.scale-body{position:absolute;left:50%;top:28px;transform:translateX(-50%);
+ width:75px;height:205px;border-radius:18px;background:#dce8ef;border:4px solid #637d90}
+.scale-body:before{content:"";position:absolute;left:50%;top:-22px;transform:translateX(-50%);
+ width:28px;height:28px;border:6px solid #637d90;border-radius:50%;background:#fff}
+.scale-lines{position:absolute;left:16px;right:16px;top:24px;bottom:24px;
+ background:repeating-linear-gradient(180deg,transparent 0 14px,#6e8495 14px 16px)}
+.pointer{position:absolute;left:8px;right:8px;top:76px;height:5px;background:var(--red);
+ animation:scaleMove 2.8s ease-in-out infinite}
+@keyframes scaleMove{50%{transform:translateY(72px)}}
+.hook{position:absolute;left:50%;top:232px;transform:translateX(-50%);width:6px;height:35px;background:#637d90}
+.hook:after{content:"";position:absolute;left:-11px;bottom:-19px;width:23px;height:23px;border:6px solid #637d90;
+ border-top-color:transparent;border-radius:50%}
+.unit{
+  margin-top:18px;padding:20px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c;
+  text-align:center
+}
+.unit b{font-size:clamp(27px,4vw,43px);color:var(--navy)}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:900px){
+ .force-grid,.char-grid,.measure{grid-template-columns:1fr}
+ .force-card{grid-template-columns:160px 1fr}
+ .hero,.section{padding:25px 20px}
+ .topbar{position:static}
+}
+@media(max-width:600px){
+ .force-card{grid-template-columns:1fr}
+ .visual{min-height:220px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="topbar">
+  <div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 3</div>
+  <div class="actions">
+    <button class="btn light" onclick="document.getElementById('ciri').scrollIntoView()">Ciri-ciri Daya</button>
+    <button class="btn primary" onclick="replay()">Ulang Animasi</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="kicker">8.1 DAYA（力）</span>
+  <h1>Jenis-jenis Daya</h1>
+  <p>
+    Daya wujud dalam beberapa bentuk. Setiap jenis daya bertindak dalam keadaan yang berbeza.<br>
+    <span class="cn">力以多种形式存在。不同种类的力会在不同情况下产生作用。</span>
+  </p>
+</section>
+
+<section class="section">
+  <div class="title-row"><div class="num">1</div><h2>Enam Jenis Daya（六种力）</h2></div>
+
+  <div class="force-grid">
+    <article class="force-card">
+      <div class="visual">
+        <div class="ground"></div><div class="ball"></div><div class="down-arrow"></div>
+      </div>
+      <div class="text">
+        <h3>Daya Graviti（重力）</h3>
+        <p>Daya graviti ialah daya yang mengarah ke pusat bumi. Daya ini menyebabkan semua benda yang dilambung akan jatuh semula ke tanah.</p>
+        <p class="cn">重力是指向地球中心的力。它使所有被抛起的物体再次落回地面。</p>
+        <span class="tag">Arah ke pusat bumi · 指向地心</span>
+      </div>
+    </article>
+
+    <article class="force-card">
+      <div class="visual">
+        <div class="table"></div><div class="box"></div><div class="up-arrow"></div>
+      </div>
+      <div class="text">
+        <h3>Daya Normal（法向力）</h3>
+        <p>Daya normal ialah daya yang dihasilkan apabila suatu objek bersentuhan dengan suatu permukaan.</p>
+        <p class="cn">当物体与一个表面接触时，会产生法向力。</p>
+        <span class="tag">Objek bersentuhan dengan permukaan · 接触表面</span>
+      </div>
+    </article>
+
+    <article class="force-card">
+      <div class="visual">
+        <div class="spring"></div><div class="weight">50 g</div>
+      </div>
+      <div class="text">
+        <h3>Daya Elastik（弹力）</h3>
+        <p>Daya elastik wujud apabila sesuatu bahan diregangkan atau dimampatkan.</p>
+        <p class="cn">当物质被拉伸或压缩时，会产生弹力。</p>
+        <span class="tag">Diregangkan atau dimampatkan · 拉伸或压缩</span>
+      </div>
+    </article>
+
+    <article class="force-card">
+      <div class="visual">
+        <div class="beaker"><div class="water"></div></div><div class="float-block"></div>
+      </div>
+      <div class="text">
+        <h3>Daya Apungan（浮力）</h3>
+        <p>Daya apungan ialah daya tujah yang bertindak pada sesuatu objek yang terapung di dalam sesuatu bendalir.</p>
+        <p class="cn">浮力是作用在液体中漂浮物体上的向上推力。</p>
+        <span class="tag">Objek terapung dalam bendalir · 物体漂浮在流体中</span>
+      </div>
+    </article>
+
+    <article class="force-card">
+      <div class="visual">
+        <div class="rough"></div><div class="moving-block"></div>
+        <div class="motion-arrow"></div><div class="friction-arrow"></div>
+      </div>
+      <div class="text">
+        <h3>Daya Geseran（摩擦力）</h3>
+        <p>Daya geseran ialah daya yang menentang gerakan dan bertindak di antara dua permukaan yang saling bersentuhan.</p>
+        <p class="cn">摩擦力会阻碍运动，并作用在两个互相接触的表面之间。</p>
+        <span class="tag">Bertentangan dengan arah gerakan · 与运动方向相反</span>
+      </div>
+    </article>
+
+    <article class="force-card">
+      <div class="visual">
+        <div class="weight-box"></div><div class="weight-arrow"></div>
+      </div>
+      <div class="text">
+        <h3>Berat（重量）</h3>
+        <p>Berat suatu objek ditakrifkan sebagai daya graviti yang bertindak ke atasnya.</p>
+        <p class="cn">物体的重量是作用在该物体上的重力。</p>
+        <span class="tag">Berat ialah daya graviti · 重量就是重力</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="section" id="ciri">
+  <div class="title-row"><div class="num">2</div><h2>Ciri-ciri Daya（力的特征）</h2></div>
+  <p>
+    Daya ialah kuantiti vektor yang mempunyai magnitud dan arah. Magnitud merupakan kuantiti atau nilai sesuatu ukuran.<br>
+    <span class="cn">力是具有大小和方向的矢量。Magnitud 指某项测量的数量或数值。</span>
+  </p>
+
+  <div class="char-grid">
+    <article class="char-card">
+      <div class="char-icon"><div class="force-arrow long"></div></div>
+      <h3>Magnitud（大小）</h3>
+      <p>Magnitud menunjukkan nilai atau kekuatan daya.</p>
+      <p class="cn">Magnitud 表示力的数值或强度。</p>
+    </article>
+
+    <article class="char-card">
+      <div class="char-icon"><div class="force-arrow diag"></div></div>
+      <h3>Arah（方向）</h3>
+      <p>Arah tindakan daya ditunjukkan oleh anak panah.</p>
+      <p class="cn">力的作用方向可用箭头表示。</p>
+    </article>
+
+    <article class="char-card">
+      <div class="char-icon"><div class="application"></div><div class="force-arrow" style="left:62px"></div></div>
+      <h3>Titik Aplikasi Daya（力的作用点）</h3>
+      <p>Titik aplikasi ialah bahagian tempat daya dikenakan pada objek.</p>
+      <p class="cn">作用点是力施加在物体上的位置。</p>
+    </article>
+  </div>
+
+  <div class="unit">
+    <small>口诀 · INGAT</small><br>
+    <b>MAT = Magnitud + Arah + Titik aplikasi</b><br>
+    <span class="cn">记住 MAT：大小、方向、作用点。</span>
+  </div>
+</section>
+
+<section class="section">
+  <div class="title-row"><div class="num">3</div><h2>Pengukuran Daya（测量力）</h2></div>
+
+  <div class="measure">
+    <div class="measure-box">
+      <h3 style="margin-top:0;color:var(--navy)">Neraca Spring（弹簧秤）</h3>
+      <p>
+        Daya diukur menggunakan neraca spring. Neraca spring beroperasi dengan prinsip pemanjangan spring.
+      </p>
+      <p class="cn">
+        力使用弹簧秤测量。弹簧秤根据弹簧伸长的原理运作。
+      </p>
+      <p>
+        Kekuatan daya diukur daripada bacaan skala yang terdapat pada neraca.
+      </p>
+      <p class="cn">
+        力的大小通过读取弹簧秤上的刻度来测量。
+      </p>
+
+      <div class="unit">
+        <b>Unit daya = newton (N)</b><br>
+        <span class="cn">力的单位是牛顿，符号为 N。</span>
+      </div>
+    </div>
+
+    <div class="spring-scale" aria-label="Animasi neraca spring">
+      <div class="scale-body">
+        <div class="scale-lines"></div>
+        <div class="pointer"></div>
+      </div>
+      <div class="hook"></div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+Page 3 · Jenis-jenis Daya dan Ciri-ciri Daya · Berdasarkan halaman 170–171 buku teks Sains Tingkatan 2
+</footer>
+</main>
+
+<script>
+function replay(){
+  const els=document.querySelectorAll('.ball,.up-arrow,.spring,.weight,.float-block,.moving-block,.application,.pointer');
+  els.forEach(el=>{el.style.animation='none';void el.offsetWidth;el.style.animation='';});
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

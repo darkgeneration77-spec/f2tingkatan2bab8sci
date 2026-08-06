@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 19</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--purple:#7654b7;--orange:#ef8a31;
+ --shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)}
+button{font:inherit}
+.page{width:min(1200px,94vw);margin:22px auto 70px}
+.topbar{position:sticky;top:10px;z-index:30;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09)}
+.brand{font-weight:900;color:var(--navy)}.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}.light{background:#e7f2fa;color:var(--navy)}.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}.hero p{font-size:19px;max-width:930px}.tag{display:inline-block;padding:7px 14px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff59;font-weight:900}
+.cn{color:var(--muted);font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px}.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.searchbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+.searchbar input{flex:1;min-width:230px;padding:13px 16px;border:1px solid var(--line);border-radius:14px;font:inherit}
+.term-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.term{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbfdff}
+.term-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 18px;background:var(--navy);color:#fff}
+.term-head h3{margin:0;font-size:21px}.speak{border:0;border-radius:999px;background:#ffffff22;color:#fff;padding:8px 12px;font-weight:900;cursor:pointer}
+.term-body{padding:18px}.term-body p{margin:7px 0}
+.visual{height:150px;position:relative;background:#eef8ff;border-radius:14px;overflow:hidden;margin-bottom:12px}
+.arrow{position:absolute;left:25%;top:70px;width:140px;height:8px;background:var(--red);animation:arrowFlow 1.3s infinite}.arrow:after{content:"";position:absolute;right:-2px;top:-11px;border-top:15px solid transparent;border-bottom:15px solid transparent;border-left:24px solid var(--red)}
+.ball{position:absolute;left:22%;top:45px;width:55px;height:55px;border-radius:50%;background:var(--gold);border:3px solid #9b7410;animation:ballMove 3s infinite}
+@keyframes arrowFlow{50%{opacity:.4;transform:translateX(12px)}}@keyframes ballMove{50%{transform:translateX(150px) rotate(180deg)}}
+.table{position:absolute;left:20px;right:20px;bottom:25px;height:22px;background:#9a6a3b}.book{position:absolute;left:50%;bottom:47px;transform:translateX(-50%);width:90px;height:45px;background:var(--red);animation:bookBob 2.5s infinite}
+.up,.down{position:absolute;left:50%;width:8px;transform:translateX(-50%)}.up{bottom:92px;height:50px;background:var(--green);animation:upPulse 1.3s infinite}.up:after{content:"";position:absolute;left:-12px;top:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-bottom:23px solid var(--green)}.down{top:75px;height:50px;background:var(--red);animation:downPulse 1.3s infinite}.down:after{content:"";position:absolute;left:-12px;bottom:-1px;border-left:16px solid transparent;border-right:16px solid transparent;border-top:23px solid var(--red)}
+@keyframes bookBob{50%{transform:translate(-50%,-6px)}}@keyframes upPulse{50%{opacity:.4;transform:translate(-50%,-8px)}}@keyframes downPulse{50%{opacity:.4;transform:translate(-50%,8px)}}
+.tank{position:absolute;left:25px;right:25px;bottom:12px;height:120px;border:6px solid #61798c;border-top:0;border-radius:0 0 16px 16px;overflow:hidden}.water{position:absolute;inset:auto 0 0 0;height:90px;background:#4aa7d899}.float{position:absolute;left:50%;bottom:82px;transform:translateX(-50%);width:80px;height:35px;background:#c78a42;border:3px solid #7c5228;animation:floatBob 2.5s infinite}@keyframes floatBob{50%{transform:translate(-50%,-8px)}}
+.lever{position:absolute;left:25px;right:25px;top:70px;height:14px;background:#9c6c3c;border-radius:8px;animation:leverRock 3s infinite}.ful{position:absolute;left:50%;top:84px;transform:translateX(-50%);width:0;height:0;border-left:26px solid transparent;border-right:26px solid transparent;border-bottom:50px solid var(--gold)}@keyframes leverRock{50%{transform:rotate(-4deg)}}
+.press{position:absolute;left:50%;top:30px;transform:translateX(-50%);width:70px;height:75px;background:#687887;animation:pressMove 2.5s infinite}.clay{position:absolute;left:30px;right:30px;bottom:18px;height:35px;background:#d16a9a;border-radius:18px}@keyframes pressMove{50%{transform:translate(-50%,40px)}}
+.gasbox{position:absolute;left:50%;top:15px;transform:translateX(-50%);width:210px;height:120px;border:6px solid #61798c;border-radius:14px}.particle{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--red)}.p1{left:20px;top:20px;animation:p1 1.8s infinite}.p2{left:150px;top:20px;animation:p2 1.6s infinite}.p3{left:75px;top:75px;animation:p3 1.7s infinite}
+@keyframes p1{50%{transform:translate(140px,60px)}}@keyframes p2{50%{transform:translate(-125px,65px)}}@keyframes p3{50%{transform:translate(70px,-55px)}}
+.mountain{position:absolute;left:0;right:0;bottom:0;height:130px;background:#718593;clip-path:polygon(0 100%,30% 45%,48% 72%,68% 20%,100% 100%)}.mol{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--red);animation:mol 2s infinite}.m1{left:18%;bottom:40px}.m2{left:35%;bottom:60px}.m3{right:25%;top:35px}@keyframes mol{50%{transform:translate(10px,-8px)}}
+.liquid{position:absolute;left:25px;right:25px;bottom:10px;height:130px;background:linear-gradient(#81c9eb,#258bc1)}.bubble{position:absolute;left:50%;bottom:20px;width:18px;height:18px;border:3px solid #fff;border-radius:50%;animation:bubbleRise 3s infinite}@keyframes bubbleRise{0%{transform:translate(-50%,0) scale(.6)}100%{transform:translate(-50%,-100px) scale(1.6)}}
+.note{margin-top:18px;padding:18px;border-radius:18px;background:#fff7d8;border:1px solid #ecd36c}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.term-grid{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar">
+<div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 19</div>
+<div class="actions"><button class="btn light" onclick="speakAll()">Baca Semua Istilah</button><button class="btn primary" onclick="replay()">Ulang Animasi</button></div>
+</header>
+
+<section class="hero">
+<span class="tag">ISTILAH BAB 8 + SEBUTAN</span>
+<h1>Kamus Mini Daya dan Gerakan</h1>
+<p>Semua istilah utama diambil daripada Bab 8 buku teks. Klik butang sebutan untuk mendengar istilah dalam Bahasa Melayu.<br><span class="cn">全部主要术语来自第8章课本。点击发音按钮聆听马来文术语。</span></p>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">1</div><h2>Istilah Utama（主要术语）</h2></div>
+<div class="searchbar"><input id="search" type="text" placeholder="Cari istilah...（搜索术语）" oninput="filterTerms()"></div>
+
+<div class="term-grid" id="termGrid">
+
+<article class="term" data-term="daya force 力">
+<div class="term-head"><h3>Daya</h3><button class="speak" onclick="speak('Daya')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="ball"></div><div class="arrow"></div></div><p><b>Maksud:</b> Tarikan atau tolakan yang dikenakan pada objek.</p><p class="cn">意思：施加在物体上的拉力或推力。</p></div>
+</article>
+
+<article class="term" data-term="magnitud arah titik aplikasi">
+<div class="term-head"><h3>Magnitud, Arah dan Titik Aplikasi</h3><button class="speak" onclick="speak('Magnitud, arah dan titik aplikasi')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="arrow" style="left:18%;width:180px"></div></div><p><b>Maksud:</b> Tiga ciri utama daya.</p><p class="cn">意思：力的三个主要特征——大小、方向和作用点。</p></div>
+</article>
+
+<article class="term" data-term="daya graviti berat normal tindakan tindak balas">
+<div class="term-head"><h3>Daya Graviti, Berat dan Daya Normal</h3><button class="speak" onclick="speak('Daya graviti, berat dan daya normal')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="table"></div><div class="book"></div><div class="up"></div><div class="down"></div></div><p><b>Berat:</b> Daya graviti yang bertindak ke atas objek.</p><p><b>Daya normal:</b> Daya daripada permukaan yang bersentuhan dengan objek.</p><p class="cn">重量是作用在物体上的重力；法向力来自接触表面。</p></div>
+</article>
+
+<article class="term" data-term="daya elastik geseran apungan">
+<div class="term-head"><h3>Daya Elastik, Geseran dan Apungan</h3><button class="speak" onclick="speak('Daya elastik, daya geseran dan daya apungan')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="tank"><div class="water"></div></div><div class="float"></div></div><p><b>Elastik:</b> Terhasil apabila bahan diregangkan atau dimampatkan.</p><p><b>Geseran:</b> Menentang gerakan.</p><p><b>Apungan:</b> Daya tujah ke atas dalam bendalir.</p><p class="cn">弹力、摩擦力与浮力。</p></div>
+</article>
+
+<article class="term" data-term="ketumpatan jisim isi padu terapung tenggelam">
+<div class="term-head"><h3>Ketumpatan, Terapung dan Tenggelam</h3><button class="speak" onclick="speak('Ketumpatan, terapung dan tenggelam')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="tank"><div class="water"></div></div><div class="float"></div></div><p><b>Ketumpatan:</b> Jisim per unit isi padu.</p><p><b>Terapung:</b> Objek kekal di permukaan bendalir.</p><p><b>Tenggelam:</b> Objek bergerak ke dasar bendalir.</p><p class="cn">密度、漂浮与下沉。</p></div>
+</article>
+
+<article class="term" data-term="tuas daya beban fulkrum kelas">
+<div class="term-head"><h3>Tuas, Daya, Beban dan Fulkrum</h3><button class="speak" onclick="speak('Tuas, daya, beban dan fulkrum')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="lever"></div><div class="ful"></div></div><p><b>Tuas:</b> Palang yang berputar pada titik tetap.</p><p><b>Fulkrum:</b> Titik sokongan tetap.</p><p><b>Beban:</b> Objek yang hendak digerakkan.</p><p class="cn">杠杆、施力、负载与支点。</p></div>
+</article>
+
+<article class="term" data-term="momen daya pangsi jarak tegak">
+<div class="term-head"><h3>Momen Daya dan Pangsi</h3><button class="speak" onclick="speak('Momen daya dan pangsi')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="lever"></div><div class="ful"></div></div><p><b>Momen daya:</b> Kesan putaran daya pada pangsi atau fulkrum.</p><p><b>Pangsi:</b> Titik tetap tempat objek berputar.</p><p class="cn">力矩与支点。</p></div>
+</article>
+
+<article class="term" data-term="tekanan luas permukaan pascal pepejal">
+<div class="term-head"><h3>Tekanan dan Luas Permukaan</h3><button class="speak" onclick="speak('Tekanan dan luas permukaan')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="clay"></div><div class="press"></div></div><p><b>Tekanan:</b> Daya yang bertindak pada satu unit luas permukaan.</p><p><b>Unit:</b> pascal, Pa.</p><p class="cn">压力与表面积。</p></div>
+</article>
+
+<article class="term" data-term="tekanan gas teori kinetik zarah perlanggaran">
+<div class="term-head"><h3>Tekanan Gas dan Teori Kinetik Gas</h3><button class="speak" onclick="speak('Tekanan gas dan teori kinetik gas')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="gasbox"><div class="particle p1"></div><div class="particle p2"></div><div class="particle p3"></div></div></div><p><b>Tekanan gas:</b> Terhasil daripada perlanggaran zarah gas dengan dinding bekas.</p><p class="cn">气体压力由气体粒子撞击容器壁产生。</p></div>
+</article>
+
+<article class="term" data-term="tekanan atmosfera altitud vakum">
+<div class="term-head"><h3>Tekanan Atmosfera, Altitud dan Vakum</h3><button class="speak" onclick="speak('Tekanan atmosfera, altitud dan vakum')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="mountain"></div><div class="mol m1"></div><div class="mol m2"></div><div class="mol m3"></div></div><p><b>Tekanan atmosfera:</b> Tekanan udara pada permukaan Bumi dan semua jasad.</p><p><b>Altitud:</b> Ketinggian dari aras laut.</p><p><b>Vakum:</b> Ruang tanpa udara.</p><p class="cn">大气压、海拔与真空。</p></div>
+</article>
+
+<article class="term" data-term="tekanan cecair kedalaman gelembung">
+<div class="term-head"><h3>Tekanan Cecair dan Kedalaman</h3><button class="speak" onclick="speak('Tekanan cecair dan kedalaman')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="liquid"></div><div class="bubble"></div></div><p><b>Tekanan cecair:</b> Tekanan yang dikenakan oleh cecair.</p><p><b>Hubungan:</b> Semakin dalam, semakin tinggi tekanan.</p><p class="cn">液体压力与深度。</p></div>
+</article>
+
+<article class="term" data-term="neraca spring newton pascal unit">
+<div class="term-head"><h3>Neraca Spring, Newton dan Pascal</h3><button class="speak" onclick="speak('Neraca spring, newton dan pascal')">🔊 Sebut</button></div>
+<div class="term-body"><div class="visual"><div class="arrow" style="left:20%;width:170px"></div></div><p><b>Neraca spring:</b> Alat untuk mengukur daya.</p><p><b>Newton, N:</b> Unit daya.</p><p><b>Pascal, Pa:</b> Unit tekanan.</p><p class="cn">弹簧秤、牛顿与帕斯卡。</p></div>
+</article>
+
+</div>
+
+<div class="note">
+<b>使用提示：</b> 发音功能使用浏览器内置语音。手机第一次使用时，请先点击任意一个 “Sebut” 按钮。
+</div>
+</section>
+
+<footer class="footer">Page 19 · Istilah dan Sebutan Bab 8 · Berdasarkan istilah dalam buku teks Sains Tingkatan 2</footer>
+</main>
+
+<script>
+function speak(text){
+ if(!('speechSynthesis' in window)){
+   alert('Pelayar ini tidak menyokong fungsi sebutan.');
+   return;
+ }
+ speechSynthesis.cancel();
+ const utter=new SpeechSynthesisUtterance(text);
+ utter.lang='ms-MY';
+ utter.rate=0.88;
+ utter.pitch=1;
+ utter.volume=1;
+ speechSynthesis.speak(utter);
+}
+function speakAll(){
+ const terms=[...document.querySelectorAll('.term-head h3')].map(x=>x.textContent).join('. ');
+ speak(terms);
+}
+function filterTerms(){
+ const q=document.getElementById('search').value.toLowerCase().trim();
+ document.querySelectorAll('.term').forEach(card=>{
+   const text=(card.dataset.term+' '+card.innerText).toLowerCase();
+   card.style.display=text.includes(q)?'block':'none';
+ });
+}
+function replay(){
+ document.querySelectorAll('.ball,.arrow,.book,.up,.down,.float,.lever,.press,.particle,.mol,.bubble').forEach(e=>{
+   e.style.animation='none';void e.offsetWidth;e.style.animation='';
+ });
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

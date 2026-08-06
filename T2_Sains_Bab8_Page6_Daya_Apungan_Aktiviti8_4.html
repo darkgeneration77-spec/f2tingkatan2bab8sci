@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 6</title>
+<style>
+:root{
+  --navy:#102f49;--blue:#1769aa;--sky:#eaf6ff;--ink:#263f53;--muted:#60778a;
+  --white:#fff;--line:#c8dae8;--red:#d84c4c;--green:#2d8a62;--orange:#ef8a31;
+  --purple:#7654b7;--gold:#f3bf3b;--shadow:0 14px 38px rgba(16,47,73,.12);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Noto Sans SC","Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(180deg,#f7fbff,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:10px;z-index:20;padding:12px 16px;background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);backdrop-filter:blur(10px)}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.btn.light{background:#e7f2fa;color:var(--navy)} .btn.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow);position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;width:350px;height:350px;border-radius:50%;right:-130px;top:-160px;background:rgba(255,255,255,.08)}
+.kicker{display:inline-block;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.35);font-weight:900}
+h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}
+.hero p{font-size:19px;max-width:920px;margin:0;color:#eaf7ff}
+.cn{color:#657c8f;font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title-row{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px;flex:0 0 auto}
+h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.compare{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{border:1px solid var(--line);border-radius:22px;overflow:hidden;background:#fbfdff}
+.card h3{margin:0;padding:14px 18px;color:#fff;font-size:21px}.float-card h3{background:var(--green)}.sink-card h3{background:var(--red)}
+.scene{height:300px;position:relative;overflow:hidden;background:linear-gradient(#eaf6ff,#dcecf7)}
+.tank{position:absolute;left:32px;right:32px;bottom:24px;height:230px;border:7px solid #637f92;border-top:0;border-radius:0 0 20px 20px;overflow:hidden}
+.water{position:absolute;inset:auto 0 0 0;height:185px;background:rgba(64,163,220,.62);animation:waterWave 2s ease-in-out infinite}
+.duck{position:absolute;left:50%;bottom:168px;transform:translateX(-50%);width:100px;height:62px;background:#f4c942;border-radius:60% 50% 45% 50%;z-index:3;animation:duckFloat 2.4s ease-in-out infinite}
+.duck:before{content:"";position:absolute;right:4px;top:-25px;width:48px;height:48px;border-radius:50%;background:#f4c942}
+.duck:after{content:"";position:absolute;right:-15px;top:-8px;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:20px solid #ef8a31}
+.stone{position:absolute;left:50%;bottom:165px;transform:translateX(-50%);width:82px;height:62px;border-radius:45% 55% 48% 52%;background:#687887;border:4px solid #4a5965;z-index:3;animation:stoneSink 3s ease-in-out infinite}
+.up-arrow,.down-arrow{position:absolute;left:50%;width:8px;height:90px;transform:translateX(-50%);z-index:5}
+.up-arrow{bottom:130px;background:var(--green);animation:upPulse 1.4s infinite}.up-arrow:after{content:"";position:absolute;left:-13px;top:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-bottom:25px solid var(--green)}
+.down-arrow{top:80px;background:var(--red);animation:downPulse 1.4s infinite}.down-arrow:after{content:"";position:absolute;left:-13px;bottom:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-top:25px solid var(--red)}
+@keyframes duckFloat{50%{transform:translate(-50%,-11px) rotate(1deg)}}@keyframes stoneSink{0%,25%{transform:translate(-50%,0)}75%,100%{transform:translate(-50%,130px)}}@keyframes upPulse{50%{opacity:.4;transform:translate(-50%,-12px)}}@keyframes downPulse{50%{opacity:.4;transform:translate(-50%,12px)}}@keyframes waterWave{50%{filter:brightness(1.1)}}
+.content{padding:18px}.content p{margin:8px 0}
+.formula{margin-top:22px;padding:22px;border-radius:20px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}
+.formula b{font-size:clamp(27px,4vw,42px);color:var(--navy)}
+.activity-info{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0}
+.info{padding:17px;border-radius:16px;background:#f1f8fc;border:1px solid #c9deed}.info b{display:block;color:var(--navy)}
+.activity-layout{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.steps{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fbfdff}.steps ol{padding-left:22px}.steps li{margin:8px 0}
+.lab{height:430px;position:relative;border:1px solid var(--line);border-radius:20px;background:linear-gradient(#eef8ff,#dfeef7);overflow:hidden}
+.stand{position:absolute;left:34%;top:25px;width:14px;height:345px;background:#61798c}
+.stand:before{content:"";position:absolute;left:-95px;top:0;width:110px;height:12px;background:#61798c}
+.scale{position:absolute;left:calc(34% - 105px);top:40px;width:72px;height:180px;border-radius:18px;background:#dbe8ef;border:4px solid #61798c}
+.scale-lines{position:absolute;left:13px;right:13px;top:20px;bottom:20px;background:repeating-linear-gradient(180deg,transparent 0 13px,#61798c 13px 15px)}
+.pointer{position:absolute;left:7px;right:7px;top:55px;height:5px;background:var(--red);animation:pointerChange 4s ease-in-out infinite}
+.hook{position:absolute;left:50%;bottom:-80px;width:5px;height:80px;background:#61798c}
+.cap{position:absolute;left:calc(34% - 105px);top:285px;width:72px;height:38px;background:#697985;border-radius:10px;animation:dipObject 4s ease-in-out infinite}
+.beaker{position:absolute;right:35px;bottom:30px;width:230px;height:260px;border:8px solid #61798c;border-top:0;border-radius:0 0 22px 22px;overflow:hidden}
+.lab-water{position:absolute;inset:auto 0 0 0;height:205px;background:rgba(64,163,220,.62);animation:waterWave 2s infinite}
+.label{position:absolute;padding:5px 9px;border-radius:8px;background:rgba(16,47,73,.9);color:#fff;font-weight:900;font-size:13px}
+.l1{left:8%;top:230px}.l2{right:45px;top:45px}
+@keyframes dipObject{0%,35%{transform:translate(0,0)}65%,100%{transform:translate(200px,65px)}}@keyframes pointerChange{0%,35%{transform:translateY(55px)}65%,100%{transform:translateY(15px)}}
+.def-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:18px}
+.def{padding:18px;border-radius:18px;border:1px solid var(--line);background:#f8fbfd}
+.def b{display:block;color:var(--navy);font-size:20px}
+.object-row{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.obj{padding:15px;border-radius:16px;background:#eef7fd;border:1px solid #c8ddea;text-align:center;font-weight:800;animation:objBob 2.6s ease-in-out infinite}
+.obj:nth-child(2){animation-delay:.2s}.obj:nth-child(3){animation-delay:.4s}.obj:nth-child(4){animation-delay:.6s}
+@keyframes objBob{50%{transform:translateY(-8px)}}
+.question{margin-top:20px;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.qhead{padding:14px 18px;background:var(--navy);color:#fff;font-weight:900}
+.qbody{padding:18px}
+.answer-toggle{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}
+.answer{display:none;margin-top:14px;padding:18px;border-radius:16px;background:#eefbf3;border:1px solid #9fd2b0}.answer.show{display:block}
+.answer h3{margin:0 0 8px;color:#1f6d4d}
+.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.table-wrap{overflow:auto;margin-top:18px}
+table{width:100%;border-collapse:collapse;min-width:720px}th,td{border:1px solid #b9cedd;padding:11px;text-align:center}th{background:#dceef9;color:var(--navy)}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.compare,.activity-layout,.activity-info,.def-grid,.object-row{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<main class="page">
+
+<header class="topbar">
+  <div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 6</div>
+  <div class="actions">
+    <button class="btn light" onclick="document.getElementById('aktiviti').scrollIntoView()">Aktiviti 8.4</button>
+    <button class="btn primary" onclick="replay()">Ulang Animasi</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="kicker">8.2 KESAN DAYA（力的作用）</span>
+  <h1>Daya Apungan</h1>
+  <p>
+    Daya apungan menentukan sama ada sesuatu objek terapung atau tenggelam di dalam bendalir.<br>
+    <span class="cn">浮力决定物体在流体中漂浮还是下沉。</span>
+  </p>
+</section>
+
+<section class="section">
+  <div class="title-row"><div class="num">1</div><h2>Terapung dan Tenggelam（漂浮与下沉）</h2></div>
+
+  <div class="compare">
+    <article class="card float-card">
+      <h3>Objek Terapung（物体漂浮）</h3>
+      <div class="scene">
+        <div class="tank"><div class="water"></div></div>
+        <div class="duck"></div><div class="up-arrow"></div><div class="down-arrow"></div>
+      </div>
+      <div class="content">
+        <p>Sesuatu objek akan terapung jika daya apungan cukup untuk menampung beratnya.</p>
+        <p class="cn">当浮力足以支撑物体的重量时，物体会漂浮。</p>
+        <p><b>Daya apungan = Berat objek</b></p>
+        <p class="cn">浮力等于物体的重量。</p>
+        <p>Contoh dalam buku teks: Berat patung itik = 10 N dan daya apungan = 10 N.</p>
+        <p class="cn">课本例子：鸭子模型重量为10 N，浮力也是10 N。</p>
+      </div>
+    </article>
+
+    <article class="card sink-card">
+      <h3>Objek Tenggelam（物体下沉）</h3>
+      <div class="scene">
+        <div class="tank"><div class="water"></div></div>
+        <div class="stone"></div><div class="up-arrow" style="height:55px"></div><div class="down-arrow"></div>
+      </div>
+      <div class="content">
+        <p>Sesuatu objek akan tenggelam jika daya apungan tidak cukup untuk menampung beratnya.</p>
+        <p class="cn">当浮力不足以支撑物体重量时，物体会下沉。</p>
+        <p><b>Daya apungan &lt; Berat objek</b></p>
+        <p class="cn">浮力小于物体重量。</p>
+        <p>Contoh dalam buku teks: Berat batu = 10 N tetapi daya apungan = 5 N.</p>
+        <p class="cn">课本例子：石头重量为10 N，但浮力只有5 N。</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="formula">
+    <b>口诀：Apungan naik, berat turun</b><br>
+    <span class="cn">浮力向上，重量向下。</span>
+  </div>
+</section>
+
+<section class="section" id="aktiviti">
+  <div class="title-row"><div class="num">2</div><h2>Aktiviti 8.4（活动 8.4）</h2></div>
+
+  <div class="activity-info">
+    <div class="info"><b>Tujuan（目的）</b>Menentukan daya apungan<br><span class="cn">测定浮力</span></div>
+    <div class="info"><b>Bahan（材料）</b>Penutup botol kaca, penyumbat gabus, bola skuasy, plastisin dan benang<br><span class="cn">玻璃瓶盖、软木塞、壁球、黏土和细绳</span></div>
+    <div class="info"><b>Radas（仪器）</b>Bikar 250 ml dan neraca spring<br><span class="cn">250毫升烧杯和弹簧秤</span></div>
+  </div>
+
+  <div class="activity-layout">
+    <div class="steps">
+      <h3 style="margin-top:0;color:var(--navy)">Langkah-langkah（步骤）</h3>
+      <ol>
+        <li>Gantungkan penutup botol kaca pada hujung neraca spring.<br><span class="cn">把玻璃瓶盖挂在弹簧秤末端。</span></li>
+        <li>Catatkan berat sebenar, W₁.<br><span class="cn">记录真实重量 W₁。</span></li>
+        <li>Isi 250 ml air ke dalam bikar.<br><span class="cn">在烧杯中加入250毫升水。</span></li>
+        <li>Masukkan penutup botol ke dalam air.<br><span class="cn">把瓶盖浸入水中。</span></li>
+        <li>Catatkan berat ketara, W₂.<br><span class="cn">记录视重量 W₂。</span></li>
+        <li>Kirakan daya apungan, F.<br><span class="cn">计算浮力 F。</span></li>
+        <li>Ulang menggunakan penyumbat gabus, bola skuasy dan plastisin.<br><span class="cn">使用软木塞、壁球和黏土重复实验。</span></li>
+        <li>Lepaskan semua objek ke dalam air dan perhatikan sama ada tenggelam atau terapung.<br><span class="cn">把所有物体放入水中，观察它们漂浮还是下沉。</span></li>
+      </ol>
+    </div>
+
+    <div class="lab">
+      <div class="stand"></div>
+      <div class="scale"><div class="scale-lines"></div><div class="pointer"></div><div class="hook"></div></div>
+      <div class="cap"></div>
+      <div class="beaker"><div class="lab-water"></div></div>
+      <div class="label l1">W₁ → W₂</div>
+      <div class="label l2">250 ml air</div>
+    </div>
+  </div>
+
+  <div class="def-grid">
+    <div class="def">
+      <b>Berat sebenar, W₁（真实重量）</b>
+      Berat objek di udara.<br><span class="cn">物体在空气中的重量。</span>
+    </div>
+    <div class="def">
+      <b>Berat ketara, W₂（视重量）</b>
+      Berat objek yang terendam di dalam cecair.<br><span class="cn">物体浸在液体中时显示的重量。</span>
+    </div>
+  </div>
+
+  <div class="formula">
+    <b>Daya apungan, F = Berat sebenar, W₁ − Berat ketara, W₂</b><br>
+    <span class="cn">浮力 = 真实重量 − 视重量</span>
+  </div>
+
+  <div class="object-row">
+    <div class="obj">Penutup botol kaca<br><span class="cn">玻璃瓶盖</span></div>
+    <div class="obj">Penyumbat gabus<br><span class="cn">软木塞</span></div>
+    <div class="obj">Bola skuasy<br><span class="cn">壁球</span></div>
+    <div class="obj">Plastisin<br><span class="cn">黏土</span></div>
+  </div>
+
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr><th>Objek</th><th>Berat sebenar, W₁ (N)</th><th>Berat ketara, W₂ (N)</th><th>Daya apungan, F (N)</th><th>Tenggelam / Terapung</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Penutup botol kaca</td><td>Catat bacaan</td><td>Catat bacaan</td><td>W₁ − W₂</td><td>Perhatikan</td></tr>
+        <tr><td>Penyumbat gabus</td><td>Catat bacaan</td><td>Catat bacaan</td><td>W₁ − W₂</td><td>Perhatikan</td></tr>
+        <tr><td>Bola skuasy</td><td>Catat bacaan</td><td>Catat bacaan</td><td>W₁ − W₂</td><td>Perhatikan</td></tr>
+        <tr><td>Plastisin</td><td>Catat bacaan</td><td>Catat bacaan</td><td>W₁ − W₂</td><td>Perhatikan</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="question">
+    <div class="qhead">Soalan Aktiviti 8.4</div>
+    <div class="qbody">
+      <p>Apakah hubungan antara daya apungan sesuatu objek dengan keadaan objek?<br><span class="cn">浮力与物体漂浮或下沉的状态有什么关系？</span></p>
+      <button class="answer-toggle" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button>
+      <div class="answer">
+        <h3>Jawapan & Penerangan（答案与讲解）</h3>
+        <p>Objek terapung apabila daya apungan cukup untuk menampung berat objek, iaitu daya apungan sama dengan berat objek.</p>
+        <p class="cn">当浮力足以支撑物体重量，即浮力等于重量时，物体会漂浮。</p>
+        <p>Objek tenggelam apabila daya apungan kurang daripada berat objek.</p>
+        <p class="cn">当浮力小于物体重量时，物体会下沉。</p>
+        <div class="exam"><b>考试重点：</b> Terapung → F = W；Tenggelam → F &lt; W。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+Page 6 · Daya Apungan dan Aktiviti 8.4 · Berdasarkan halaman 177–178 buku teks Sains Tingkatan 2
+</footer>
+</main>
+
+<script>
+function toggleAnswer(btn){
+  const ans=btn.nextElementSibling;
+  ans.classList.toggle('show');
+  btn.textContent=ans.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）';
+}
+function replay(){
+  document.querySelectorAll('.water,.duck,.stone,.up-arrow,.down-arrow,.pointer,.cap,.lab-water,.obj').forEach(el=>{
+    el.style.animation='none';void el.offsetWidth;el.style.animation='';
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

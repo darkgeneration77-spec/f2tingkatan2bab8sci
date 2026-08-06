@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Bab 8 Daya dan Gerakan — Page 9</title>
+<style>
+:root{
+ --navy:#102f49;--blue:#1769aa;--ink:#263f53;--muted:#657c8f;--line:#c8dae8;
+ --green:#2d8a62;--red:#d84c4c;--gold:#f3bf3b;--purple:#7654b7;--orange:#ef8a31;
+ --shadow:0 14px 38px rgba(16,47,73,.12)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Arial,"Microsoft YaHei",sans-serif;color:var(--ink);line-height:1.65;background:linear-gradient(#f8fbfe,#edf6fc)}
+button{font:inherit}
+.page{width:min(1190px,94vw);margin:22px auto 70px}
+.topbar{position:sticky;top:10px;z-index:20;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 16px;background:#fffffff2;border:1px solid var(--line);border-radius:18px;box-shadow:0 8px 24px rgba(16,47,73,.09);backdrop-filter:blur(10px)}
+.brand{font-weight:900;color:var(--navy)}
+.actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn{border:0;border-radius:999px;padding:10px 15px;font-weight:800;cursor:pointer}
+.light{background:#e7f2fa;color:var(--navy)}.primary{background:var(--blue);color:#fff}
+.hero{margin-top:20px;padding:42px;border-radius:28px;color:#fff;background:linear-gradient(135deg,#123b5d,#1769aa 72%,#3494d3);box-shadow:var(--shadow)}
+.hero h1{font-size:clamp(38px,5vw,64px);line-height:1.08;margin:16px 0 10px}.hero p{font-size:19px;max-width:920px}.tag{display:inline-block;padding:7px 14px;border-radius:999px;background:#ffffff20;border:1px solid #ffffff59;font-weight:900}
+.cn{color:var(--muted);font-weight:600}.hero .cn{color:#d8efff}
+.section{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:25px;padding:32px;box-shadow:var(--shadow)}
+.title{display:flex;align-items:center;gap:14px;margin-bottom:18px}.num{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:21px}.title h2{margin:0;color:var(--navy);font-size:clamp(26px,3vw,37px)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}.box{padding:20px;border:1px solid var(--line);border-radius:20px;background:#fbfdff}.box h3{margin-top:0;color:var(--navy)}
+.scene{height:310px;position:relative;border:1px solid var(--line);border-radius:20px;background:linear-gradient(#eef8ff,#dcecf7);overflow:hidden}
+.wrench{position:absolute;left:50%;top:55px;width:220px;height:28px;background:#748593;border-radius:16px;transform-origin:18px 14px;animation:wrenchTurn 3s ease-in-out infinite}
+.wrench:before{content:"";position:absolute;left:-28px;top:-17px;width:62px;height:62px;border:16px solid #748593;border-right-color:transparent;border-radius:50%}
+.nut{position:absolute;left:42px;top:105px;width:55px;height:55px;background:#596b78;clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);animation:nutPulse 2s infinite}
+.arc{position:absolute;left:35px;top:45px;width:130px;height:130px;border:8px solid var(--red);border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;animation:arcSpin 3s ease-in-out infinite}
+@keyframes wrenchTurn{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(28deg)}}@keyframes nutPulse{50%{filter:brightness(1.25)}}@keyframes arcSpin{50%{transform:rotate(35deg);opacity:.45}}
+.formula{margin:18px 0;padding:22px;border-radius:20px;background:#fff7d8;border:1px solid #ecd36c;text-align:center}.formula b{font-size:clamp(26px,4vw,42px);color:var(--navy)}
+.direction-grid,.factor-grid,.example-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.direction-card,.factor-card,.example-card{border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#fbfdff}
+.direction-card h3,.factor-card h3,.example-card h3{margin:0;padding:14px 18px;color:#fff}.clock h3{background:var(--red)}.anticlock h3{background:var(--green)}.factor-card h3,.example-card h3{background:var(--navy)}
+.dir-scene{height:240px;position:relative;background:#eef8ff;overflow:hidden}
+.pivot{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:var(--gold);border:6px solid #aa7908}
+.hand{position:absolute;left:50%;top:50%;width:120px;height:12px;background:#687887;transform-origin:left center}
+.clock .hand{animation:clockMove 2.6s ease-in-out infinite}.anticlock .hand{animation:anticlockMove 2.6s ease-in-out infinite}
+@keyframes clockMove{0%,100%{transform:rotate(-35deg)}50%{transform:rotate(35deg)}}@keyframes anticlockMove{0%,100%{transform:rotate(35deg)}50%{transform:rotate(-35deg)}}
+.factor-scene{height:240px;position:relative;background:#eef8ff;overflow:hidden}.fbar{position:absolute;left:45px;right:45px;top:120px;height:16px;background:#9c6c3c;border-radius:8px;transform-origin:40px center;animation:fbarRock 3s infinite}.fpivot{position:absolute;left:70px;top:136px;width:0;height:0;border-left:28px solid transparent;border-right:28px solid transparent;border-bottom:58px solid var(--gold)}.farrow{position:absolute;right:70px;top:45px;width:8px;height:85px;background:var(--red);animation:forcePulse 1.3s infinite}.farrow:after{content:"";position:absolute;left:-13px;bottom:-1px;border-left:17px solid transparent;border-right:17px solid transparent;border-top:25px solid var(--red)}.distance{position:absolute;left:98px;right:85px;top:170px;height:4px;background:var(--blue);animation:distancePulse 1.8s infinite}.distance:before,.distance:after{content:"";position:absolute;top:-7px;width:3px;height:18px;background:var(--blue)}.distance:before{left:0}.distance:after{right:0}
+@keyframes fbarRock{0%,100%{transform:rotate(2deg)}50%{transform:rotate(-5deg)}}@keyframes forcePulse{50%{opacity:.4;transform:translateY(12px)}}@keyframes distancePulse{50%{filter:brightness(1.8)}}
+.activity{display:grid;grid-template-columns:1fr 1fr;gap:20px}.spanner-scene{height:330px;position:relative;border:1px solid var(--line);border-radius:20px;background:#eef8ff;overflow:hidden}.spanner{position:absolute;left:80px;top:140px;width:230px;height:24px;background:#748593;border-radius:14px;transform-origin:20px center;animation:spannerMove 3s infinite}.spanner:before{content:"";position:absolute;left:-25px;top:-15px;width:55px;height:55px;border:14px solid #748593;border-right-color:transparent;border-radius:50%}.x,.y{position:absolute;top:96px;padding:5px 9px;border-radius:8px;color:#fff;font-weight:900}.x{left:135px;background:var(--red)}.y{right:85px;background:var(--green)}@keyframes spannerMove{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(18deg)}}
+.answer{display:none;margin-top:14px;padding:18px;border-radius:16px;background:#eefbf3;border:1px solid #9fd2b0}.answer.show{display:block}.ansbtn{border:0;border-radius:12px;padding:10px 14px;background:var(--blue);color:#fff;font-weight:800;cursor:pointer}.exam{margin-top:10px;padding:10px 12px;border-radius:10px;background:#fff7d8;border:1px solid #ecd36c}
+.balance-scene{height:320px;position:relative;border:1px solid var(--line);border-radius:20px;background:#eef8ff;overflow:hidden}.beam{position:absolute;left:70px;right:70px;top:145px;height:18px;background:#9c6c3c;border-radius:8px;transform-origin:center;animation:balanceBeam 3s infinite}.center-ful{position:absolute;left:50%;top:160px;transform:translateX(-50%);width:0;height:0;border-left:38px solid transparent;border-right:38px solid transparent;border-bottom:75px solid var(--gold)}.weight-left,.force-right{position:absolute;top:75px;width:75px;height:65px;border-radius:8px;display:grid;place-items:center;color:#fff;font-weight:900}.weight-left{left:100px;background:var(--red);animation:leftWeight 3s infinite}.force-right{right:100px;background:var(--green);animation:rightWeight 3s infinite}@keyframes balanceBeam{0%,100%{transform:rotate(0deg)}35%{transform:rotate(5deg)}70%{transform:rotate(-5deg)}}@keyframes leftWeight{50%{transform:translateY(7px)}}@keyframes rightWeight{50%{transform:translateY(-7px)}}
+.solution{padding:18px;border-radius:18px;background:#f6fbfe;border:1px solid var(--line);margin-top:14px}.solution b{color:var(--navy)}
+.footer{text-align:center;color:#63798b;padding:25px 10px;font-size:14px}
+@media(max-width:920px){.grid2,.direction-grid,.factor-grid,.activity,.example-grid{grid-template-columns:1fr}.hero,.section{padding:25px 20px}.topbar{position:static}}
+</style>
+</head>
+<body>
+<main class="page">
+<header class="topbar"><div class="brand">SAINS TINGKATAN 2 · BAB 8 · PAGE 9</div><div class="actions"><button class="btn light" onclick="document.getElementById('imbang').scrollIntoView()">Prinsip Momen</button><button class="btn primary" onclick="replay()">Ulang Animasi</button></div></header>
+
+<section class="hero"><span class="tag">8.2.4 MOMEN DAYA（力矩）</span><h1>Momen Daya dan Keseimbangan</h1><p>Momen daya ialah kesan putaran yang dihasilkan apabila daya memutarkan objek pada pangsi atau fulkrum.<br><span class="cn">当力使物体绕支点转动时，所产生的转动效果叫作力矩。</span></p></section>
+
+<section class="section">
+<div class="title"><div class="num">1</div><h2>Apakah Momen Daya?（什么是力矩？）</h2></div>
+<div class="grid2"><div class="box"><p>Daya yang dikenakan pada objek boleh memutarkan objek pada satu titik tetap, iaitu pangsi atau fulkrum.</p><p class="cn">施加在物体上的力可使物体绕固定点转动。</p><p><b>Kesan putaran itu disebut momen daya.</b></p><p class="cn">这种转动效果称为力矩。</p><p>Contoh dalam kehidupan harian ialah menggunakan sepana untuk mengetatkan nat dan membuka pintu.</p><p class="cn">日常例子包括用扳手拧紧螺母和开门。</p></div><div class="scene"><div class="nut"></div><div class="wrench"></div><div class="arc"></div></div></div>
+<div class="formula"><b>Momen daya = Daya × Jarak tegak dari pangsi ke daya</b><br><span class="cn">力矩 = 力 × 从支点到力作用线的垂直距离</span><br><br>Unit: newton meter (N m)</div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">2</div><h2>Arah Momen Daya（力矩方向）</h2></div>
+<div class="direction-grid">
+<article class="direction-card clock"><h3>Ikut Arah Jam（顺时针）</h3><div class="dir-scene"><div class="pivot"></div><div class="hand"></div></div><div class="box"><p>Mengetatkan nat menghasilkan momen ikut arah jam.</p><p class="cn">拧紧螺母时产生顺时针力矩。</p></div></article>
+<article class="direction-card anticlock"><h3>Lawan Arah Jam（逆时针）</h3><div class="dir-scene"><div class="pivot"></div><div class="hand"></div></div><div class="box"><p>Melonggarkan nat menghasilkan momen lawan arah jam.</p><p class="cn">松开螺母时产生逆时针力矩。</p></div></article>
+</div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">3</div><h2>Faktor yang Mempengaruhi Momen Daya（影响力矩的因素）</h2></div>
+<div class="factor-grid">
+<article class="factor-card"><h3>Magnitud Daya（力的大小）</h3><div class="factor-scene"><div class="fbar"></div><div class="fpivot"></div><div class="farrow"></div></div><div class="box"><p>Semakin besar daya yang dikenakan, semakin besar momen daya.</p><p class="cn">施加的力越大，力矩越大。</p></div></article>
+<article class="factor-card"><h3>Jarak Tegak（垂直距离）</h3><div class="factor-scene"><div class="fbar"></div><div class="fpivot"></div><div class="farrow"></div><div class="distance"></div></div><div class="box"><p>Semakin jauh jarak tegak dari pangsi ke daya, semakin besar momen daya.</p><p class="cn">力的作用线离支点越远，力矩越大。</p></div></article>
+</div>
+<div class="formula"><b>口诀：Daya besar atau jarak jauh → Momen besar</b><br><span class="cn">力越大或距离越远，力矩越大。</span></div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">4</div><h2>Contoh Pengiraan（计算例题）</h2></div>
+<div class="example-grid">
+<div class="example-card"><h3>Contoh 1 · Penutup tin</h3><div class="box"><p>Daya = 10 N</p><p>Jarak = 15 cm = 0.15 m</p><div class="solution"><b>Momen daya = 10 N × 0.15 m = 1.5 N m</b></div><p class="cn">先把15厘米换成0.15米，再代入公式。</p></div></div>
+<div class="example-card"><h3>Contoh 2 · Sepana</h3><div class="box"><p>Daya = 50 N</p><p>Jarak = 20 cm = 0.2 m</p><div class="solution"><b>Momen daya = 50 N × 0.2 m = 10 N m</b></div><p class="cn">距离必须使用米，答案单位是 N m。</p></div></div>
+</div>
+</section>
+
+<section class="section">
+<div class="title"><div class="num">5</div><h2>Aktiviti 8.6（活动 8.6）</h2></div>
+<div class="activity"><div class="box"><h3>Tujuan</h3><p>Mengkaji hubungan antara momen daya dengan daya dan jarak tegak dari pangsi ke daya.</p><p class="cn">研究力矩与力及垂直距离之间的关系。</p><p><b>Bahan:</b> Nat dan skru</p><p><b>Radas:</b> Sepana</p></div><div class="spanner-scene"><div class="spanner"></div><div class="x">X</div><div class="y">Y</div></div></div>
+<div class="box"><p>Pegang sepana pada kedudukan X dan Y. Kedudukan yang manakah memerlukan daya lebih besar? Kedudukan yang manakah menghasilkan momen lebih besar?</p><button class="ansbtn" onclick="toggleAnswer(this)">Lihat Jawapan（查看答案）</button><div class="answer"><p><b>Kedudukan X</b> memerlukan daya lebih besar kerana lebih dekat dengan pangsi.</p><p><b>Kedudukan Y</b> menghasilkan momen daya lebih besar bagi daya yang sama kerana jaraknya lebih jauh dari pangsi.</p><p class="cn">X较靠近支点，需要更大的力；Y较远，在相同力下产生较大的力矩。</p><div class="exam"><b>考试重点：</b> Jarak lebih jauh → daya lebih kecil diperlukan untuk kesan putaran yang sama.</div></div></div>
+</section>
+
+<section class="section" id="imbang">
+<div class="title"><div class="num">6</div><h2>Prinsip Momen pada Tuas（杠杆平衡原理）</h2></div>
+<div class="grid2"><div class="box"><p>Untuk papan seimbang, momen ikut arah jam mestilah sama dengan momen lawan arah jam.</p><p class="cn">木板平衡时，顺时针力矩必须等于逆时针力矩。</p><div class="formula"><b>Beban × Jarak beban = Daya × Jarak daya</b></div></div><div class="balance-scene"><div class="beam"></div><div class="center-ful"></div><div class="weight-left">Beban</div><div class="force-right">Daya</div></div></div>
+
+<div class="example-grid">
+<div class="example-card"><h3>Contoh 1 · Jongkang-jongket</h3><div class="box"><p>Wei Hong = 300 N pada jarak 2 m</p><p>Jia Yin = 200 N pada jarak d</p><div class="solution"><b>200 N × d = 300 N × 2 m<br>d = 3 m</b></div><p class="cn">Jia Yin 需要坐在距离支点3米的位置。</p></div></div>
+<div class="example-card"><h3>Contoh 2 · Menggerakkan batu</h3><div class="box"><p>Jisim batu = 100 kg → Berat = 1000 N</p><p>Jarak beban = 0.5 m</p><p>Jarak daya = 2 m</p><div class="solution"><b>1000 N × 0.5 m = Daya × 2 m<br>Daya = 250 N</b></div><p class="cn">男子需要施加250 N的力。</p></div></div>
+</div>
+</section>
+
+<footer class="footer">Page 9 · Momen Daya dan Prinsip Momen · Berdasarkan halaman 183–186 buku teks Sains Tingkatan 2</footer>
+</main>
+<script>
+function toggleAnswer(btn){const a=btn.nextElementSibling;a.classList.toggle('show');btn.textContent=a.classList.contains('show')?'Tutup Jawapan（收起答案）':'Lihat Jawapan（查看答案）'}
+function replay(){document.querySelectorAll('.wrench,.nut,.arc,.hand,.fbar,.farrow,.distance,.spanner,.beam,.weight-left,.force-right').forEach(e=>{e.style.animation='none';void e.offsetWidth;e.style.animation=''});window.scrollTo({top:0,behavior:'smooth'})}
+</script>
+</body>
+</html>
